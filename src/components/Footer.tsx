@@ -63,8 +63,36 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-omj-border">
-        <div className="max-w-container mx-auto px-5 sm:px-8 py-5 text-xs text-omj-sub">
-          © {new Date().getFullYear()} 特定非営利活動法人オープンマイクジャパン
+        <div className="max-w-container mx-auto px-5 sm:px-8 py-5 flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-xs text-omj-sub">
+          <ul className="flex flex-wrap gap-x-5 gap-y-2">
+            <li>
+              <Link
+                href="/legal/commerce"
+                className="hover:text-omj-primary transition-colors"
+              >
+                特定商取引法に基づく表記
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/legal/privacy"
+                className="hover:text-omj-primary transition-colors"
+              >
+                プライバシーポリシー
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/legal/terms"
+                className="hover:text-omj-primary transition-colors"
+              >
+                利用規約
+              </Link>
+            </li>
+          </ul>
+          <div>
+            © {new Date().getFullYear()} 特定非営利活動法人オープンマイクジャパン
+          </div>
         </div>
       </div>
     </footer>
