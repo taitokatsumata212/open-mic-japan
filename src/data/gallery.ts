@@ -245,6 +245,13 @@ export const galleryImages: GalleryImage[] = [
     caption: "インプロ講習会｜2022年12月",
     category: "workshop",
   },
+  {
+    id: "workshop-collage-01",
+    src: "/images/workshop-collage.jpg",
+    alt: "コラージュワークショップ",
+    caption: "コラージュワークショップ｜2023年7月",
+    category: "workshop",
+  },
 
   // === 地域開催（神奈川県） ===
   {
