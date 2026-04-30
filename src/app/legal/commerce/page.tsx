@@ -37,7 +37,12 @@ export default function CommercePage() {
           <tr>
             <th>連絡先</th>
             <td>
-              （メールアドレス）
+              <a
+                href="mailto:info@openmicjapan.com"
+                className="text-omj-primary underline"
+              >
+                info@openmicjapan.com
+              </a>
               <br />
               <span className="text-xs text-omj-sub">
                 電話番号は請求があれば遅滞なく開示します。
@@ -96,20 +101,82 @@ export default function CommercePage() {
             </td>
           </tr>
           <tr>
-            <th>返品・キャンセル</th>
+            <th>解約・返金について</th>
             <td>
               <p>
-                <strong>寄付・会費</strong>
-                ：性質上、返金は原則承りません。事務手続上の誤課金等が判明した場合は、上記連絡先へご連絡ください。
+                <strong>月額会員（サブスクリプション）の解約</strong>
               </p>
+              <ul>
+                <li>
+                  会員専用ポータル（Stripe Customer Portal）から、いつでもご自身で解約手続きを行うことができます。
+                </li>
+                <li>
+                  ポータルでは、以下の操作を会員自身で行えます。
+                  <ul>
+                    <li>サブスクリプションの解約</li>
+                    <li>支払い方法の変更</li>
+                    <li>請求書・領収書のダウンロード</li>
+                    <li>登録している個人情報の更新</li>
+                  </ul>
+                </li>
+                <li>
+                  解約は手続き完了時点から効力を生じます。現在の課金期間の末日までは会員資格が有効で、次回更新日以降は自動課金されません。
+                </li>
+                <li>
+                  すでに支払われた会費について、日割り計算による返金は原則として承りません。
+                </li>
+                <li>
+                  ポータルにアクセスできない、または操作が困難な場合は、
+                  <a
+                    href="mailto:info@openmicjapan.com"
+                    className="text-omj-primary underline"
+                  >
+                    info@openmicjapan.com
+                  </a>
+                  までご連絡ください。
+                </li>
+              </ul>
+
+              <p>
+                <strong>単発寄付</strong>
+              </p>
+              <ul>
+                <li>性質上、返金は原則として承りません。</li>
+                <li>
+                  重複決済等、事務手続上の誤りが判明した場合は、
+                  <a
+                    href="mailto:info@openmicjapan.com"
+                    className="text-omj-primary underline"
+                  >
+                    info@openmicjapan.com
+                  </a>
+                  までご連絡ください。
+                </li>
+              </ul>
+
               <p>
                 <strong>物販</strong>
-                ：商品到着後7日以内に未開封・未使用のものに限り返品を承ります。送料は購入者負担。商品不良の場合は当法人負担で交換対応します。
               </p>
+              <ul>
+                <li>
+                  商品到着後7日以内に、未開封・未使用のものに限り返品を承ります。送料は購入者負担となります。
+                </li>
+                <li>
+                  商品に不良がある場合は、当法人負担で交換対応します。
+                </li>
+              </ul>
+
               <p>
                 <strong>イベント参加費</strong>
-                ：開催 7 日前までのキャンセルは全額返金、それ以降は返金不可。やむを得ない事情による中止の場合は別途案内します。
               </p>
+              <ul>
+                <li>
+                  開催 7 日前までのキャンセルは全額返金、それ以降は返金不可。
+                </li>
+                <li>
+                  当法人都合・やむを得ない事情による中止の場合は別途案内します。
+                </li>
+              </ul>
             </td>
           </tr>
           <tr>

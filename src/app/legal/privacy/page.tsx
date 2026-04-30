@@ -103,7 +103,14 @@ export default function PrivacyPage() {
           </tr>
           <tr>
             <th>連絡先</th>
-            <td>（メールアドレス）</td>
+            <td>
+              <a
+                href="mailto:info@openmicjapan.com"
+                className="text-omj-primary underline"
+              >
+                info@openmicjapan.com
+              </a>
+            </td>
           </tr>
         </tbody>
       </table>
