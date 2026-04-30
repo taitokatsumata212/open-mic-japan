@@ -1,7 +1,14 @@
 import { Container } from "@/components/Container";
 import { NumberStat } from "@/components/NumberStat";
 import { SupportCTA } from "@/components/SupportCTA";
+import { PersonIcon } from "@/components/illustrations/PersonIcons";
 import { SOYPOY_URL } from "@/lib/constants";
+
+type VoiceCategory = {
+  icon: "wave" | "step" | "talk" | "group";
+  label: string;
+  quotes: string[];
+};
 
 export const metadata = {
   title: "これまでのあゆみ",
@@ -92,9 +99,11 @@ const eras: Era[] = [
     imageAlt: "野外イベント「宴」の様子",
     body: (
       <>
-        <p>毎年5月には野外イベント「宴」を開催。</p>
         <p>
-          茅ヶ崎、青野原、神奈川県内など、下北沢の外にも実践は広がっていきました。
+          毎年5月には、山梨県・平林で野外イベント「宴」を開催。次回は 2026年5月23日〜24日です。
+        </p>
+        <p>
+          茅ヶ崎・青野原・神奈川県内、そして山梨県——下北沢の外にも、実践は広がっていきました。
         </p>
       </>
     ),
@@ -149,9 +158,10 @@ const eras: Era[] = [
   },
 ];
 
-const voicesByCategory: { label: string; quotes: string[] }[] = [
+const voicesByCategory: VoiceCategory[] = [
   {
-    label: "場の温かさ・歓迎性",
+    icon: "wave",
+    label: "あたたかく迎えてくれる場",
     quotes: [
       "温かく歓迎するカルチャーが素敵だった",
       "あの場所でしか味わえない温かさがあった",
@@ -159,7 +169,8 @@ const voicesByCategory: { label: string; quotes: string[] }[] = [
     ],
   },
   {
-    label: "再開・挑戦のきっかけ",
+    icon: "step",
+    label: "もう一度、声を出してみたくなる",
     quotes: [
       "久々に舞台前で緊張した。それだけ心が震えていた",
       "人前で表現できる『場』自体にありがたさを感じた",
@@ -167,7 +178,8 @@ const voicesByCategory: { label: string; quotes: string[] }[] = [
     ],
   },
   {
-    label: "ジャンル横断性・表現の広がり",
+    icon: "talk",
+    label: "ちがう表現に出会える",
     quotes: [
       "音楽やダンス、コメディ、写真、アートが持ち寄られていた",
       "ジャンルレスなパフォーマンスに刺激を受けた",
@@ -175,11 +187,12 @@ const voicesByCategory: { label: string; quotes: string[] }[] = [
     ],
   },
   {
-    label: "共同体性・仲間との出会い",
+    icon: "group",
+    label: "ここで仲間に出会えた",
     quotes: [
       "今日の雰囲気を作るのは、俺たちなんだと再認識した",
       "人が人を呼ぶってこういうことだと実感した",
-      "共同体があるからこそ、表現が花開くと感じた",
+      "ここで出会った人と、また何かを始めたくなった",
     ],
   },
 ];
@@ -207,7 +220,7 @@ export default function HistoryPage() {
           <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
             <NumberStat number="53回" label="オープンマイク" size="lg" />
             <NumberStat number="4年" label="SOY-POY 協力" size="lg" />
-            <NumberStat number="3エリア+" label="開催エリア" size="lg" />
+            <NumberStat number="2県+" label="開催地域（神奈川・山梨ほか）" size="lg" />
             <NumberStat number="複数回" label="大学・WS" size="lg" />
             <NumberStat number="毎年5月" label="野外「宴」" size="lg" />
           </div>
@@ -261,9 +274,14 @@ export default function HistoryPage() {
                   key={v.label}
                   className="rounded-lg border border-omj-border p-6 bg-omj-base"
                 >
-                  <p className="text-sm font-medium text-omj-primary mb-3">
-                    {v.label}
-                  </p>
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="shrink-0 w-16 h-16 sm:w-20 sm:h-20">
+                      <PersonIcon type={v.icon} />
+                    </div>
+                    <h3 className="text-base md:text-lg font-bold text-omj-text leading-tight">
+                      {v.label}
+                    </h3>
+                  </div>
                   <ul className="space-y-3">
                     {v.quotes.map((q) => (
                       <li

@@ -40,8 +40,8 @@ export function ActivityCard({
       href={`/activities/${activity.slug}`}
       className="group block rounded-lg border border-omj-border bg-white overflow-hidden hover:border-omj-primary transition-colors"
     >
-      <div className="aspect-[16/9] bg-omj-base p-6 flex items-center justify-center">
-        <div className="w-full max-w-[220px]">
+      <div className="aspect-[16/9] bg-omj-base p-4 md:p-5 flex items-center justify-center">
+        <div className="w-full max-w-[420px]">
           <ActivityIllustration type={activity.illustration} />
         </div>
       </div>

@@ -4,6 +4,7 @@ import { LineButton } from "@/components/LineButton";
 import { NumberStat } from "@/components/NumberStat";
 import { SupportCTA } from "@/components/SupportCTA";
 import { ActivityCard } from "@/components/activities/ActivityCard";
+import { MicIllustration } from "@/components/illustrations/MicIllustration";
 import { activities } from "@/data/activities";
 import { getAllNews } from "@/lib/news";
 import { newsCategoryLabels } from "@/lib/news";
@@ -44,13 +45,8 @@ export default function HomePage() {
               </div>
             </div>
             <div className="lg:col-span-2">
-              <div className="aspect-[4/5] overflow-hidden rounded-lg bg-omj-border shadow-sm">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/images/hero-main-01.jpg"
-                  alt="Open Mic Japan の現場"
-                  className="w-full h-full object-cover"
-                />
+              <div className="rounded-lg p-4 md:p-6">
+                <MicIllustration />
               </div>
             </div>
           </div>
@@ -62,7 +58,7 @@ export default function HomePage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             <NumberStat number="53回" label="オープンマイク開催" />
             <NumberStat number="4年" label="協力団体 SOY-POY" />
-            <NumberStat number="3エリア+" label="開催地域" />
+            <NumberStat number="2県+" label="開催地域（神奈川・山梨）" />
             <NumberStat number="毎年5月" label="野外イベント「宴」" />
           </div>
         </Container>
