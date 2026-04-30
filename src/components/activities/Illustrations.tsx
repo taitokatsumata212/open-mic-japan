@@ -1,8 +1,6 @@
 /**
  * Activity ページごとの飾りイラスト。
  * unDraw スタイルの素朴な SVG を omj-primary (#C75A4D) で描いています。
- * 後日、unDraw（https://undraw.co/）の SVG に差し替える場合は
- * このファイル内の各コンポーネントを書き換えてください。
  */
 
 const PRIMARY = "#C75A4D";
@@ -29,85 +27,108 @@ function Frame({
   );
 }
 
-/** コミュニティ：マイクを囲む人の輪 */
+/** コミュニティ：人々の輪（マイクなし） */
 export function CommunityIllustration() {
+  // 6人を半円形に配置、中心は接続を示す柔らかい円
+  const people = [
+    { cx: 60, cy: 200, head: 18 },
+    { cx: 130, cy: 130, head: 20 },
+    { cx: 200, cy: 100, head: 22 },
+    { cx: 270, cy: 130, head: 20 },
+    { cx: 340, cy: 200, head: 18 },
+    { cx: 200, cy: 240, head: 24 }, // 手前
+  ];
+
   return (
     <Frame>
-      {/* 床のライン */}
-      <line x1="40" y1="240" x2="360" y2="240" stroke={ACCENT} strokeOpacity="0.15" strokeWidth="2" />
+      {/* 中心の柔らかい円（つながりを表す） */}
+      <circle cx="200" cy="180" r="100" fill={PRIMARY} opacity="0.08" />
+      <circle cx="200" cy="180" r="60" fill={PRIMARY} opacity="0.1" />
 
-      {/* マイク（中央・PNGアイコン） */}
-      <image
-        href="/images/mic-icon.png"
-        x="170"
-        y="80"
-        width="60"
-        height="170"
-        preserveAspectRatio="xMidYMax meet"
-      />
-
-      {/* 人の輪（4人 半円形に並ぶ） */}
-      {[
-        { cx: 90, cy: 175 },
-        { cx: 145, cy: 145 },
-        { cx: 255, cy: 145 },
-        { cx: 310, cy: 175 },
-      ].map((p, i) => (
-        <g key={i}>
-          {/* 体 */}
-          <path
-            d={`M${p.cx - 20} ${p.cy + 60} q20 -25 20 -45 q0 20 20 45 z`}
-            fill={i % 2 === 0 ? PRIMARY : ACCENT}
-            opacity={i % 2 === 0 ? 1 : 0.85}
+      {/* 接続の線（円周の人々を繋ぐ） */}
+      {people.map((p, i) => {
+        const next = people[(i + 1) % people.length];
+        return (
+          <line
+            key={`l-${i}`}
+            x1={p.cx}
+            y1={p.cy}
+            x2={next.cx}
+            y2={next.cy}
+            stroke={ACCENT}
+            strokeWidth="1.5"
+            opacity="0.18"
+            strokeDasharray="3 4"
           />
-          {/* 頭 */}
-          <circle cx={p.cx} cy={p.cy} r="14" fill={i % 2 === 0 ? ACCENT : PRIMARY} />
-        </g>
-      ))}
+        );
+      })}
+
+      {/* 人々（頭と体） */}
+      {people.map((p, i) => {
+        const isAccent = i % 2 === 0;
+        const bodyHeight = p.head * 3.3;
+        return (
+          <g key={`p-${i}`}>
+            <path
+              d={`M ${p.cx - p.head * 1.4} ${p.cy + bodyHeight} q ${p.head * 1.4} -${p.head * 2.2} ${p.head * 1.4} -${p.head * 3.2} q 0 ${p.head} ${p.head * 1.4} ${p.head * 3.2} z`}
+              fill={isAccent ? ACCENT : PRIMARY}
+              opacity={isAccent ? 0.92 : 1}
+            />
+            <circle
+              cx={p.cx}
+              cy={p.cy}
+              r={p.head}
+              fill={isAccent ? PRIMARY : ACCENT}
+            />
+          </g>
+        );
+      })}
 
       {/* 装飾ドット */}
-      <circle cx="60" cy="80" r="4" fill={PRIMARY} opacity="0.5" />
-      <circle cx="350" cy="60" r="3" fill={ACCENT} opacity="0.4" />
+      <circle cx="40" cy="60" r="4" fill={PRIMARY} opacity="0.5" />
+      <circle cx="370" cy="50" r="3" fill={ACCENT} opacity="0.4" />
+      <circle cx="200" cy="40" r="3" fill={PRIMARY} opacity="0.4" />
     </Frame>
   );
 }
 
-/** イベント：ステージのスポットライトと旗 */
+/** イベント：ステージ・スポットライト・大きなマイク（PNG）・旗 */
 export function EventsIllustration() {
   return (
     <Frame>
-      {/* 床 */}
-      <line x1="40" y1="240" x2="360" y2="240" stroke={ACCENT} strokeOpacity="0.15" strokeWidth="2" />
-
-      {/* スポットライト円錐 */}
-      <polygon points="200,30 130,240 270,240" fill={PRIMARY} opacity="0.14" />
+      {/* スポットライト円錐（広め＆濃いめ） */}
+      <polygon points="200,10 70,260 330,260" fill={PRIMARY} opacity="0.16" />
+      <polygon points="200,10 110,260 290,260" fill={PRIMARY} opacity="0.13" />
 
       {/* ステージ */}
-      <rect x="110" y="225" width="180" height="18" rx="3" fill={ACCENT} />
+      <rect x="60" y="248" width="280" height="22" rx="3" fill={ACCENT} />
+      <rect x="60" y="248" width="280" height="3" fill={BASE} opacity="0.18" />
 
-      {/* マイク（中央・PNGアイコン） */}
+      {/* マイク（中央・大きめに） */}
       <image
         href="/images/mic-icon.png"
-        x="170"
-        y="65"
-        width="60"
-        height="170"
+        x="135"
+        y="20"
+        width="130"
+        height="240"
         preserveAspectRatio="xMidYMax meet"
       />
 
       {/* 旗（左右） */}
       <g>
-        <line x1="70" y1="70" x2="70" y2="220" stroke={ACCENT} strokeWidth="3" strokeLinecap="round" />
-        <polygon points="70,70 120,85 70,100" fill={PRIMARY} />
+        <line x1="50" y1="50" x2="50" y2="240" stroke={ACCENT} strokeWidth="3" strokeLinecap="round" />
+        <polygon points="50,50 110,68 50,86" fill={PRIMARY} />
       </g>
       <g>
-        <line x1="330" y1="70" x2="330" y2="220" stroke={ACCENT} strokeWidth="3" strokeLinecap="round" />
-        <polygon points="330,70 280,85 330,100" fill={PRIMARY} opacity="0.7" />
+        <line x1="350" y1="50" x2="350" y2="240" stroke={ACCENT} strokeWidth="3" strokeLinecap="round" />
+        <polygon points="350,50 290,68 350,86" fill={PRIMARY} opacity="0.7" />
       </g>
 
       {/* 装飾の音符 */}
-      <text x="50" y="140" fontSize="24" fill={PRIMARY} opacity="0.7">♪</text>
-      <text x="330" y="160" fontSize="22" fill={ACCENT} opacity="0.6">♫</text>
+      <text x="30" y="140" fontSize="28" fill={PRIMARY} opacity="0.65">♪</text>
+      <text x="350" y="160" fontSize="26" fill={ACCENT} opacity="0.6">♫</text>
+      <text x="80" y="200" fontSize="22" fill={ACCENT} opacity="0.45">♬</text>
+      <text x="320" y="210" fontSize="22" fill={PRIMARY} opacity="0.5">♪</text>
     </Frame>
   );
 }
@@ -116,44 +137,62 @@ export function EventsIllustration() {
 export function EducationIllustration() {
   return (
     <Frame>
-      {/* 床 */}
-      <line x1="40" y1="240" x2="360" y2="240" stroke={ACCENT} strokeOpacity="0.15" strokeWidth="2" />
+      {/* 背景の柔らかい円 */}
+      <circle cx="200" cy="170" r="130" fill={PRIMARY} opacity="0.08" />
 
-      {/* 本（開いた状態） */}
-      <g transform="translate(150, 170)">
-        <path d="M0 0 L50 -10 L50 60 L0 70 Z" fill={ACCENT} />
-        <path d="M50 -10 L100 0 L100 70 L50 60 Z" fill={PRIMARY} />
-        <path d="M0 0 L50 -10 L50 60 L0 70 Z" fill="white" opacity="0.8" />
-        <path d="M50 -10 L100 0 L100 70 L50 60 Z" fill="white" opacity="0.7" />
+      {/* 本（開いた状態・大きめ） */}
+      <g transform="translate(115, 170)">
+        <path d="M0 0 L70 -14 L70 80 L0 94 Z" fill={ACCENT} />
+        <path d="M70 -14 L140 0 L140 94 L70 80 Z" fill={PRIMARY} />
+        <path d="M0 0 L70 -14 L70 80 L0 94 Z" fill="white" opacity="0.88" />
+        <path d="M70 -14 L140 0 L140 94 L70 80 Z" fill="white" opacity="0.78" />
         {/* ページの線 */}
-        <line x1="10" y1="15" x2="40" y2="9" stroke={ACCENT} strokeWidth="1.5" />
-        <line x1="10" y1="25" x2="40" y2="19" stroke={ACCENT} strokeWidth="1.5" />
-        <line x1="10" y1="35" x2="40" y2="29" stroke={ACCENT} strokeWidth="1.5" />
-        <line x1="60" y1="9" x2="90" y2="15" stroke={PRIMARY} strokeWidth="1.5" />
-        <line x1="60" y1="19" x2="90" y2="25" stroke={PRIMARY} strokeWidth="1.5" />
-        <line x1="60" y1="29" x2="90" y2="35" stroke={PRIMARY} strokeWidth="1.5" />
+        <line x1="14" y1="20" x2="56" y2="12" stroke={ACCENT} strokeWidth="2" />
+        <line x1="14" y1="34" x2="56" y2="26" stroke={ACCENT} strokeWidth="2" />
+        <line x1="14" y1="48" x2="56" y2="40" stroke={ACCENT} strokeWidth="2" />
+        <line x1="14" y1="62" x2="56" y2="54" stroke={ACCENT} strokeWidth="2" />
+        <line x1="84" y1="12" x2="126" y2="20" stroke={PRIMARY} strokeWidth="2" />
+        <line x1="84" y1="26" x2="126" y2="34" stroke={PRIMARY} strokeWidth="2" />
+        <line x1="84" y1="40" x2="126" y2="48" stroke={PRIMARY} strokeWidth="2" />
+        <line x1="84" y1="54" x2="126" y2="62" stroke={PRIMARY} strokeWidth="2" />
       </g>
 
       {/* 電球（本の上） */}
-      <g transform="translate(200, 90)">
-        <ellipse cx="0" cy="0" rx="22" ry="26" fill={PRIMARY} opacity="0.18" />
-        <path d="M-12 -8 q12 -22 24 0 q-2 14 -8 18 l-8 0 q-6 -4 -8 -18 z" fill={PRIMARY} />
-        <rect x="-8" y="14" width="16" height="6" rx="2" fill={ACCENT} />
-        <line x1="-6" y1="24" x2="6" y2="24" stroke={ACCENT} strokeWidth="2" strokeLinecap="round" />
+      <g transform="translate(200, 80)">
+        <ellipse cx="0" cy="0" rx="34" ry="40" fill={PRIMARY} opacity="0.18" />
+        <path
+          d="M -18 -12 q 18 -34 36 0 q -3 22 -12 28 l -12 0 q -9 -6 -12 -28 z"
+          fill={PRIMARY}
+        />
+        <rect x="-12" y="22" width="24" height="9" rx="2" fill={ACCENT} />
+        <rect x="-9" y="33" width="18" height="3" rx="1" fill={ACCENT} />
+        <line x1="-9" y1="40" x2="9" y2="40" stroke={ACCENT} strokeWidth="2" strokeLinecap="round" />
       </g>
 
       {/* 光線 */}
       {[
-        [180, 60, 165, 40],
-        [220, 60, 235, 40],
-        [200, 50, 200, 30],
+        [172, 50, 152, 22],
+        [228, 50, 248, 22],
+        [200, 38, 200, 12],
+        [185, 44, 175, 18],
+        [215, 44, 225, 18],
       ].map(([x1, y1, x2, y2], i) => (
-        <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke={PRIMARY} strokeWidth="2" strokeLinecap="round" opacity="0.6" />
+        <line
+          key={i}
+          x1={x1}
+          y1={y1}
+          x2={x2}
+          y2={y2}
+          stroke={PRIMARY}
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          opacity="0.6"
+        />
       ))}
 
       {/* 装飾 */}
-      <circle cx="80" cy="200" r="5" fill={ACCENT} opacity="0.4" />
-      <circle cx="320" cy="200" r="4" fill={PRIMARY} opacity="0.4" />
+      <circle cx="60" cy="220" r="5" fill={ACCENT} opacity="0.4" />
+      <circle cx="340" cy="220" r="4" fill={PRIMARY} opacity="0.4" />
     </Frame>
   );
 }
@@ -162,40 +201,54 @@ export function EducationIllustration() {
 export function RegionalIllustration() {
   return (
     <Frame>
-      {/* 床 */}
-      <line x1="40" y1="240" x2="360" y2="240" stroke={ACCENT} strokeOpacity="0.15" strokeWidth="2" />
-
-      {/* 地図っぽい背景の四角形 */}
-      <rect x="80" y="80" width="240" height="140" rx="8" fill={ACCENT} opacity="0.08" />
+      {/* 地図エリア（全面拡大） */}
+      <rect x="40" y="40" width="320" height="220" rx="10" fill={ACCENT} opacity="0.08" />
 
       {/* 道（曲線） */}
       <path
-        d="M100 200 Q160 130 200 160 T300 100"
+        d="M 70 230 Q 150 130 220 170 T 340 80"
         fill="none"
         stroke={ACCENT}
-        strokeWidth="2"
-        strokeDasharray="4 4"
-        opacity="0.4"
+        strokeWidth="2.5"
+        strokeDasharray="6 5"
+        opacity="0.45"
       />
 
-      {/* ピン3つ：都市・地域・地域 */}
+      {/* 等高線（雰囲気） */}
+      <path
+        d="M 60 100 Q 200 60 340 110"
+        fill="none"
+        stroke={ACCENT}
+        strokeWidth="1"
+        opacity="0.18"
+      />
+      <path
+        d="M 60 200 Q 200 230 340 200"
+        fill="none"
+        stroke={ACCENT}
+        strokeWidth="1"
+        opacity="0.18"
+      />
+
+      {/* ピン4つ：東京・神奈川・山梨・京都 */}
       {[
-        { cx: 140, cy: 195, isCity: true },
-        { cx: 210, cy: 155, isCity: false },
-        { cx: 290, cy: 105, isCity: false },
+        { cx: 105, cy: 215, isCity: true, label: "東京" },
+        { cx: 175, cy: 175, isCity: false, label: "神奈川" },
+        { cx: 245, cy: 130, isCity: false, label: "山梨" },
+        { cx: 315, cy: 90, isCity: false, label: "京都" },
       ].map((p, i) => (
         <g key={i}>
           <path
-            d={`M${p.cx} ${p.cy - 28} q-12 0 -12 12 q0 14 12 24 q12 -10 12 -24 q0 -12 -12 -12 z`}
+            d={`M ${p.cx} ${p.cy - 36} q -16 0 -16 16 q 0 18 16 30 q 16 -12 16 -30 q 0 -16 -16 -16 z`}
             fill={p.isCity ? PRIMARY : ACCENT}
           />
-          <circle cx={p.cx} cy={p.cy - 18} r="4" fill="white" />
+          <circle cx={p.cx} cy={p.cy - 22} r="5" fill="white" />
         </g>
       ))}
 
       {/* 装飾の点 */}
-      <circle cx="60" cy="100" r="3" fill={PRIMARY} opacity="0.4" />
-      <circle cx="340" cy="170" r="3" fill={ACCENT} opacity="0.4" />
+      <circle cx="60" cy="60" r="3" fill={PRIMARY} opacity="0.4" />
+      <circle cx="340" cy="240" r="3" fill={ACCENT} opacity="0.4" />
     </Frame>
   );
 }

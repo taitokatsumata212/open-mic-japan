@@ -70,10 +70,8 @@ export default async function ActivityDetailPage({
               </div>
             </div>
             <div className="lg:col-span-2">
-              <div className="rounded-lg bg-omj-base p-6 md:p-8 lg:p-4">
-                <div className="w-full max-w-[480px] mx-auto">
-                  <ActivityIllustration type={activity.illustration} />
-                </div>
+              <div className="rounded-lg bg-omj-base p-3 md:p-4">
+                <ActivityIllustration type={activity.illustration} />
               </div>
             </div>
           </div>
