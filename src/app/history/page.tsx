@@ -102,8 +102,8 @@ const eras: Era[] = [
   {
     year: "2022〜",
     title: "教育・ワークショップ",
-    image: "/images/workshop-edu-02.jpg",
-    imageAlt: "教育・ワークショップの様子",
+    image: "/images/history-workshop-01.jpg",
+    imageAlt: "ワークショップの様子",
     body: (
       <>
         <p>大学や専門学校での講義・ワークショップを継続的に実施。</p>

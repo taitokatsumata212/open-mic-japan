@@ -7,48 +7,51 @@ export const metadata = {
   title: "About｜1ページでわかるOMJ",
 };
 
-const itemsBrought = [
+const waysToJoin = [
   {
-    label: "表現・パフォーマンス",
+    label: "声をひらく",
     items: [
-      "音楽",
-      "詩",
-      "朗読",
-      "トーク",
-      "漫才",
-      "落語",
-      "一人喋り",
-      "ダンス",
-      "実験的な音楽・表現",
+      "音楽を演奏する",
+      "詩や文章を朗読する",
+      "トーク、漫才、落語、一人喋り",
+      "ダンス・実験的な表現",
+      "つくりかけの表現を試す",
     ],
   },
   {
-    label: "物・小商い",
+    label: "持ち寄る",
     items: [
-      "ZINE",
-      "本",
-      "アパレル",
-      "アクセサリー",
-      "コーヒー",
-      "食べ物",
+      "ZINE・本",
+      "アパレル・アクセサリー",
+      "コーヒー・食べ物",
       "小さな商い",
     ],
   },
   {
-    label: "状態・関係",
+    label: "立ち会う",
     items: [
-      "つくりかけの表現や活動",
-      "再開のきっかけ",
-      "初めての発表",
-      "偶然の出会い",
+      "見る・聴く",
+      "誰かの表現に出会う",
+      "初めての発表をそっと支える",
+      "場をつくる側にまわる",
     ],
   },
 ];
 
-const roadmap = [
+type RoadmapPhase = {
+  phase: string;
+  title: string;
+  subtitle: string;
+  status: "current" | "next" | "future";
+  items: string[];
+};
+
+const roadmap: RoadmapPhase[] = [
   {
     phase: "Phase 1",
-    title: "基盤整備（現在）",
+    title: "基盤整備",
+    subtitle: "団体としての土台をつくる",
+    status: "current",
     items: [
       "ウェブサイトの構築と公開",
       "説明資料・実績整理の完成",
@@ -60,6 +63,8 @@ const roadmap = [
   {
     phase: "Phase 2",
     title: "教育・ワークショップの体系化",
+    subtitle: "実践を学びの文脈に届ける",
+    status: "next",
     items: [
       "大学・専門学校での定期講義",
       "表現・コミュニケーション・場づくりをテーマにしたワークショップ",
@@ -70,6 +75,8 @@ const roadmap = [
   {
     phase: "Phase 3",
     title: "地域連携と都市地方ネットワークの拡張",
+    subtitle: "都市と地方をつなぐ回路をひろげる",
+    status: "future",
     items: [
       "地域拠点・自治体・団体との連携強化",
       "地方でのオープンマイク定期開催の仕組みづくり",
@@ -80,6 +87,8 @@ const roadmap = [
   {
     phase: "Phase 4",
     title: "文化的インフラ化",
+    subtitle: "声を出せる場が、社会の当たり前になる",
+    status: "future",
     items: [
       "誰もが声を持ち、表現を試せる場が社会に当たり前にある状態",
       "表現と創作を通じてコミュニティが再生されていく仕組み",
@@ -87,6 +96,12 @@ const roadmap = [
     ],
   },
 ];
+
+const statusBadge: Record<RoadmapPhase["status"], { label: string; className: string }> = {
+  current: { label: "現在", className: "bg-omj-primary text-white" },
+  next: { label: "次のステップ", className: "bg-omj-accent text-white" },
+  future: { label: "将来", className: "bg-omj-border text-omj-sub" },
+};
 
 const officers = [
   { role: "理事長", name: "荒木美月" },
@@ -176,11 +191,12 @@ export default function AboutPage() {
       <section className="bg-white border-y border-omj-border py-16">
         <Container>
           <SectionHeading
-            eyebrow="What's brought"
-            title="場に持ち込まれるもの"
+            eyebrow="Ways to join"
+            title="さまざまな参加の方法"
+            description="演奏する、持ち寄る、立ち会う——どの関わり方も、場をつくる一部です。"
           />
           <div className="grid md:grid-cols-3 gap-6">
-            {itemsBrought.map((group) => (
+            {waysToJoin.map((group) => (
               <div
                 key={group.label}
                 className="rounded-lg border border-omj-border p-6 bg-omj-base"
@@ -201,15 +217,19 @@ export default function AboutPage() {
 
       <section className="py-16">
         <Container>
-          <SectionHeading eyebrow="Who" title="誰が来ていいか" />
+          <SectionHeading
+            eyebrow="Welcome"
+            title="こんな方とお会いしたい"
+            description="参加のかたちは自由です。少しでも気になる気持ちがあれば、それで十分です。"
+          />
           <div className="prose-omj max-w-3xl">
             <ul>
-              <li>表現の入口を社会に増やしたいと思う人</li>
-              <li>地域に文化的なつながりを育てたいと思う人</li>
-              <li>若い世代や初心者が安心して参加できる場を応援したい人</li>
-              <li>都市と地方をつなぐ実践に関心がある人</li>
-              <li>教育・福祉・地域づくりと文化活動の接点に可能性を感じる人</li>
-              <li>誰かが声を出せる場を、そっと支えたい人</li>
+              <li>表現の入口を社会に増やしたい方</li>
+              <li>地域に文化的なつながりを育てたい方</li>
+              <li>若い世代や初心者が安心して参加できる場を応援したい方</li>
+              <li>都市と地方をつなぐ実践に関心がある方</li>
+              <li>教育・福祉・地域づくりと文化活動の接点に可能性を感じる方</li>
+              <li>誰かが声を出せる場を、そっと支えたい方</li>
             </ul>
           </div>
         </Container>
@@ -258,27 +278,131 @@ export default function AboutPage() {
           <SectionHeading
             eyebrow="Roadmap"
             title="これから"
-            description="現在、OMJ は Phase 1：基盤整備にあります。"
+            description="基盤整備から、文化的インフラ化へ。4つの段階で進めていきます。"
           />
-          <div className="space-y-5">
-            {roadmap.map((p) => (
-              <div
-                key={p.phase}
-                className="rounded-lg border border-omj-border bg-white p-6 md:p-7"
-              >
-                <div className="flex flex-wrap items-baseline gap-3 mb-3">
-                  <span className="text-sm tracking-widest text-omj-primary font-medium">
-                    {p.phase}
-                  </span>
-                  <h3 className="text-lg md:text-xl font-bold">{p.title}</h3>
+
+          {/* Step indicator (横並び・現在地表示) */}
+          <div className="hidden md:flex items-center gap-0 mb-12">
+            {roadmap.map((p, i) => {
+              const isCurrent = p.status === "current";
+              const isFuture = p.status === "future";
+              return (
+                <div key={p.phase} className="flex items-center flex-1">
+                  <div className="flex flex-col items-center text-center w-full">
+                    <div
+                      className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg ${
+                        isCurrent
+                          ? "bg-omj-primary text-white ring-4 ring-omj-primary/20"
+                          : isFuture
+                            ? "bg-omj-border text-omj-sub"
+                            : "bg-omj-accent text-white"
+                      }`}
+                    >
+                      {i + 1}
+                    </div>
+                    <p
+                      className={`mt-2 text-xs font-medium ${
+                        isCurrent ? "text-omj-primary" : "text-omj-sub"
+                      }`}
+                    >
+                      {p.phase}
+                    </p>
+                  </div>
+                  {i < roadmap.length - 1 && (
+                    <div
+                      className={`flex-1 h-0.5 ${
+                        isFuture ? "bg-omj-border" : "bg-omj-accent/30"
+                      }`}
+                    />
+                  )}
                 </div>
-                <ul className="text-sm text-omj-text space-y-1.5">
-                  {p.items.map((it) => (
-                    <li key={it}>・{it}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+              );
+            })}
+          </div>
+
+          {/* Phase cards */}
+          <div className="space-y-4">
+            {roadmap.map((p, i) => {
+              const isCurrent = p.status === "current";
+              const isFuture = p.status === "future";
+              const badge = statusBadge[p.status];
+              return (
+                <div
+                  key={p.phase}
+                  className={`rounded-lg border bg-white overflow-hidden transition-shadow ${
+                    isCurrent
+                      ? "border-omj-primary shadow-md ring-2 ring-omj-primary/20"
+                      : "border-omj-border"
+                  }`}
+                >
+                  <div className="grid md:grid-cols-12">
+                    <div
+                      className={`md:col-span-4 p-6 md:p-7 ${
+                        isCurrent ? "bg-omj-primary/5" : "bg-omj-base"
+                      }`}
+                    >
+                      <div className="flex items-center gap-3 mb-2">
+                        <div
+                          className={`w-10 h-10 rounded-full flex items-center justify-center font-bold ${
+                            isCurrent
+                              ? "bg-omj-primary text-white"
+                              : isFuture
+                                ? "bg-omj-border text-omj-sub"
+                                : "bg-omj-accent text-white"
+                          }`}
+                        >
+                          {i + 1}
+                        </div>
+                        <span
+                          className={`text-xs font-medium px-2 py-0.5 rounded-full ${badge.className}`}
+                        >
+                          {badge.label}
+                        </span>
+                      </div>
+                      <p
+                        className={`text-xs tracking-widest font-medium mt-2 ${
+                          isCurrent ? "text-omj-primary" : "text-omj-sub"
+                        }`}
+                      >
+                        {p.phase}
+                      </p>
+                      <h3
+                        className={`text-lg md:text-xl font-bold mt-1 ${
+                          isFuture ? "text-omj-sub" : "text-omj-text"
+                        }`}
+                      >
+                        {p.title}
+                      </h3>
+                      <p className="text-sm text-omj-sub mt-2 leading-relaxed">
+                        {p.subtitle}
+                      </p>
+                    </div>
+                    <div className="md:col-span-8 p-6 md:p-7">
+                      <ul
+                        className={`text-sm space-y-2 ${
+                          isFuture ? "text-omj-sub" : "text-omj-text"
+                        }`}
+                      >
+                        {p.items.map((it) => (
+                          <li key={it} className="flex gap-2">
+                            <span
+                              className={`shrink-0 mt-1.5 w-1.5 h-1.5 rounded-full ${
+                                isCurrent
+                                  ? "bg-omj-primary"
+                                  : isFuture
+                                    ? "bg-omj-border"
+                                    : "bg-omj-accent/60"
+                              }`}
+                            />
+                            <span>{it}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </Container>
       </section>
