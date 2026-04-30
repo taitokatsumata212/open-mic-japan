@@ -55,20 +55,50 @@ export function HeroDecorations() {
       aria-hidden="true"
       className="absolute inset-0 overflow-hidden pointer-events-none select-none"
     >
-      {/* 大きなマイク：右下から半分はみ出して */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src="/images/mic-icon.png"
-        alt=""
-        className="absolute -right-10 -bottom-12 w-48 md:w-72 lg:w-80 opacity-[0.18] rotate-[12deg]"
-      />
+      {/* 右下のマイク：濃く・はっきり配置（マイクは1つだけ） */}
+      {/* マイクから声が広がっていくイメージの同心円弧 */}
+      <svg
+        viewBox="0 0 600 600"
+        className="absolute -right-32 -bottom-20 w-[440px] md:w-[600px] lg:w-[720px] pointer-events-none"
+        aria-hidden="true"
+      >
+        {/* 声の波紋（マイクヘッド付近 = 右下基準で左上方向に拡散） */}
+        {[80, 130, 185, 245, 310].map((r, i) => (
+          <g key={r}>
+            <circle
+              cx="430"
+              cy="170"
+              r={r}
+              fill="none"
+              stroke={PRIMARY}
+              strokeWidth={2 - i * 0.2}
+              opacity={0.55 - i * 0.08}
+              strokeDasharray="6 8"
+            />
+          </g>
+        ))}
+        {/* 細い薄い波紋（広がる先端） */}
+        {[380, 450, 520].map((r, i) => (
+          <circle
+            key={`outer-${r}`}
+            cx="430"
+            cy="170"
+            r={r}
+            fill="none"
+            stroke={PRIMARY}
+            strokeWidth="1"
+            opacity={0.18 - i * 0.04}
+            strokeDasharray="3 6"
+          />
+        ))}
+      </svg>
 
-      {/* 小さなマイク：左上 */}
+      {/* マイク本体（PNG、濃いめ） */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src="/images/mic-icon.png"
         alt=""
-        className="absolute left-4 top-16 w-12 md:w-16 opacity-[0.18] -rotate-[14deg]"
+        className="absolute -right-8 -bottom-10 w-56 md:w-80 lg:w-96 opacity-90 rotate-[8deg] drop-shadow-md"
       />
 
       {/* スポットライトの薄い円 */}
