@@ -100,7 +100,7 @@ excerpt: 一覧やOG向けの短い説明文
 - カラー：`#C75A4D`（メイン）/ `#2C3E5C`（アクセント）/ `#06C755`（LINE）
 - フォント：Noto Sans JP（`next/font/google`）
 - LINE 友だち追加 URL：<https://lin.ee/qpamCfh>
-- メール：`info@openmicjapan.org`（`src/lib/constants.ts` で集中管理）
+- メール：`info@openmicjapan.com`（`src/lib/constants.ts` で集中管理）
 - SOY-POY は法人として別組織。「協力団体」「協力拠点」と表記する
 
 ## ドラフト原稿の置き場所

@@ -14,30 +14,42 @@ export default function HomePage() {
     <>
       <section className="relative bg-omj-base">
         <Container className="py-20 md:py-28">
-          <div className="max-w-3xl">
-            <p className="text-sm tracking-widest text-omj-primary mb-4">
-              NPO法人オープンマイクジャパン
-            </p>
-            <h1 className="text-4xl md:text-6xl font-bold leading-tight tracking-tight text-omj-text">
-              {SITE_TAGLINE}
-            </h1>
-            <p className="mt-7 text-omj-text leading-loose md:text-lg">
-              Open Mic Japan
-              は、オープンマイクという実践を通じて、人と人、表現と創作、都市と地方をつないでいく
-              NPO 法人です。
-            </p>
-            <p className="mt-4 text-omj-sub leading-loose">
-              音楽、詩、朗読、トーク、漫才、落語、ダンス、実験的な表現が同じ場に混在し、ZINE・本・アパレル・コーヒー・食べ物が並ぶ——表現と創作にまつわるすべてを受け入れる器としてのオープンマイクを、社会にひらかれた仕組みへと育てていきます。
-            </p>
+          <div className="grid lg:grid-cols-5 gap-10 lg:gap-14 items-center">
+            <div className="lg:col-span-3">
+              <p className="text-sm tracking-widest text-omj-primary mb-4">
+                NPO法人オープンマイクジャパン
+              </p>
+              <h1 className="text-4xl md:text-6xl font-bold leading-tight tracking-tight text-omj-text">
+                {SITE_TAGLINE}
+              </h1>
+              <p className="mt-7 text-omj-text leading-loose md:text-lg">
+                Open Mic Japan
+                は、オープンマイクという実践を通じて、人と人、表現と創作、都市と地方をつないでいく
+                NPO 法人です。
+              </p>
+              <p className="mt-4 text-omj-sub leading-loose">
+                音楽、詩、朗読、トーク、漫才、落語、ダンス、実験的な表現が同じ場に混在し、ZINE・本・アパレル・コーヒー・食べ物が並ぶ——表現と創作にまつわるすべてを受け入れる器としてのオープンマイクを、社会にひらかれた仕組みへと育てていきます。
+              </p>
 
-            <div className="mt-10 flex flex-col sm:flex-row gap-3">
-              <LineButton size="lg" />
-              <Link
-                href="/about"
-                className="inline-flex items-center justify-center px-6 py-3.5 rounded-md border border-omj-border hover:border-omj-primary text-omj-text font-medium transition-colors"
-              >
-                OMJについて知る
-              </Link>
+              <div className="mt-10 flex flex-col sm:flex-row gap-3">
+                <LineButton size="lg" />
+                <Link
+                  href="/about"
+                  className="inline-flex items-center justify-center px-6 py-3.5 rounded-md border border-omj-border hover:border-omj-primary text-omj-text font-medium transition-colors"
+                >
+                  OMJについて知る
+                </Link>
+              </div>
+            </div>
+            <div className="lg:col-span-2">
+              <div className="aspect-[4/5] overflow-hidden rounded-lg bg-omj-border shadow-sm">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/hero-main-01.jpg"
+                  alt="Open Mic Japan の現場"
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </div>
           </div>
         </Container>

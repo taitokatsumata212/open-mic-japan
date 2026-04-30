@@ -7,7 +7,15 @@ export const metadata = {
   title: "これまでのあゆみ",
 };
 
-const eras = [
+type Era = {
+  year: string;
+  title: string;
+  body: React.ReactNode;
+  image?: string;
+  imageAlt?: string;
+};
+
+const eras: Era[] = [
   {
     year: "2019",
     title: "ニューヨークでの始まり",
@@ -46,6 +54,8 @@ const eras = [
   {
     year: "2022",
     title: "協力団体「SOY-POY」のオープン",
+    image: "/images/soypoy-opening-01.jpg",
+    imageAlt: "SOY-POY オープニングパーティーの様子",
     body: (
       <>
         <p>
@@ -74,6 +84,8 @@ const eras = [
   {
     year: "2022〜",
     title: "野外イベント「宴」と地域への広がり",
+    image: "/images/utage-2024-01.jpg",
+    imageAlt: "野外イベント「宴」の様子",
     body: (
       <>
         <p>毎年5月には野外イベント「宴」を開催。</p>
@@ -86,6 +98,8 @@ const eras = [
   {
     year: "2022〜",
     title: "教育・ワークショップ",
+    image: "/images/workshop-sarake-01.jpg",
+    imageAlt: "ワークショップの様子",
     body: (
       <>
         <p>大学や専門学校での講義・ワークショップを継続的に実施。</p>
@@ -114,6 +128,8 @@ const eras = [
   {
     year: "2026",
     title: "SOY-POY 4周年、オープンマイク53回",
+    image: "/images/openmic-3rd-01.jpg",
+    imageAlt: "オープンマイクの様子",
     body: (
       <>
         <p>
@@ -207,6 +223,17 @@ export default function HistoryPage() {
                   <h2 className="text-xl md:text-2xl font-bold mb-4 text-omj-text">
                     {era.title}
                   </h2>
+                  {era.image && (
+                    <div className="my-5 overflow-hidden rounded-lg bg-omj-border aspect-[16/10]">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={era.image}
+                        alt={era.imageAlt ?? era.title}
+                        loading="lazy"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  )}
                   <div className="prose-omj text-omj-text">{era.body}</div>
                 </li>
               ))}
