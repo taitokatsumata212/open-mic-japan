@@ -4,7 +4,7 @@ import { LineButton } from "@/components/LineButton";
 import { NumberStat } from "@/components/NumberStat";
 import { SupportCTA } from "@/components/SupportCTA";
 import { ActivityCard } from "@/components/activities/ActivityCard";
-import { MicIllustration } from "@/components/illustrations/MicIllustration";
+import { HeroDecorations } from "@/components/HeroDecorations";
 import { activities } from "@/data/activities";
 import { getAllNews } from "@/lib/news";
 import { newsCategoryLabels } from "@/lib/news";
@@ -15,38 +15,32 @@ export default function HomePage() {
 
   return (
     <>
-      <section className="relative bg-omj-base">
-        <Container className="py-20 md:py-28">
-          <div className="grid lg:grid-cols-5 gap-10 lg:gap-14 items-center">
-            <div className="lg:col-span-3">
-              <p className="text-sm tracking-widest text-omj-primary mb-4">
-                NPO法人オープンマイクジャパン
-              </p>
-              <h1 className="text-4xl md:text-6xl font-bold leading-tight tracking-tight text-omj-text">
-                {SITE_TAGLINE}
-              </h1>
-              <p className="mt-7 text-omj-text leading-loose md:text-lg">
-                オープンマイクジャパンは、オープンマイクという実践を通じて、人と人、表現と創作、都市と地方をつないでいく
-                NPO 法人です。
-              </p>
-              <p className="mt-4 text-omj-sub leading-loose">
-                音楽、詩、朗読、トーク、漫才、落語、ダンス、実験的な表現が同じ場に混在し、ZINE・本・アパレル・コーヒー・食べ物が並ぶ——表現と創作にまつわるすべてを受け入れる器としてのオープンマイクを、社会にひらかれた仕組みへと育てていきます。
-              </p>
+      <section className="relative bg-omj-base overflow-hidden">
+        <HeroDecorations />
+        <Container className="relative py-24 md:py-36">
+          <div className="max-w-3xl">
+            <p className="text-sm tracking-widest text-omj-primary mb-4">
+              NPO法人オープンマイクジャパン
+            </p>
+            <h1 className="text-4xl md:text-6xl font-bold leading-tight tracking-tight text-omj-text">
+              {SITE_TAGLINE}
+            </h1>
+            <p className="mt-7 text-omj-text leading-loose md:text-lg">
+              オープンマイクジャパンは、オープンマイクという実践を通じて、人と人、表現と創作、都市と地方をつないでいく
+              NPO 法人です。
+            </p>
+            <p className="mt-4 text-omj-sub leading-loose">
+              音楽、詩、朗読、トーク、漫才、落語、ダンス、実験的な表現が同じ場に混在し、ZINE・本・アパレル・コーヒー・食べ物が並ぶ——表現と創作にまつわるすべてを受け入れる器としてのオープンマイクを、社会にひらかれた仕組みへと育てていきます。
+            </p>
 
-              <div className="mt-10 flex flex-col sm:flex-row gap-3">
-                <LineButton size="lg" />
-                <Link
-                  href="/about"
-                  className="inline-flex items-center justify-center px-6 py-3.5 rounded-md border border-omj-border hover:border-omj-primary text-omj-text font-medium transition-colors"
-                >
-                  OMJについて知る
-                </Link>
-              </div>
-            </div>
-            <div className="lg:col-span-2">
-              <div className="rounded-lg p-4 md:p-6">
-                <MicIllustration />
-              </div>
+            <div className="mt-10 flex flex-col sm:flex-row gap-3">
+              <LineButton size="lg" />
+              <Link
+                href="/about"
+                className="inline-flex items-center justify-center px-6 py-3.5 rounded-md border border-omj-border hover:border-omj-primary text-omj-text font-medium transition-colors bg-omj-base/80 backdrop-blur-sm"
+              >
+                OMJについて知る
+              </Link>
             </div>
           </div>
         </Container>
