@@ -281,43 +281,61 @@ export default function AboutPage() {
             description="基盤整備から、文化的インフラ化へ。4つの段階で進めていきます。"
           />
 
-          {/* Step indicator (横並び・現在地表示) */}
-          <div className="hidden md:flex items-center gap-0 mb-12">
-            {roadmap.map((p, i) => {
-              const isCurrent = p.status === "current";
-              const isFuture = p.status === "future";
-              return (
-                <div key={p.phase} className="flex items-center flex-1">
-                  <div className="flex flex-col items-center text-center w-full">
-                    <div
-                      className={`w-12 h-12 rounded-full flex items-center justify-center font-bold text-lg ${
-                        isCurrent
-                          ? "bg-omj-primary text-white ring-4 ring-omj-primary/20"
-                          : isFuture
-                            ? "bg-omj-border text-omj-sub"
-                            : "bg-omj-accent text-white"
-                      }`}
-                    >
-                      {i + 1}
+          {/* Step indicator (今は Phase 1 と 2 の間：その区間だけ色をつける) */}
+          <div className="hidden md:block mb-14 px-4">
+            <div className="relative flex items-center">
+              {roadmap.map((p, i) => {
+                const isCurrent = p.status === "current";
+                const isFuture = p.status === "future";
+                // この区間 (i → i+1) は「現在地」か？ Phase 1 と 2 の間だけ色付け
+                const segmentActive = isCurrent;
+                return (
+                  <div
+                    key={p.phase}
+                    className={`flex items-center ${i < roadmap.length - 1 ? "flex-1" : ""}`}
+                  >
+                    <div className="flex flex-col items-center text-center shrink-0 w-20">
+                      <div
+                        className={`w-14 h-14 rounded-full flex items-center justify-center font-bold text-lg border-4 ${
+                          isCurrent
+                            ? "bg-omj-primary text-white border-omj-primary"
+                            : isFuture
+                              ? "bg-white text-omj-sub border-omj-border"
+                              : "bg-white text-omj-accent border-omj-accent"
+                        }`}
+                      >
+                        {i + 1}
+                      </div>
+                      <p
+                        className={`mt-3 text-xs font-bold tracking-wider ${
+                          isCurrent
+                            ? "text-omj-primary"
+                            : isFuture
+                              ? "text-omj-sub"
+                              : "text-omj-accent"
+                        }`}
+                      >
+                        {p.phase}
+                      </p>
                     </div>
-                    <p
-                      className={`mt-2 text-xs font-medium ${
-                        isCurrent ? "text-omj-primary" : "text-omj-sub"
-                      }`}
-                    >
-                      {p.phase}
-                    </p>
+                    {i < roadmap.length - 1 && (
+                      <div className="relative flex-1 mx-2">
+                        <div
+                          className={`h-2 rounded-full ${
+                            segmentActive ? "bg-omj-primary" : "bg-omj-border"
+                          }`}
+                        />
+                        {segmentActive && (
+                          <span className="absolute -top-6 left-1/2 -translate-x-1/2 text-[10px] font-bold text-omj-primary whitespace-nowrap">
+                            ▼ 現在地
+                          </span>
+                        )}
+                      </div>
+                    )}
                   </div>
-                  {i < roadmap.length - 1 && (
-                    <div
-                      className={`flex-1 h-0.5 ${
-                        isFuture ? "bg-omj-border" : "bg-omj-accent/30"
-                      }`}
-                    />
-                  )}
-                </div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
 
           {/* Phase cards */}
