@@ -11,7 +11,12 @@ export const metadata = {
   title: "写真ギャラリー",
 };
 
-const categories: GalleryCategory[] = ["open-mic", "utage", "workshop"];
+const categories: GalleryCategory[] = [
+  "open-mic",
+  "utage",
+  "workshop",
+  "regional",
+];
 
 export default function GalleryPage() {
   return (

@@ -1,4 +1,4 @@
-export type GalleryCategory = "open-mic" | "utage" | "workshop";
+export type GalleryCategory = "open-mic" | "utage" | "workshop" | "regional";
 
 export type GalleryImage = {
   id: string;
@@ -12,8 +12,6 @@ export type GalleryImage = {
  * 写真の差し替え/削除はこの配列を編集するだけで済みます。
  * `/public/images/` にファイルを配置し、`src` を `/images/<filename>` に設定してください。
  * 許諾未取得の写真は `src: null` のまま、もしくは項目ごと削除でOK。
- *
- * 地域開催（茅ヶ崎・青野原など）の写真が用意でき次第、"regional" カテゴリを再開予定。
  */
 export const galleryImages: GalleryImage[] = [
   // === オープンマイク ===
@@ -133,10 +131,41 @@ export const galleryImages: GalleryImage[] = [
     caption: "インプロ講習会｜2022年12月",
     category: "workshop",
   },
+
+  // === 地域開催（神奈川県） ===
+  {
+    id: "regional-chigasaki-01",
+    src: "/images/regional-chigasaki-01.jpg",
+    alt: "茅ヶ崎での開催",
+    caption: "茅ヶ崎｜2025年3月",
+    category: "regional",
+  },
+  {
+    id: "regional-chigasaki-02",
+    src: "/images/regional-chigasaki-02.jpg",
+    alt: "茅ヶ崎での開催",
+    caption: "茅ヶ崎｜2025年3月",
+    category: "regional",
+  },
+  {
+    id: "regional-aonohara-01",
+    src: "/images/regional-aonohara-01.jpg",
+    alt: "青野原出遊",
+    caption: "青野原｜2025年5月",
+    category: "regional",
+  },
+  {
+    id: "regional-aonohara-02",
+    src: "/images/regional-aonohara-02.jpg",
+    alt: "青野原出遊",
+    caption: "青野原｜2025年5月",
+    category: "regional",
+  },
 ];
 
 export const galleryCategoryLabels: Record<GalleryCategory, string> = {
   "open-mic": "オープンマイク",
   utage: "宴（野外イベント）",
   workshop: "ワークショップ",
+  regional: "地域開催（神奈川県）",
 };
