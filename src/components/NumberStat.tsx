@@ -132,7 +132,10 @@ export function NumberStat({
               duration={1200 + i * 120}
             />
           ) : (
-            <span key={i} className="text-omj-text/80 text-[0.55em] align-middle ml-0.5">
+            <span
+              key={i}
+              className="text-omj-sub text-[0.32em] align-baseline ml-1 font-medium tracking-wider"
+            >
               {seg.text}
             </span>
           )

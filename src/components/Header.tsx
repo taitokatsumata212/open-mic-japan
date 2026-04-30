@@ -14,7 +14,7 @@ export function Header() {
           href="/"
           className="group flex flex-col leading-none text-omj-text hover:text-omj-primary transition-colors"
         >
-          <span className="text-[10px] tracking-[0.18em] text-omj-sub group-hover:text-omj-primary transition-colors">
+          <span className="text-[10px] font-bold tracking-[0.18em] text-omj-sub group-hover:text-omj-primary transition-colors">
             NPO法人
           </span>
           <span className="mt-0.5 text-lg font-bold tracking-tight">

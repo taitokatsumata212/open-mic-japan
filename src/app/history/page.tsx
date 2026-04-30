@@ -31,8 +31,7 @@ const eras: Era[] = [
     body: (
       <>
         <p>
-          Open Mic Japan
-          の源流は、2019年にニューヨークで始まったオープンマイクの実践にあります。
+          オープンマイクジャパンの源流は、2019年にニューヨークで始まったオープンマイクの実践にあります。
         </p>
         <p>
           2019年6月、ニューヨークのカフェ・イベントスペース「Silk Road
@@ -76,8 +75,7 @@ const eras: Era[] = [
           同年4月末、下北沢にバー兼イベントスペース「SOY-POY」がオープン。コワーキングスペース「ロバート下北沢」を間借りする形で、活動の場が誕生しました。
         </p>
         <p>
-          SOY-POY は、Open Mic Japan
-          の主要な活動拠点として、現在も協力関係のもとでさまざまなオープンマイクを開催しています。SOY-POY
+          SOY-POY は、オープンマイクジャパンの主要な活動拠点として、現在も協力関係のもとでさまざまなオープンマイクを開催しています。SOY-POY
           自身の歩みについては、
           <a
             href={SOYPOY_URL}
@@ -132,8 +130,7 @@ const eras: Era[] = [
           を中心に積み重ねてきた実践を、社会にひらかれた仕組みとして位置づけるため、2025年8月22日、特定非営利活動法人オープンマイクジャパンを設立しました。
         </p>
         <p>
-          SOY-POY と Open Mic Japan
-          は法人としては別組織ですが、共通の源流と関係性をもとに、協力関係のもとで活動を継続しています。
+          SOY-POY とオープンマイクジャパンは法人としては別組織ですが、共通の源流と関係性をもとに、協力関係のもとで活動を継続しています。
         </p>
       </>
     ),
@@ -220,7 +217,7 @@ export default function HistoryPage() {
           <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
             <NumberStat number="53回" label="オープンマイク" size="lg" />
             <NumberStat number="4年" label="SOY-POY 協力" size="lg" />
-            <NumberStat number="2県+" label="開催地域（神奈川・山梨ほか）" size="lg" />
+            <NumberStat number="4" label="開催地域（東京・神奈川・山梨・京都）" size="lg" />
             <NumberStat number="複数回" label="大学・WS" size="lg" />
             <NumberStat number="毎年5月" label="野外「宴」" size="lg" />
           </div>

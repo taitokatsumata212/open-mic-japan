@@ -26,8 +26,7 @@ export default function HomePage() {
                 {SITE_TAGLINE}
               </h1>
               <p className="mt-7 text-omj-text leading-loose md:text-lg">
-                Open Mic Japan
-                は、オープンマイクという実践を通じて、人と人、表現と創作、都市と地方をつないでいく
+                オープンマイクジャパンは、オープンマイクという実践を通じて、人と人、表現と創作、都市と地方をつないでいく
                 NPO 法人です。
               </p>
               <p className="mt-4 text-omj-sub leading-loose">
@@ -58,7 +57,7 @@ export default function HomePage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             <NumberStat number="53回" label="オープンマイク開催" />
             <NumberStat number="4年" label="協力団体 SOY-POY" />
-            <NumberStat number="2県+" label="開催地域（神奈川・山梨）" />
+            <NumberStat number="4" label="開催地域（東京・神奈川・山梨・京都）" />
             <NumberStat number="毎年5月" label="野外イベント「宴」" />
           </div>
         </Container>

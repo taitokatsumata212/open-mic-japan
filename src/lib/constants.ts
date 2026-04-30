@@ -2,7 +2,7 @@ export const LINE_FRIEND_URL = "https://lin.ee/qpamCfh";
 export const CONTACT_EMAIL = "info@openmicjapan.com";
 export const SOYPOY_URL = "https://soypoy.com/about";
 
-export const SITE_NAME = "Open Mic Japan";
+export const SITE_NAME = "オープンマイクジャパン";
 export const SITE_TAGLINE = "声を、ひらく場をつくる。";
 
 export const NAV_LINKS = [

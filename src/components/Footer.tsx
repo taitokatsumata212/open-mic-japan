@@ -7,7 +7,7 @@ export function Footer() {
     <footer className="border-t border-omj-border bg-white mt-20">
       <div className="max-w-container mx-auto px-5 sm:px-8 py-12 grid gap-10 md:grid-cols-3">
         <div>
-          <p className="font-medium text-omj-text mb-2">Open Mic Japan</p>
+          <p className="font-medium text-omj-text mb-2">オープンマイクジャパン</p>
           <p className="text-sm text-omj-sub leading-relaxed">
             特定非営利活動法人オープンマイクジャパン
             <br />

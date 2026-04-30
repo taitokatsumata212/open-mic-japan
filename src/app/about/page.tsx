@@ -121,7 +121,7 @@ export default function AboutPage() {
             About
           </p>
           <h1 className="text-3xl md:text-5xl font-bold leading-tight">
-            1ページでわかる Open Mic Japan
+            1ページでわかるオープンマイクジャパン
           </h1>
           <p className="mt-6 text-omj-sub leading-loose max-w-2xl">
             このページを読めば、私たちが何を、なぜ、どこへ向かってやっているかが掴めます。
@@ -137,8 +137,7 @@ export default function AboutPage() {
           />
           <div className="prose-omj max-w-3xl text-omj-text">
             <p>
-              Open Mic Japan
-              にとってオープンマイクは、単なる発表の場ではありません。
+              オープンマイクジャパンにとってオープンマイクは、単なる発表の場ではありません。
             </p>
             <p>
               それは、声を出す場であり、出会う場であり、関係が育つ場です。
@@ -198,7 +197,7 @@ export default function AboutPage() {
         <Container>
           <SectionHeading
             eyebrow="Why"
-            title="なぜ今、Open Mic Japan が必要なのか"
+            title="なぜ今、オープンマイクジャパンが必要なのか"
           />
           <div className="prose-omj max-w-3xl text-omj-text">
             <p>
@@ -217,8 +216,7 @@ export default function AboutPage() {
               <li>都市と地方の間に、往復できる文化的回路がない</li>
             </ul>
             <p>
-              Open Mic Japan
-              は、これらの課題に対して、政策ではなく実践で応えようとしています。
+              オープンマイクジャパンは、これらの課題に対して、政策ではなく実践で応えようとしています。
             </p>
             <p>
               場をつくり、人を迎え、声を聴く。その繰り返しの中に、社会が必要としている何かがあると、私たちは考えています。
