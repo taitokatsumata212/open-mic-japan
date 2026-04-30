@@ -36,13 +36,15 @@ export function CommunityIllustration() {
       {/* 床のライン */}
       <line x1="40" y1="240" x2="360" y2="240" stroke={ACCENT} strokeOpacity="0.15" strokeWidth="2" />
 
-      {/* マイク（中央） */}
-      <g>
-        <line x1="200" y1="200" x2="200" y2="240" stroke={ACCENT} strokeWidth="3" strokeLinecap="round" />
-        <ellipse cx="200" cy="195" rx="14" ry="22" fill={PRIMARY} />
-        <ellipse cx="200" cy="190" rx="9" ry="14" fill={BASE} opacity="0.4" />
-        <line x1="180" y1="240" x2="220" y2="240" stroke={ACCENT} strokeWidth="4" strokeLinecap="round" />
-      </g>
+      {/* マイク（中央・PNGアイコン） */}
+      <image
+        href="/images/mic-icon.png"
+        x="170"
+        y="80"
+        width="60"
+        height="170"
+        preserveAspectRatio="xMidYMax meet"
+      />
 
       {/* 人の輪（4人 半円形に並ぶ） */}
       {[
@@ -66,7 +68,6 @@ export function CommunityIllustration() {
       {/* 装飾ドット */}
       <circle cx="60" cy="80" r="4" fill={PRIMARY} opacity="0.5" />
       <circle cx="350" cy="60" r="3" fill={ACCENT} opacity="0.4" />
-      <circle cx="200" cy="50" r="3" fill={PRIMARY} opacity="0.4" />
     </Frame>
   );
 }
@@ -79,35 +80,34 @@ export function EventsIllustration() {
       <line x1="40" y1="240" x2="360" y2="240" stroke={ACCENT} strokeOpacity="0.15" strokeWidth="2" />
 
       {/* スポットライト円錐 */}
-      <polygon points="200,30 130,240 270,240" fill={PRIMARY} opacity="0.12" />
+      <polygon points="200,30 130,240 270,240" fill={PRIMARY} opacity="0.14" />
 
       {/* ステージ */}
-      <rect x="120" y="225" width="160" height="20" rx="3" fill={ACCENT} />
+      <rect x="110" y="225" width="180" height="18" rx="3" fill={ACCENT} />
 
-      {/* 真ん中で歌う人 */}
-      <g>
-        <circle cx="200" cy="155" r="14" fill={ACCENT} />
-        <path
-          d="M180 215 q20 -30 20 -50 q0 20 20 50 z"
-          fill={PRIMARY}
-        />
-        <line x1="200" y1="195" x2="195" y2="175" stroke={ACCENT} strokeWidth="3" strokeLinecap="round" />
-        <circle cx="195" cy="170" r="5" fill={PRIMARY} />
-      </g>
+      {/* マイク（中央・PNGアイコン） */}
+      <image
+        href="/images/mic-icon.png"
+        x="170"
+        y="65"
+        width="60"
+        height="170"
+        preserveAspectRatio="xMidYMax meet"
+      />
 
       {/* 旗（左右） */}
       <g>
-        <line x1="80" y1="80" x2="80" y2="220" stroke={ACCENT} strokeWidth="3" strokeLinecap="round" />
-        <polygon points="80,80 130,95 80,110" fill={PRIMARY} />
+        <line x1="70" y1="70" x2="70" y2="220" stroke={ACCENT} strokeWidth="3" strokeLinecap="round" />
+        <polygon points="70,70 120,85 70,100" fill={PRIMARY} />
       </g>
       <g>
-        <line x1="320" y1="80" x2="320" y2="220" stroke={ACCENT} strokeWidth="3" strokeLinecap="round" />
-        <polygon points="320,80 270,95 320,110" fill={PRIMARY} opacity="0.7" />
+        <line x1="330" y1="70" x2="330" y2="220" stroke={ACCENT} strokeWidth="3" strokeLinecap="round" />
+        <polygon points="330,70 280,85 330,100" fill={PRIMARY} opacity="0.7" />
       </g>
 
       {/* 装飾の音符 */}
-      <text x="60" y="140" fontSize="22" fill={PRIMARY} opacity="0.6">♪</text>
-      <text x="330" y="160" fontSize="20" fill={ACCENT} opacity="0.5">♫</text>
+      <text x="50" y="140" fontSize="24" fill={PRIMARY} opacity="0.7">♪</text>
+      <text x="330" y="160" fontSize="22" fill={ACCENT} opacity="0.6">♫</text>
     </Frame>
   );
 }
