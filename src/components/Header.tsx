@@ -12,9 +12,14 @@ export function Header() {
       <div className="max-w-container mx-auto px-5 sm:px-8 h-16 flex items-center justify-between">
         <Link
           href="/"
-          className="font-medium text-lg tracking-tight text-omj-text hover:text-omj-primary transition-colors"
+          className="group flex flex-col leading-none text-omj-text hover:text-omj-primary transition-colors"
         >
-          {SITE_NAME}
+          <span className="text-[10px] tracking-[0.18em] text-omj-sub group-hover:text-omj-primary transition-colors">
+            NPO法人
+          </span>
+          <span className="mt-0.5 text-lg font-bold tracking-tight">
+            {SITE_NAME}
+          </span>
         </Link>
 
         <nav className="hidden lg:flex items-center gap-6">
