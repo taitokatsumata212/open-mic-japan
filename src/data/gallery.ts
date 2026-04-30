@@ -1,4 +1,9 @@
-export type GalleryCategory = "open-mic" | "utage" | "workshop" | "regional";
+export type GalleryCategory =
+  | "open-mic"
+  | "utage"
+  | "event"
+  | "workshop"
+  | "regional";
 
 export type GalleryImage = {
   id: string;
@@ -16,15 +21,43 @@ export type GalleryImage = {
 export const galleryImages: GalleryImage[] = [
   // === オープンマイク ===
   {
-    id: "openmic-3rd-01",
-    src: "/images/openmic-3rd-01.jpg",
-    alt: "SOY-POY 3周年でのオープンマイク",
-    caption: "SOY-POY 3周年｜2025年5月",
+    id: "openmic-add-01",
+    src: "/images/openmic-add-01.jpg",
+    alt: "オープンマイクの様子",
+    caption: "オープンマイク",
     category: "open-mic",
   },
   {
-    id: "openmic-3rd-02",
-    src: "/images/openmic-3rd-02.jpg",
+    id: "openmic-add-02",
+    src: "/images/openmic-add-02.jpg",
+    alt: "オープンマイクの様子",
+    caption: "オープンマイク",
+    category: "open-mic",
+  },
+  {
+    id: "openmic-add-03",
+    src: "/images/openmic-add-03.jpg",
+    alt: "オープンマイクの様子",
+    caption: "オープンマイク",
+    category: "open-mic",
+  },
+  {
+    id: "openmic-add-04",
+    src: "/images/openmic-add-04.jpg",
+    alt: "オープンマイクの様子",
+    caption: "オープンマイク",
+    category: "open-mic",
+  },
+  {
+    id: "openmic-add-05",
+    src: "/images/openmic-add-05.jpg",
+    alt: "オープンマイクの様子",
+    caption: "オープンマイク｜2024年3月",
+    category: "open-mic",
+  },
+  {
+    id: "openmic-3rd-01",
+    src: "/images/openmic-3rd-01.jpg",
     alt: "SOY-POY 3周年でのオープンマイク",
     caption: "SOY-POY 3周年｜2025年5月",
     category: "open-mic",
@@ -37,29 +70,8 @@ export const galleryImages: GalleryImage[] = [
     category: "open-mic",
   },
   {
-    id: "openmic-mikey-01",
-    src: "/images/openmic-mikey-01.jpg",
-    alt: "オープンマイクの様子",
-    caption: "オープンマイク｜2022年9月",
-    category: "open-mic",
-  },
-  {
-    id: "openmic-mikey-02",
-    src: "/images/openmic-mikey-02.jpg",
-    alt: "オープンマイクの様子",
-    caption: "オープンマイク｜2022年9月",
-    category: "open-mic",
-  },
-  {
     id: "openmic-mizuha-01",
     src: "/images/openmic-mizuha-01.jpg",
-    alt: "オープンマイクの様子",
-    caption: "オープンマイク｜2022年3月",
-    category: "open-mic",
-  },
-  {
-    id: "openmic-mizuha-02",
-    src: "/images/openmic-mizuha-02.jpg",
     alt: "オープンマイクの様子",
     caption: "オープンマイク｜2022年3月",
     category: "open-mic",
@@ -88,6 +100,20 @@ export const galleryImages: GalleryImage[] = [
     category: "utage",
   },
   {
+    id: "utage-2025-extra-01",
+    src: "/images/utage-2025-extra-01.jpg",
+    alt: "野外イベント「宴」の風景",
+    caption: "宴｜2025年5月",
+    category: "utage",
+  },
+  {
+    id: "utage-2025-extra-02",
+    src: "/images/utage-2025-extra-02.jpg",
+    alt: "野外イベント「宴」の風景",
+    caption: "宴｜2025年5月",
+    category: "utage",
+  },
+  {
     id: "utage-2024-01",
     src: "/images/utage-2024-01.jpg",
     alt: "野外イベント「宴」の風景",
@@ -101,27 +127,59 @@ export const galleryImages: GalleryImage[] = [
     caption: "宴｜2024年5月",
     category: "utage",
   },
+  {
+    id: "utage-2024-extra-01",
+    src: "/images/utage-2024-extra-01.jpg",
+    alt: "野外イベント「宴」の風景",
+    caption: "宴｜2024年5月",
+    category: "utage",
+  },
 
-  // === ワークショップ ===
+  // === 協力拠点での企画イベント ===
+  // OMJ ではなく協力団体 SOY-POY 拠点で開かれた企画イベントの様子。
+  // 場の広がりを示す素材として掲載。
   {
-    id: "workshop-sarake-01",
-    src: "/images/workshop-sarake-01.jpg",
-    alt: "さらけだしワークショップ",
+    id: "event-sarake-01",
+    src: "/images/event-sarake-01.jpg",
+    alt: "さらけだしの様子",
     caption: "さらけだし｜2021年4月",
+    category: "event",
+  },
+  {
+    id: "event-banka-01",
+    src: "/images/event-banka-01.jpg",
+    alt: "晩夏イベントの様子",
+    caption: "晩夏｜2025年9月",
+    category: "event",
+  },
+  {
+    id: "event-banka-02",
+    src: "/images/event-banka-02.jpg",
+    alt: "晩夏イベントの様子",
+    caption: "晩夏｜2025年9月",
+    category: "event",
+  },
+  {
+    id: "event-banka-03",
+    src: "/images/event-banka-03.jpg",
+    alt: "晩夏イベントの様子",
+    caption: "晩夏｜2025年9月",
+    category: "event",
+  },
+
+  // === ワークショップ・講習会 ===
+  {
+    id: "workshop-edu-01",
+    src: "/images/workshop-edu-01.jpg",
+    alt: "インプロ講習会",
+    caption: "インプロ講習会",
     category: "workshop",
   },
   {
-    id: "workshop-sarake-02",
-    src: "/images/workshop-sarake-02.jpg",
-    alt: "さらけだしワークショップ",
-    caption: "さらけだし｜2021年4月",
-    category: "workshop",
-  },
-  {
-    id: "workshop-tsuya-01",
-    src: "/images/workshop-tsuya-01.jpg",
-    alt: "つやにぃセッション",
-    caption: "つやにぃセッション｜2025年2月",
+    id: "workshop-edu-02",
+    src: "/images/workshop-edu-02.jpg",
+    alt: "教育・ワークショップの様子",
+    caption: "教育・ワークショップ",
     category: "workshop",
   },
   {
@@ -150,14 +208,14 @@ export const galleryImages: GalleryImage[] = [
   {
     id: "regional-aonohara-01",
     src: "/images/regional-aonohara-01.jpg",
-    alt: "青野原出遊",
+    alt: "青野原での開催",
     caption: "青野原｜2025年5月",
     category: "regional",
   },
   {
     id: "regional-aonohara-02",
     src: "/images/regional-aonohara-02.jpg",
-    alt: "青野原出遊",
+    alt: "青野原での開催",
     caption: "青野原｜2025年5月",
     category: "regional",
   },
@@ -166,6 +224,16 @@ export const galleryImages: GalleryImage[] = [
 export const galleryCategoryLabels: Record<GalleryCategory, string> = {
   "open-mic": "オープンマイク",
   utage: "宴（野外イベント）",
-  workshop: "ワークショップ",
+  event: "協力拠点での企画イベント",
+  workshop: "ワークショップ・講習会",
   regional: "地域開催（神奈川県）",
+};
+
+/**
+ * カテゴリごとの注釈（任意）。null の場合は表示しない。
+ * 「協力拠点 SOY-POY での企画」など、関係性を明示するために使う。
+ */
+export const galleryCategoryNotes: Partial<Record<GalleryCategory, string>> = {
+  event:
+    "協力団体 SOY-POY の拠点で開かれた企画イベント。場の広がりを伝える素材として掲載しています。",
 };

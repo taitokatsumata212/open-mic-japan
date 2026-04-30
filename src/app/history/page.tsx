@@ -19,6 +19,8 @@ const eras: Era[] = [
   {
     year: "2019",
     title: "ニューヨークでの始まり",
+    image: "/images/history-ny-01.jpg",
+    imageAlt: "ニューヨークでのオープンマイク第一回",
     body: (
       <>
         <p>
@@ -42,6 +44,8 @@ const eras: Era[] = [
   {
     year: "2020",
     title: "下北沢への移転",
+    image: "/images/history-shimokita-01.jpg",
+    imageAlt: "下北沢でのオープンマイク",
     body: (
       <>
         <p>
@@ -98,8 +102,8 @@ const eras: Era[] = [
   {
     year: "2022〜",
     title: "教育・ワークショップ",
-    image: "/images/workshop-sarake-01.jpg",
-    imageAlt: "ワークショップの様子",
+    image: "/images/workshop-edu-02.jpg",
+    imageAlt: "教育・ワークショップの様子",
     body: (
       <>
         <p>大学や専門学校での講義・ワークショップを継続的に実施。</p>

@@ -3,6 +3,7 @@ import { GalleryGrid } from "@/components/GalleryGrid";
 import { SupportCTA } from "@/components/SupportCTA";
 import {
   galleryCategoryLabels,
+  galleryCategoryNotes,
   galleryImages,
   type GalleryCategory,
 } from "@/data/gallery";
@@ -14,6 +15,7 @@ export const metadata = {
 const categories: GalleryCategory[] = [
   "open-mic",
   "utage",
+  "event",
   "workshop",
   "regional",
 ];
@@ -40,11 +42,18 @@ export default function GalleryPage() {
         <Container>
           {categories.map((cat) => {
             const list = galleryImages.filter((img) => img.category === cat);
+            const note = galleryCategoryNotes[cat];
             return (
               <div key={cat} className="mb-14 last:mb-0">
-                <h2 className="text-xl md:text-2xl font-bold mb-5 text-omj-text">
+                <h2 className="text-xl md:text-2xl font-bold mb-1 text-omj-text">
                   {galleryCategoryLabels[cat]}
                 </h2>
+                {note && (
+                  <p className="mb-5 text-sm text-omj-sub leading-relaxed">
+                    {note}
+                  </p>
+                )}
+                {!note && <div className="mb-5" />}
                 <GalleryGrid images={list} />
               </div>
             );
