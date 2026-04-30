@@ -1,12 +1,12 @@
 import Link from "next/link";
 import { LineButton } from "./LineButton";
-import { CONTACT_EMAIL, NAV_LINKS } from "@/lib/constants";
+import { CONTACT_EMAIL } from "@/lib/constants";
 
 export function Footer() {
   return (
     <footer className="border-t border-omj-border bg-white mt-20">
-      <div className="max-w-container mx-auto px-5 sm:px-8 py-12 grid gap-10 md:grid-cols-3">
-        <div>
+      <div className="max-w-container mx-auto px-5 sm:px-8 py-12 grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+        <div className="lg:col-span-1">
           <p className="font-medium text-omj-text mb-2">オープンマイクジャパン</p>
           <p className="text-sm text-omj-sub leading-relaxed">
             特定非営利活動法人オープンマイクジャパン
@@ -20,22 +20,74 @@ export function Footer() {
         <div>
           <p className="text-sm font-medium text-omj-text mb-3">サイト</p>
           <ul className="space-y-2 text-sm text-omj-sub">
-            {NAV_LINKS.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="hover:text-omj-primary transition-colors"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
+            <li>
+              <Link
+                href="/activities"
+                className="hover:text-omj-primary transition-colors"
+              >
+                事業
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/history"
+                className="hover:text-omj-primary transition-colors"
+              >
+                あゆみ
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/gallery"
+                className="hover:text-omj-primary transition-colors"
+              >
+                ギャラリー
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/news"
+                className="hover:text-omj-primary transition-colors"
+              >
+                お知らせ
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/voices"
+                className="hover:text-omj-primary transition-colors"
+              >
+                応援者の声
+              </Link>
+            </li>
             <li>
               <Link
                 href="/support"
                 className="hover:text-omj-primary transition-colors"
               >
                 支援する
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <p className="text-sm font-medium text-omj-text mb-3">団体について</p>
+          <ul className="space-y-2 text-sm text-omj-sub">
+            <li>
+              <Link
+                href="/about"
+                className="hover:text-omj-primary transition-colors"
+              >
+                About
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/about/disclosure"
+                className="hover:text-omj-primary transition-colors"
+              >
+                情報公開
               </Link>
             </li>
             <li>

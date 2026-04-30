@@ -435,7 +435,7 @@ export default function AboutPage() {
         </Container>
       </section>
 
-      <section className="bg-white border-y border-omj-border py-16">
+      <section id="organization" className="bg-white border-y border-omj-border py-16">
         <Container>
           <SectionHeading eyebrow="Organization" title="団体概要" />
           <div className="overflow-hidden rounded-lg border border-omj-border">
@@ -483,6 +483,21 @@ export default function AboutPage() {
                 ))}
               </tbody>
             </table>
+          </div>
+
+          <div className="mt-10 rounded-lg border border-omj-border bg-omj-base p-5 md:p-6">
+            <p className="text-sm font-medium text-omj-text mb-1">
+              定款・事業計画・決算など、団体の各種文書
+            </p>
+            <p className="text-sm text-omj-sub leading-relaxed mb-3">
+              情報公開ページで、公開済み・準備中・公開予定をまとめてご覧いただけます。
+            </p>
+            <a
+              href="/about/disclosure"
+              className="inline-flex items-center text-sm text-omj-primary font-medium hover:underline"
+            >
+              →&nbsp;情報公開ページを見る
+            </a>
           </div>
         </Container>
       </section>
