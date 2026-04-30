@@ -40,7 +40,7 @@ export function ActivityCard({
       href={`/activities/${activity.slug}`}
       className="group block rounded-lg border border-omj-border bg-white overflow-hidden hover:border-omj-primary transition-colors"
     >
-      <div className="aspect-[5/3] bg-omj-base px-3 py-2 md:px-4 md:py-3 flex items-center justify-center overflow-hidden">
+      <div className="bg-omj-base px-3 py-2 md:px-4 md:py-3">
         <ActivityIllustration type={activity.illustration} />
       </div>
       <div className="p-6 md:p-7">

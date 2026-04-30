@@ -18,7 +18,8 @@ function Frame({
     <svg
       viewBox={viewBox}
       xmlns="http://www.w3.org/2000/svg"
-      className="w-full h-auto"
+      preserveAspectRatio="xMidYMid meet"
+      className="block w-full h-auto"
       role="img"
       aria-hidden="true"
     >
@@ -30,20 +31,21 @@ function Frame({
 /** コミュニティ：人々の輪（マイクなし） */
 export function CommunityIllustration() {
   // 6人を半円形に配置、中心は接続を示す柔らかい円
+  // 体が viewBox（h=300）に収まるよう head と cy を調整
   const people = [
-    { cx: 60, cy: 200, head: 18 },
-    { cx: 130, cy: 130, head: 20 },
-    { cx: 200, cy: 100, head: 22 },
-    { cx: 270, cy: 130, head: 20 },
-    { cx: 340, cy: 200, head: 18 },
-    { cx: 200, cy: 240, head: 24 }, // 手前
+    { cx: 60, cy: 150, head: 16 },
+    { cx: 130, cy: 100, head: 18 },
+    { cx: 200, cy: 80, head: 20 },
+    { cx: 270, cy: 100, head: 18 },
+    { cx: 340, cy: 150, head: 16 },
+    { cx: 200, cy: 175, head: 20 }, // 手前
   ];
 
   return (
     <Frame>
       {/* 中心の柔らかい円（つながりを表す） */}
-      <circle cx="200" cy="180" r="100" fill={PRIMARY} opacity="0.08" />
-      <circle cx="200" cy="180" r="60" fill={PRIMARY} opacity="0.1" />
+      <circle cx="200" cy="140" r="100" fill={PRIMARY} opacity="0.08" />
+      <circle cx="200" cy="140" r="60" fill={PRIMARY} opacity="0.1" />
 
       {/* 接続の線（円周の人々を繋ぐ） */}
       {people.map((p, i) => {
