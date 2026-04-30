@@ -1,40 +1,39 @@
 import { Container } from "@/components/Container";
 import { SectionHeading } from "@/components/SectionHeading";
 import { SupportCTA } from "@/components/SupportCTA";
+import { SpaciousnessIcon } from "@/components/illustrations/SpaciousnessIcons";
 import { SOYPOY_URL } from "@/lib/constants";
 
 export const metadata = {
   title: "About｜1ページでわかるOMJ",
 };
 
-const waysToJoin = [
+type SpaciousnessCard = {
+  icon: "genre" | "people" | "spark" | "growth";
+  title: string;
+  body: string;
+};
+
+const spaciousnessCards: SpaciousnessCard[] = [
   {
-    label: "声をひらく",
-    items: [
-      "音楽を演奏する",
-      "詩や文章を朗読する",
-      "トーク、漫才、落語、一人喋り",
-      "ダンス・実験的な表現",
-      "つくりかけの表現を試す",
-    ],
+    icon: "genre",
+    title: "ジャンルは無制限",
+    body: "クラシックピアノ、バンド、弾き語り、ジャズ、前衛音楽、ラップ、HIP-HOP——音楽だけでも幅は広く、ダンス、演劇、ミュージカル、詩の朗読、漫才、コント、スタンダップコメディ、落語、そして ZINE、アクセサリー、展覧会、映画の上映、茶会、コーヒー、フード、ハンドメイド雑貨の出店まで。「これは表現じゃないかもしれない」という線引きを、私たちはしません。",
   },
   {
-    label: "持ち寄る",
-    items: [
-      "ZINE・本",
-      "アパレル・アクセサリー",
-      "コーヒー・食べ物",
-      "小さな商い",
-    ],
+    icon: "people",
+    title: "プロも、アマチュアも、再開者も、初めての人も",
+    body: "プロとして活動している人。アマチュアの人。何年かぶりに表現を再開した人。今日はじめて声を出してみる人。同じ場に、垣根なく立てます。",
   },
   {
-    label: "立ち会う",
-    items: [
-      "見る・聴く",
-      "誰かの表現に出会う",
-      "初めての発表をそっと支える",
-      "場をつくる側にまわる",
-    ],
+    icon: "spark",
+    title: "その場でしか起こらないコラボレーション",
+    body: "異なるジャンルが偶然出会い、即興でセッションが始まる。一度きりのコラボが生まれる。そんな「その場でしか起こらないこと」が、毎回のオープンマイクで起きています。",
+  },
+  {
+    icon: "growth",
+    title: "続けているから見える、人の成長",
+    body: "月に一度、同じ場が続いていく。だから、はじめて声を出した人が次は誰かと一緒に演奏していたり、何年かぶりに再開した人が新しい表現に踏み出していたり——時間をかけて育っていく姿を、場の側から見届けることができます。それは、一度きりのイベントでは決して起こらないことです。",
   },
 ];
 
@@ -158,6 +157,46 @@ export default function AboutPage() {
       <section className="py-16">
         <Container>
           <SectionHeading
+            eyebrow="Spaciousness"
+            title="私たちが大事にする器の広さ"
+            description="ジャンル／人／その場で起きること／時間。OMJ の場の特徴を、4つの軸で整理しました。"
+          />
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+            {spaciousnessCards.map((card, i) => (
+              <article
+                key={card.icon}
+                className="rounded-lg border border-omj-border bg-white p-6 md:p-8 flex gap-5"
+              >
+                <div className="shrink-0 w-12 h-12 md:w-14 md:h-14">
+                  <SpaciousnessIcon type={card.icon} />
+                </div>
+                <div className="flex-1">
+                  <p className="text-xs tracking-widest text-omj-primary font-bold mb-1">
+                    0{i + 1}
+                  </p>
+                  <h3 className="text-base md:text-lg font-bold text-omj-text leading-snug mb-3">
+                    {card.title}
+                  </h3>
+                  <p className="text-sm text-omj-text leading-relaxed">
+                    {card.body}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <p className="mt-10 md:mt-12 text-center text-omj-text leading-relaxed text-base md:text-lg max-w-3xl mx-auto">
+            ——ジャンルの広さ、人の幅、その場で生まれること、続けてきた時間。
+            <br className="hidden md:block" />
+            これが、オープンマイクジャパンが大事にしている「器の広さ」です。
+          </p>
+        </Container>
+      </section>
+
+      <section className="bg-white border-y border-omj-border py-16">
+        <Container>
+          <SectionHeading
             eyebrow="Why"
             title="なぜ今、Open Mic Japan が必要なのか"
           />
@@ -184,33 +223,6 @@ export default function AboutPage() {
             <p>
               場をつくり、人を迎え、声を聴く。その繰り返しの中に、社会が必要としている何かがあると、私たちは考えています。
             </p>
-          </div>
-        </Container>
-      </section>
-
-      <section className="bg-white border-y border-omj-border py-16">
-        <Container>
-          <SectionHeading
-            eyebrow="Ways to join"
-            title="さまざまな参加の方法"
-            description="演奏する、持ち寄る、立ち会う——どの関わり方も、場をつくる一部です。"
-          />
-          <div className="grid md:grid-cols-3 gap-6">
-            {waysToJoin.map((group) => (
-              <div
-                key={group.label}
-                className="rounded-lg border border-omj-border p-6 bg-omj-base"
-              >
-                <p className="text-sm text-omj-primary font-medium mb-3">
-                  {group.label}
-                </p>
-                <ul className="text-sm text-omj-text space-y-1">
-                  {group.items.map((it) => (
-                    <li key={it}>・{it}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
           </div>
         </Container>
       </section>
