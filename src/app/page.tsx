@@ -3,6 +3,8 @@ import { Container } from "@/components/Container";
 import { LineButton } from "@/components/LineButton";
 import { NumberStat } from "@/components/NumberStat";
 import { SupportCTA } from "@/components/SupportCTA";
+import { ActivityCard } from "@/components/activities/ActivityCard";
+import { activities } from "@/data/activities";
 import { getAllNews } from "@/lib/news";
 import { newsCategoryLabels } from "@/lib/news";
 import { SITE_TAGLINE } from "@/lib/constants";
@@ -68,50 +70,27 @@ export default function HomePage() {
 
       <section className="py-20">
         <Container>
-          <div className="mb-10">
-            <p className="text-xs tracking-widest uppercase text-omj-primary mb-2">
-              4本柱
-            </p>
-            <h2 className="text-2xl md:text-3xl font-bold">事業紹介</h2>
-            <p className="mt-3 text-omj-sub">
-              オープンマイクの実践を社会にひらく、4つの取り組み。
-            </p>
+          <div className="flex items-end justify-between mb-10 flex-wrap gap-3">
+            <div>
+              <p className="text-xs tracking-widest uppercase text-omj-primary mb-2">
+                4本柱
+              </p>
+              <h2 className="text-2xl md:text-3xl font-bold">事業紹介</h2>
+              <p className="mt-3 text-omj-sub">
+                オープンマイクの実践を社会にひらく、4つの取り組み。
+              </p>
+            </div>
+            <Link
+              href="/activities"
+              className="text-sm text-omj-primary hover:underline"
+            >
+              事業紹介一覧へ →
+            </Link>
           </div>
 
           <div className="grid md:grid-cols-2 gap-5">
-            {[
-              {
-                title: "コミュニティ形成",
-                body: "協力団体 SOY-POY と連携し、下北沢を主な活動拠点として、継続的なオープンマイクの場を運営しています。",
-              },
-              {
-                title: "イベント・創作支援",
-                body: "毎年5月の野外イベント「宴」など、表現と小商いが同時に立ち上がる場をつくっています。",
-              },
-              {
-                title: "教育・ワークショップ",
-                body: "大学・専門学校での講義や、表現・場づくりをテーマにしたワークショップを実施しています。",
-              },
-              {
-                title: "地域連携・都市地方接続",
-                body: "茅ヶ崎・青野原など地域での開催経験を重ね、都市と地方をつなぐ回路をつくっています。",
-              },
-            ].map((card) => (
-              <Link
-                key={card.title}
-                href="/activities"
-                className="group block p-6 md:p-7 rounded-lg bg-white border border-omj-border hover:border-omj-primary transition-colors"
-              >
-                <h3 className="text-lg font-bold text-omj-text group-hover:text-omj-primary transition-colors">
-                  {card.title}
-                </h3>
-                <p className="mt-3 text-sm text-omj-sub leading-relaxed">
-                  {card.body}
-                </p>
-                <span className="mt-4 inline-block text-sm text-omj-primary">
-                  詳しく見る →
-                </span>
-              </Link>
+            {activities.map((a) => (
+              <ActivityCard key={a.slug} activity={a} />
             ))}
           </div>
         </Container>
