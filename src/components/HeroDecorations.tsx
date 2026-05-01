@@ -66,7 +66,7 @@ export function HeroDecorations() {
     >
       {/* 右下：マイク本体が声の波紋の中心。土台は隠す。
           モバイルではテキスト・ボタンと被るので完全に非表示。 */}
-      <div className="hidden sm:block absolute sm:-right-4 sm:-bottom-6 md:-right-6 md:-bottom-8 lg:-right-48 lg:-bottom-10 xl:-right-72 sm:w-[440px] md:w-[640px] lg:w-[820px] aspect-square pointer-events-none">
+      <div className="hidden sm:block absolute sm:-right-4 sm:-bottom-6 md:-right-6 md:-bottom-8 lg:-right-40 lg:-bottom-10 xl:-right-48 sm:w-[440px] md:w-[640px] lg:w-[820px] aspect-square pointer-events-none">
         {/* 声の波紋：コンテナ中央（=マイクヘッド）を中心に同心円で広がる */}
         <svg
           viewBox="0 0 600 600"
