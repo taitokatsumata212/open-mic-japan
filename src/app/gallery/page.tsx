@@ -44,7 +44,7 @@ export default function GalleryPage() {
             const list = galleryImages.filter((img) => img.category === cat);
             const note = galleryCategoryNotes[cat];
             return (
-              <div key={cat} className="mb-14 last:mb-0">
+              <div key={cat} id={cat} className="mb-14 last:mb-0 scroll-mt-24">
                 <h2 className="text-xl md:text-2xl font-bold mb-1 text-omj-text">
                   {galleryCategoryLabels[cat]}
                 </h2>
