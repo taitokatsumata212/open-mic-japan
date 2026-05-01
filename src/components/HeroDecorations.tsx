@@ -68,10 +68,10 @@ export function HeroDecorations() {
           className="absolute inset-0 w-full h-full"
           aria-hidden="true"
         >
+          {/* 水面の波紋らしく：実線のリング、細めで、内側ほど濃く */}
           {[110, 175, 245, 320, 400].map((r, i) => {
-            const opMax = 0.6 - i * 0.06; // 内側ほど濃く
-            const opMin = opMax * 0.18; // 暗いとき
-            // 内側から外側へ伝わるよう、stagger delay
+            const opMax = 0.55 - i * 0.07;
+            const opMin = opMax * 0.18;
             return (
               <circle
                 key={r}
@@ -81,8 +81,8 @@ export function HeroDecorations() {
                 r={r}
                 fill="none"
                 stroke={PRIMARY}
-                strokeWidth={2.4 - i * 0.25}
-                strokeDasharray="6 9"
+                strokeWidth={1.6 - i * 0.15}
+                strokeLinecap="round"
                 style={
                   {
                     "--wave-op-max": opMax,
@@ -94,7 +94,7 @@ export function HeroDecorations() {
             );
           })}
           {[480, 565].map((r, i) => {
-            const opMax = 0.26 - i * 0.06;
+            const opMax = 0.22 - i * 0.05;
             const opMin = opMax * 0.2;
             return (
               <circle
@@ -105,8 +105,7 @@ export function HeroDecorations() {
                 r={r}
                 fill="none"
                 stroke={PRIMARY}
-                strokeWidth="1"
-                strokeDasharray="3 7"
+                strokeWidth="0.8"
                 style={
                   {
                     "--wave-op-max": opMax,
