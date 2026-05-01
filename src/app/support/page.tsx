@@ -1,12 +1,17 @@
 import Link from "next/link";
 import { Container } from "@/components/Container";
 import { LineButton } from "@/components/LineButton";
+import { CheckoutButton } from "@/components/support/CheckoutButton";
+import { DonationForm } from "@/components/support/DonationForm";
+import { PortalLink } from "@/components/support/PortalLink";
+import type { CheckoutPlanKey } from "@/lib/stripe";
 
 export const metadata = {
   title: "支援する",
 };
 
 type MemberPlan = {
+  plan: CheckoutPlanKey;
   label: string;
   price: string;
   unit: string;
@@ -17,6 +22,7 @@ type MemberPlan = {
 // 会員制度（年会費・定款 第6条／附則第6項に準拠）
 const membershipPlans: MemberPlan[] = [
   {
+    plan: "member_full",
     label: "正会員（個人・団体）",
     price: "10,000円",
     unit: "/ 年",
@@ -24,6 +30,7 @@ const membershipPlans: MemberPlan[] = [
     meta: "議決権あり",
   },
   {
+    plan: "member_assoc_indiv",
     label: "賛助会員（個人）",
     price: "5,000円",
     unit: "/ 口・年（1口以上）",
@@ -31,6 +38,7 @@ const membershipPlans: MemberPlan[] = [
     meta: "議決権なし",
   },
   {
+    plan: "member_assoc_org",
     label: "賛助会員（団体・法人）",
     price: "5,000円",
     unit: "/ 口・年（1口以上）",
@@ -40,24 +48,35 @@ const membershipPlans: MemberPlan[] = [
 ];
 
 // 月額サポーター（マンスリー寄付・会員制度とは別建て）
-const monthlyTiers = [
+type MonthlyTier = {
+  plan: CheckoutPlanKey;
+  label: string;
+  price: string;
+  body: string;
+  accent?: boolean;
+};
+const monthlyTiers: MonthlyTier[] = [
   {
+    plan: "monthly_1k",
     label: "見守るサポーター",
     price: "1,000円",
     body: "「直接参加はできないけれど、こういう場が社会にあってほしい」——そんな気持ちで、まず応援したい方向けのプランです。",
   },
   {
+    plan: "monthly_3k",
     label: "支えるサポーター",
     price: "3,000円",
     body: "定期的なオープンマイクの継続、地域での開催、日常的な場づくり——それらを支える土台になりたい方向けのプランです。",
   },
   {
+    plan: "monthly_5k",
     label: "ひらくサポーター",
     price: "5,000円",
     body: "教育・ワークショップの充実、地域への展開、社会への広がり——オープンマイクジャパンの実践が、より多くの場や人に届くことを後押ししたい方向けのプランです。",
     accent: true,
   },
   {
+    plan: "monthly_10k",
     label: "つくるサポーター",
     price: "10,000円",
     body: "NPO としての長期的な基盤づくり、活動の継続と発展——深いところで関わり、ともに実践をつくっていきたい方向けのプランです。",
@@ -159,7 +178,7 @@ export default function SupportPage() {
           <div className="grid md:grid-cols-3 gap-4">
             {membershipPlans.map((p) => (
               <div
-                key={p.label}
+                key={p.plan}
                 className="rounded-lg border border-omj-border p-6 bg-white flex flex-col"
               >
                 <p className="text-sm font-medium text-omj-text">{p.label}</p>
@@ -175,20 +194,24 @@ export default function SupportPage() {
                 <p className="mt-4 text-sm text-omj-text leading-relaxed flex-1">
                   {p.body}
                 </p>
+                <div className="mt-5">
+                  <CheckoutButton
+                    plan={p.plan}
+                    label="この会員になる"
+                    variant="primary"
+                  />
+                </div>
               </div>
             ))}
           </div>
 
-          <div className="mt-6 rounded-md bg-omj-base border border-omj-border p-5 text-sm text-omj-text">
-            <p className="font-medium mb-1">入会方法（準備中）</p>
-            <p className="text-omj-sub leading-relaxed">
-              入会金は無料、年会費はクレジットカード／銀行振込でお支払いいただきます。オンライン入会フォームは現在準備中です。先行してお申込みを希望される方は、
-              <Link href="/contact" className="text-omj-primary underline">
-                お問い合わせ
-              </Link>{" "}
-              または LINE 公式アカウントよりご連絡ください。
-            </p>
-          </div>
+          <p className="mt-5 text-xs text-omj-sub leading-relaxed">
+            ※ クレジットカード決済（Stripe）でお支払いいただきます。賛助会員は Checkout 画面で口数を調整できます。銀行振込をご希望の方は{" "}
+            <Link href="/contact" className="text-omj-primary underline">
+              お問い合わせ
+            </Link>
+            よりご連絡ください。
+          </p>
 
           <p className="mt-3 text-xs text-omj-sub leading-relaxed">
             ※
@@ -220,7 +243,7 @@ export default function SupportPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {monthlyTiers.map((t) => (
               <div
-                key={t.label}
+                key={t.plan}
                 className={`rounded-lg border p-6 bg-omj-base flex flex-col ${
                   t.accent
                     ? "border-omj-primary ring-2 ring-omj-primary/20"
@@ -237,19 +260,15 @@ export default function SupportPage() {
                 <p className="mt-4 text-sm text-omj-text leading-relaxed flex-1">
                   {t.body}
                 </p>
+                <div className="mt-5">
+                  <CheckoutButton
+                    plan={t.plan}
+                    label="このサポーターになる"
+                    variant={t.accent ? "primary" : "secondary"}
+                  />
+                </div>
               </div>
             ))}
-          </div>
-
-          <div className="mt-8 rounded-md bg-omj-base border border-omj-border p-5 text-sm text-omj-text">
-            <p className="font-medium mb-1">お申し込み方法（準備中）</p>
-            <p className="text-omj-sub leading-relaxed">
-              月額サポーターのオンライン申込（Stripe）は現在準備中です。先行してお申込みを希望される方は、
-              <Link href="/contact" className="text-omj-primary underline">
-                お問い合わせ
-              </Link>{" "}
-              または LINE 公式アカウントよりご連絡ください。
-            </p>
           </div>
         </Container>
       </section>
@@ -262,15 +281,11 @@ export default function SupportPage() {
           </p>
           <h2 className="text-2xl md:text-3xl font-bold mb-2">単発寄付</h2>
           <p className="text-omj-sub mb-6 max-w-3xl leading-relaxed">
-            月額の継続が難しい方のために、金額自由の単発寄付も受け付けます。1,000 円から、ご無理のない範囲で。
+            月額の継続が難しい方のために、金額自由の単発寄付も受け付けます。500 円から 100,000 円まで、ご無理のない範囲で。
           </p>
-          <p className="text-omj-text leading-relaxed max-w-3xl">
-            決済導線（Stripe）は現在準備中のため、当面は{" "}
-            <Link href="/contact" className="text-omj-primary underline">
-              お問い合わせ
-            </Link>{" "}
-            よりご連絡ください。
-          </p>
+          <div className="max-w-2xl">
+            <DonationForm />
+          </div>
         </Container>
       </section>
 
@@ -347,6 +362,15 @@ export default function SupportPage() {
                 <p className="text-xs text-omj-sub">{s.note}</p>
               </div>
             ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* 既存会員/サポーター向け Customer Portal */}
+      <section className="bg-white border-t border-omj-border py-12 md:py-14">
+        <Container>
+          <div className="max-w-2xl">
+            <PortalLink />
           </div>
         </Container>
       </section>
