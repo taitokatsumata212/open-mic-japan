@@ -1,112 +1,193 @@
 /**
- * 参加者の声セクション用：4つの異なる人物アイコン。
- * unDraw 風のシンプルな SVG。
+ * 参加者の声セクション用：SNS プロフィール風の抽象人物アイコン。
+ * 円形のフレームに収まる、抽象的な顔のシルエット。
  */
 const PRIMARY = "#C75A4D";
 const ACCENT = "#2C3E5C";
-const BASE = "#FAF8F5";
+const SOFT = "#FAF8F5";
 
-function Frame({ children }: { children: React.ReactNode }) {
+function Frame({
+  bg,
+  children,
+}: {
+  bg: string;
+  children: React.ReactNode;
+}) {
   return (
     <svg
       viewBox="0 0 120 120"
       xmlns="http://www.w3.org/2000/svg"
-      className="w-full h-auto"
+      className="w-full h-auto rounded-full"
       role="img"
       aria-hidden="true"
     >
+      {/* 円形フレーム（プロフィール画像のような） */}
+      <circle cx="60" cy="60" r="60" fill={bg} />
+      {/* 中身 */}
       {children}
+      {/* 外周のリング */}
+      <circle
+        cx="60"
+        cy="60"
+        r="58"
+        fill="none"
+        stroke="white"
+        strokeWidth="2"
+        opacity="0.5"
+      />
     </svg>
   );
 }
 
-/** 1. ようこそ — 手を振る人 */
+/** 1. やわらかい笑顔（あたたかい場の空気） */
 export function PersonWaveIcon() {
   return (
-    <Frame>
-      <circle cx="60" cy="60" r="58" fill={PRIMARY} opacity="0.12" />
-      {/* 体 */}
+    <Frame bg={PRIMARY}>
+      {/* 体（肩） */}
       <path
-        d="M40 105 q20 -28 20 -45 q0 17 20 45 z"
+        d="M 18 120 Q 30 88, 60 88 Q 90 88, 102 120 Z"
+        fill={SOFT}
+        opacity="0.9"
+      />
+      {/* 頭 */}
+      <circle cx="60" cy="56" r="26" fill={SOFT} />
+      {/* 髪のシルエット */}
+      <path
+        d="M 36 50 Q 36 32, 60 30 Q 84 32, 84 52 Q 80 42, 60 42 Q 40 42, 36 52 Z"
         fill={ACCENT}
       />
-      {/* 頭 */}
-      <circle cx="60" cy="48" r="14" fill={PRIMARY} />
-      {/* 手を振る腕 */}
-      <line x1="74" y1="62" x2="92" y2="38" stroke={ACCENT} strokeWidth="5" strokeLinecap="round" />
-      <circle cx="92" cy="38" r="5" fill={PRIMARY} />
-      {/* キラ */}
-      <circle cx="100" cy="28" r="2.5" fill={PRIMARY} />
-      <circle cx="105" cy="42" r="2" fill={PRIMARY} opacity="0.6" />
+      {/* 目（点） */}
+      <circle cx="51" cy="58" r="2.2" fill={ACCENT} />
+      <circle cx="69" cy="58" r="2.2" fill={ACCENT} />
+      {/* やわらかい笑み */}
+      <path
+        d="M 52 67 Q 60 73, 68 67"
+        stroke={ACCENT}
+        strokeWidth="2"
+        fill="none"
+        strokeLinecap="round"
+      />
     </Frame>
   );
 }
 
-/** 2. 一歩踏み出す — マイクに向かう人 */
+/** 2. 一歩踏み出す（声を出す側） */
 export function PersonStepIcon() {
   return (
-    <Frame>
-      <circle cx="60" cy="60" r="58" fill={ACCENT} opacity="0.1" />
-      {/* マイク */}
-      <line x1="86" y1="62" x2="86" y2="98" stroke={ACCENT} strokeWidth="3" strokeLinecap="round" />
-      <ellipse cx="86" cy="56" rx="6" ry="9" fill={PRIMARY} />
-      {/* 体（少し前傾） */}
+    <Frame bg={ACCENT}>
+      {/* 体 */}
       <path
-        d="M28 105 q18 -30 24 -42 q-2 18 18 42 z"
+        d="M 18 120 Q 30 88, 60 88 Q 90 88, 102 120 Z"
         fill={PRIMARY}
+        opacity="0.9"
       />
       {/* 頭 */}
-      <circle cx="50" cy="48" r="13" fill={ACCENT} />
-      {/* 伸ばした腕 */}
-      <line x1="62" y1="62" x2="80" y2="60" stroke={ACCENT} strokeWidth="5" strokeLinecap="round" />
+      <circle cx="60" cy="56" r="26" fill={SOFT} />
+      {/* 短めの髪 */}
+      <path
+        d="M 38 48 Q 42 30, 60 30 Q 78 30, 82 48 Q 76 40, 60 40 Q 44 40, 38 48 Z"
+        fill={PRIMARY}
+      />
+      {/* 目（少し上向き） */}
+      <path d="M 49 56 L 53 56" stroke={ACCENT} strokeWidth="2.2" strokeLinecap="round" />
+      <path d="M 67 56 L 71 56" stroke={ACCENT} strokeWidth="2.2" strokeLinecap="round" />
+      {/* 開いた口（声を出している） */}
+      <ellipse cx="60" cy="68" rx="3" ry="4" fill={ACCENT} />
+      {/* マイクの示唆（小さなドット） */}
+      <circle cx="92" cy="60" r="3" fill={PRIMARY} />
+      <circle cx="92" cy="60" r="6" fill="none" stroke={PRIMARY} strokeOpacity="0.5" strokeWidth="1.5" strokeDasharray="2 2" />
     </Frame>
   );
 }
 
-/** 3. ちがう表現に出会う — 二人で語る */
+/** 3. 出会い（ちがう表現に出会える） */
 export function PersonsTalkIcon() {
   return (
-    <Frame>
-      <circle cx="60" cy="60" r="58" fill={PRIMARY} opacity="0.1" />
+    <Frame bg={PRIMARY}>
+      {/* 二人の頭が並ぶ */}
       {/* 左の人 */}
       <g>
-        <circle cx="38" cy="48" r="11" fill={PRIMARY} />
-        <path d="M22 105 q14 -22 16 -32 q-2 12 16 32 z" fill={ACCENT} />
+        <path
+          d="M 4 120 Q 12 92, 36 92 Q 56 92, 64 120 Z"
+          fill={SOFT}
+          opacity="0.85"
+        />
+        <circle cx="36" cy="58" r="20" fill={SOFT} />
+        <path
+          d="M 18 54 Q 18 38, 36 36 Q 54 38, 54 56 Q 50 46, 36 46 Q 22 46, 18 54 Z"
+          fill={ACCENT}
+        />
+        <circle cx="30" cy="59" r="1.8" fill={ACCENT} />
+        <circle cx="42" cy="59" r="1.8" fill={ACCENT} />
+        <path
+          d="M 30 67 Q 36 71, 42 67"
+          stroke={ACCENT}
+          strokeWidth="1.8"
+          fill="none"
+          strokeLinecap="round"
+        />
       </g>
       {/* 右の人 */}
       <g>
-        <circle cx="82" cy="48" r="11" fill={ACCENT} />
-        <path d="M66 105 q14 -22 16 -32 q-2 12 16 32 z" fill={PRIMARY} />
-      </g>
-      {/* 吹き出し（中央上） */}
-      <g>
-        <ellipse cx="60" cy="32" rx="14" ry="10" fill="white" stroke={ACCENT} strokeWidth="1.5" />
-        <circle cx="54" cy="32" r="1.5" fill={ACCENT} />
-        <circle cx="60" cy="32" r="1.5" fill={ACCENT} />
-        <circle cx="66" cy="32" r="1.5" fill={ACCENT} />
+        <path
+          d="M 56 120 Q 64 92, 88 92 Q 108 92, 116 120 Z"
+          fill={ACCENT}
+          opacity="0.9"
+        />
+        <circle cx="88" cy="58" r="20" fill={SOFT} />
+        <path
+          d="M 70 56 Q 72 38, 88 36 Q 104 38, 106 54 Q 100 46, 88 46 Q 76 46, 70 56 Z"
+          fill={PRIMARY}
+        />
+        <circle cx="82" cy="59" r="1.8" fill={ACCENT} />
+        <circle cx="94" cy="59" r="1.8" fill={ACCENT} />
+        <path
+          d="M 82 67 Q 88 71, 94 67"
+          stroke={ACCENT}
+          strokeWidth="1.8"
+          fill="none"
+          strokeLinecap="round"
+        />
       </g>
     </Frame>
   );
 }
 
-/** 4. 仲間と出会う — 3人の集まり */
+/** 4. 仲間と出会う（コミュニティ） */
 export function PersonsGroupIcon() {
   return (
-    <Frame>
-      <circle cx="60" cy="60" r="58" fill={ACCENT} opacity="0.1" />
-      {/* 後列の二人 */}
+    <Frame bg={ACCENT}>
+      {/* 後列：左右の人（少し小さく） */}
+      {/* 左奥 */}
       <g>
-        <circle cx="36" cy="46" r="10" fill={ACCENT} />
-        <path d="M22 92 q12 -20 14 -28 q0 10 14 28 z" fill={PRIMARY} opacity="0.8" />
+        <circle cx="26" cy="50" r="14" fill={SOFT} />
+        <path d="M 14 48 Q 14 36, 26 34 Q 38 36, 38 50 Q 34 42, 26 42 Q 18 42, 14 48 Z" fill={PRIMARY} />
+        <circle cx="22" cy="51" r="1.5" fill={ACCENT} />
+        <circle cx="30" cy="51" r="1.5" fill={ACCENT} />
+        <path d="M 6 100 Q 12 78, 26 78 Q 38 78, 42 90 L 40 100 Z" fill={SOFT} opacity="0.65" />
       </g>
+      {/* 右奥 */}
       <g>
-        <circle cx="84" cy="46" r="10" fill={PRIMARY} />
-        <path d="M70 92 q12 -20 14 -28 q0 10 14 28 z" fill={ACCENT} opacity="0.85" />
+        <circle cx="94" cy="50" r="14" fill={SOFT} />
+        <path d="M 82 48 Q 82 36, 94 34 Q 106 36, 106 50 Q 102 42, 94 42 Q 86 42, 82 48 Z" fill={PRIMARY} />
+        <circle cx="90" cy="51" r="1.5" fill={ACCENT} />
+        <circle cx="98" cy="51" r="1.5" fill={ACCENT} />
+        <path d="M 78 90 Q 82 78, 94 78 Q 108 78, 114 100 L 80 100 Z" fill={SOFT} opacity="0.65" />
       </g>
-      {/* 前列の人（中央） */}
+      {/* 前列：中央の人 */}
       <g>
-        <circle cx="60" cy="56" r="13" fill={PRIMARY} />
-        <path d="M40 110 q18 -28 20 -38 q2 10 20 38 z" fill={ACCENT} />
+        <path
+          d="M 26 120 Q 36 92, 60 92 Q 84 92, 94 120 Z"
+          fill={PRIMARY}
+        />
+        <circle cx="60" cy="62" r="20" fill={SOFT} />
+        <path
+          d="M 42 58 Q 42 42, 60 40 Q 78 42, 78 60 Q 74 50, 60 50 Q 46 50, 42 58 Z"
+          fill={ACCENT}
+        />
+        <circle cx="54" cy="63" r="1.8" fill={ACCENT} />
+        <circle cx="66" cy="63" r="1.8" fill={ACCENT} />
+        <path d="M 54 71 Q 60 75, 66 71" stroke={ACCENT} strokeWidth="1.8" fill="none" strokeLinecap="round" />
       </g>
     </Frame>
   );

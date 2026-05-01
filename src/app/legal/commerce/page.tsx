@@ -27,11 +27,7 @@ export default function CommercePage() {
           <tr>
             <th>所在地</th>
             <td>
-              〒155-0031 東京都世田谷区北沢2-30-14 重宗ビル3F
-              <br />
-              <span className="text-xs text-omj-sub">
-                請求があれば遅滞なく開示します。
-              </span>
+              〒155-0031 東京都世田谷区北沢二丁目30番14号 重宗ビル3F
             </td>
           </tr>
           <tr>
