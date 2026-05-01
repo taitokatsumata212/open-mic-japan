@@ -69,7 +69,9 @@ export function HeroDecorations() {
           aria-hidden="true"
         >
           {[110, 175, 245, 320, 400].map((r, i) => {
-            const baseOp = 0.58 - i * 0.08;
+            const opMax = 0.6 - i * 0.06; // 内側ほど濃く
+            const opMin = opMax * 0.18; // 暗いとき
+            // 内側から外側へ伝わるよう、stagger delay
             return (
               <circle
                 key={r}
@@ -83,16 +85,17 @@ export function HeroDecorations() {
                 strokeDasharray="6 9"
                 style={
                   {
-                    "--wave-op": baseOp,
-                    opacity: baseOp,
-                    animationDelay: `${i * 0.45}s`,
+                    "--wave-op-max": opMax,
+                    "--wave-op-min": opMin,
+                    animationDelay: `${i * 0.4}s`,
                   } as React.CSSProperties
                 }
               />
             );
           })}
           {[480, 565].map((r, i) => {
-            const baseOp = 0.22 - i * 0.06;
+            const opMax = 0.26 - i * 0.06;
+            const opMin = opMax * 0.2;
             return (
               <circle
                 key={`outer-${r}`}
@@ -106,9 +109,9 @@ export function HeroDecorations() {
                 strokeDasharray="3 7"
                 style={
                   {
-                    "--wave-op": baseOp,
-                    opacity: baseOp,
-                    animationDelay: `${2.25 + i * 0.45}s`,
+                    "--wave-op-max": opMax,
+                    "--wave-op-min": opMin,
+                    animationDelay: `${2.0 + i * 0.4}s`,
                   } as React.CSSProperties
                 }
               />

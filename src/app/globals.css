@@ -178,22 +178,19 @@ a {
 }
 .dot-anim { animation: dot-float 6s ease-in-out infinite; }
 
-/* 波紋：中心から外側へ広がる軽いパルス */
-@keyframes wave-pulse {
+/* 波紋：内側から外側へ「色が濃くなる」が伝播するループ
+   各円は動かず、stroke の不透明度のみが順次上下する */
+@keyframes wave-ripple {
   0%, 100% {
-    transform: scale(1);
-    opacity: var(--wave-op, 0.5);
+    opacity: var(--wave-op-min, 0.15);
   }
   50% {
-    transform: scale(1.04);
-    opacity: calc(var(--wave-op, 0.5) * 0.55);
+    opacity: var(--wave-op-max, 0.6);
   }
 }
 .wave-anim {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: wave-pulse 4.5s ease-in-out infinite;
-  will-change: transform, opacity;
+  animation: wave-ripple 4s ease-in-out infinite;
+  will-change: opacity;
 }
 
 @media (prefers-reduced-motion: reduce) {
