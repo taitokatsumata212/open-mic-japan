@@ -78,8 +78,8 @@ export function HeroDecorations() {
               "55 26 28 40",
             ];
             return [110, 175, 245, 320, 400].map((r, i) => {
-              const opMax = 0.55 - i * 0.07;
-              const opMin = opMax * 0.18;
+              const opMax = 0.3 - i * 0.04; // ピークでも控えめ
+              const opMin = opMax * 0.25;
               return (
                 <circle
                   key={r}
@@ -106,8 +106,8 @@ export function HeroDecorations() {
           {(() => {
             const outerDashes = ["80 36 50 28", "65 42 30 24"];
             return [480, 565].map((r, i) => {
-              const opMax = 0.22 - i * 0.05;
-              const opMin = opMax * 0.2;
+              const opMax = 0.15 - i * 0.04;
+              const opMin = opMax * 0.25;
               return (
                 <circle
                   key={`outer-${r}`}
