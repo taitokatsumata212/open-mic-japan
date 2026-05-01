@@ -16,7 +16,7 @@ export default function HomePage() {
   return (
     <>
       <section
-        className="relative bg-omj-base overflow-hidden"
+        className="relative bg-omj-base overflow-hidden md:min-h-[calc(100vh-4rem)] md:flex md:flex-col md:justify-center"
         style={{
           backgroundImage: `
             radial-gradient(ellipse at 22% 28%, rgba(255, 198, 158, 0.45) 0%, rgba(255, 198, 158, 0) 55%),
@@ -26,7 +26,7 @@ export default function HomePage() {
         }}
       >
         <HeroDecorations />
-        <Container className="relative py-12 sm:py-24 md:py-36">
+        <Container className="relative py-12 sm:py-24 md:py-20">
           <div className="max-w-3xl">
             <p className="text-xs sm:text-sm tracking-widest text-omj-primary mb-3 sm:mb-4">
               NPO法人オープンマイクジャパン
