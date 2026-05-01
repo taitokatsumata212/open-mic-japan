@@ -25,7 +25,7 @@ export function Footer() {
                 href="/activities"
                 className="hover:text-omj-primary transition-colors"
               >
-                事業
+                活動
               </Link>
             </li>
             <li>
@@ -79,7 +79,7 @@ export function Footer() {
                 href="/about"
                 className="hover:text-omj-primary transition-colors"
               >
-                About
+                わたしたちについて
               </Link>
             </li>
             <li>

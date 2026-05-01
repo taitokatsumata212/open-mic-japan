@@ -5,7 +5,7 @@ import { SpaciousnessIcon } from "@/components/illustrations/SpaciousnessIcons";
 import { SOYPOY_URL } from "@/lib/constants";
 
 export const metadata = {
-  title: "About｜1ページでわかるOMJ",
+  title: "わたしたちについて",
 };
 
 type SpaciousnessCard = {
@@ -121,8 +121,11 @@ export default function AboutPage() {
             About
           </p>
           <h1 className="text-3xl md:text-5xl font-bold leading-tight">
-            1ページでわかるオープンマイクジャパン
+            わたしたちについて
           </h1>
+          <p className="mt-3 text-omj-sub text-sm tracking-wider">
+            1ページでわかるオープンマイクジャパン
+          </p>
           <p className="mt-6 text-omj-sub leading-loose max-w-2xl">
             このページを読めば、私たちが何を、なぜ、どこへ向かってやっているかが掴めます。
           </p>

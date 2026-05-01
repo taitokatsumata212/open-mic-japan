@@ -48,7 +48,7 @@ export default function HomePage() {
                 href="/about"
                 className="inline-flex items-center justify-center px-6 py-3.5 rounded-md border border-omj-border hover:border-omj-primary text-omj-text font-medium transition-colors bg-omj-base/80 backdrop-blur-sm"
               >
-                OMJについて知る
+                わたしたちについて
               </Link>
             </div>
           </div>
@@ -73,7 +73,7 @@ export default function HomePage() {
               <p className="text-xs tracking-widest uppercase text-omj-primary mb-2">
                 4本柱
               </p>
-              <h2 className="text-2xl md:text-3xl font-bold">事業紹介</h2>
+              <h2 className="text-2xl md:text-3xl font-bold">活動紹介</h2>
               <p className="mt-3 text-omj-sub">
                 オープンマイクの実践を社会にひらく、4つの取り組み。
               </p>
@@ -82,7 +82,7 @@ export default function HomePage() {
               href="/activities"
               className="text-sm text-omj-primary hover:underline"
             >
-              事業紹介一覧へ →
+              活動を見る →
             </Link>
           </div>
 

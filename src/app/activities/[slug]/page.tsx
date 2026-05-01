@@ -24,7 +24,7 @@ export async function generateMetadata({
     const a = getActivity(slug);
     return { title: a.title, description: a.summary };
   } catch {
-    return { title: "事業紹介" };
+    return { title: "活動" };
   }
 }
 
@@ -46,7 +46,7 @@ export default async function ActivityDetailPage({
           <Breadcrumb
             items={[
               { href: "/", label: "ホーム" },
-              { href: "/activities", label: "事業紹介" },
+              { href: "/activities", label: "活動" },
               { label: activity.title },
             ]}
           />
@@ -85,7 +85,7 @@ export default async function ActivityDetailPage({
               Values
             </p>
             <h2 className="text-2xl md:text-3xl font-bold mb-6">
-              この事業で大切にしていること
+              この活動で大切にしていること
             </h2>
             <div className="grid md:grid-cols-2 gap-3 md:gap-4">
               {activity.values.map((v, i) => (

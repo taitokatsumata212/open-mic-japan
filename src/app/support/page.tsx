@@ -74,12 +74,18 @@ export default function SupportPage() {
           <h1 className="text-3xl md:text-5xl font-bold leading-tight">
             支援する
           </h1>
+          <p className="mt-3 text-omj-sub text-sm tracking-wider">
+            関わる・参加する・支える、いくつもの入口
+          </p>
           <div className="mt-7 max-w-3xl prose-omj text-omj-text">
             <p>
               オープンマイクジャパンの活動は、現場に集まる人たちと、それを支える人たちによって成り立っています。
             </p>
             <p>
               声を出す場を増やすこと、表現の入口を社会にひらくこと——その実践を続けていくために、一緒に場をつくってくれる仲間を募集しています。
+            </p>
+            <p>
+              「観に行く」「自分も出てみる」「会員として支える」「協賛として関わる」——どれも、同じくらい大切な参加のかたちです。あなたに合う関わり方を選んでください。
             </p>
           </div>
         </Container>
@@ -92,7 +98,7 @@ export default function SupportPage() {
               0. まずは LINE で繋がる
             </p>
             <h2 className="text-xl md:text-2xl font-bold mb-3">
-              関わり方を決める前に、繋がってください
+              関わり方を選ぶ前に、繋がってみてください
             </h2>
             <p className="text-omj-text leading-relaxed mb-5 max-w-2xl">
               いきなり会員や寄付を決めなくて大丈夫です。LINE
@@ -106,7 +112,7 @@ export default function SupportPage() {
       <section className="py-16">
         <Container>
           <p className="text-xs tracking-widest text-omj-primary font-medium mb-2">
-            1. 個人で支援する
+            1. 個人として関わる・支える
           </p>
           <h2 className="text-2xl md:text-3xl font-bold mb-2">月額会員</h2>
           <p className="text-omj-sub mb-8">
@@ -164,7 +170,7 @@ export default function SupportPage() {
       <section className="bg-white border-y border-omj-border py-16">
         <Container>
           <p className="text-xs tracking-widest text-omj-primary font-medium mb-2">
-            2. 法人で支援する
+            2. 法人として関わる・支える
           </p>
           <h2 className="text-2xl md:text-3xl font-bold mb-2">法人協賛</h2>
           <p className="text-omj-sub mb-8 max-w-2xl">

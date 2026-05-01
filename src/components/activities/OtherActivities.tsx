@@ -14,14 +14,14 @@ export function OtherActivities({ currentSlug }: { currentSlug: Activity["slug"]
               Other activities
             </p>
             <h2 className="text-xl md:text-2xl font-bold text-omj-text">
-              他の事業も見る
+              他の活動も見る
             </h2>
           </div>
           <Link
             href="/activities"
             className="text-sm text-omj-primary hover:underline"
           >
-            事業紹介一覧へ戻る →
+            活動一覧へ戻る →
           </Link>
         </div>
 

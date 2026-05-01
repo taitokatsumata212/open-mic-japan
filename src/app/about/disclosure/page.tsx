@@ -160,7 +160,7 @@ export default function DisclosurePage() {
           <Breadcrumb
             items={[
               { href: "/", label: "ホーム" },
-              { href: "/about", label: "About" },
+              { href: "/about", label: "わたしたちについて" },
               { label: "情報公開" },
             ]}
           />
