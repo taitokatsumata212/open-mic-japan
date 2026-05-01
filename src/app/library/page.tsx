@@ -12,7 +12,7 @@ type TimelineRow = {
   yr: string;
   side: "left" | "right";
   text: string;
-  color: "p" | "m" | "c" | "o";
+  color: "p" | "m" | "c" | "o" | "x";
   srLabel: string;
 };
 
@@ -34,11 +34,11 @@ const timeline: TimelineRow[] = [
   { yr: "2012", side: "right", text: "築地 MADEIRA オープンマイク", color: "m", srLabel: "音楽" },
   { yr: "2015", side: "right", text: "ポエトリースラムジャパン", color: "p", srLabel: "詩・朗読" },
   { yr: "2016", side: "right", text: "日本スタンダップコメディ協会", color: "c", srLabel: "コメディ" },
-  { yr: "2019", side: "left", text: "yosemic（NY）発足", color: "p", srLabel: "詩・朗読" },
+  { yr: "2019", side: "left", text: "yosemic（NY）発足", color: "x", srLabel: "ジャンル横断" },
   { yr: "2020", side: "left", text: "COVID-19 / オンライン化", color: "o", srLabel: "その他" },
-  { yr: "2022.2", side: "right", text: "SOY-POY オープン（下北沢）", color: "m", srLabel: "音楽" },
+  { yr: "2022.2", side: "right", text: "SOY-POY オープン（下北沢）", color: "x", srLabel: "ジャンル横断" },
   { yr: "2022.5", side: "right", text: "Tokyo Comedy Bar（渋谷）", color: "c", srLabel: "コメディ" },
-  { yr: "2025", side: "right", text: "NPO法人オープンマイクジャパン設立", color: "o", srLabel: "その他" },
+  { yr: "2025", side: "right", text: "NPO法人オープンマイクジャパン設立", color: "x", srLabel: "ジャンル横断" },
 ];
 
 const dotColor: Record<TimelineRow["color"], string> = {
@@ -46,6 +46,7 @@ const dotColor: Record<TimelineRow["color"], string> = {
   m: "#1D9E75",
   c: "#D85A30",
   o: "#888780",
+  x: "#C9A227",
 };
 
 export default function LibraryPage() {
@@ -138,6 +139,14 @@ export default function LibraryPage() {
                   style={{ background: dotColor.o }}
                 />
                 その他
+              </div>
+              <div className="lg-item">
+                <span
+                  className="library-tl-dot"
+                  aria-hidden="true"
+                  style={{ background: dotColor.x }}
+                />
+                ジャンル横断
               </div>
             </div>
           </div>
