@@ -15,7 +15,16 @@ export default function HomePage() {
 
   return (
     <>
-      <section className="relative bg-omj-base overflow-hidden">
+      <section
+        className="relative bg-omj-base overflow-hidden"
+        style={{
+          backgroundImage: `
+            radial-gradient(ellipse at 22% 28%, rgba(255, 198, 158, 0.45) 0%, rgba(255, 198, 158, 0) 55%),
+            radial-gradient(ellipse at 78% 62%, rgba(255, 218, 188, 0.35) 0%, rgba(255, 218, 188, 0) 60%),
+            radial-gradient(ellipse at 48% 92%, rgba(255, 210, 180, 0.28) 0%, rgba(255, 210, 180, 0) 65%)
+          `,
+        }}
+      >
         <HeroDecorations />
         <Container className="relative py-24 md:py-36">
           <div className="max-w-3xl">
