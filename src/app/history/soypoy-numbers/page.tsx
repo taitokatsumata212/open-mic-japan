@@ -86,10 +86,10 @@ const genres: GenreItem[] = [
   },
   {
     label: "野外・大型企画",
-    count: 4,
+    count: 7,
     sub: [
-      { label: "宴", count: 2 },
-      { label: "周年", count: 2 },
+      { label: "宴", count: 4 },
+      { label: "周年", count: 3 },
     ],
   },
 ];
