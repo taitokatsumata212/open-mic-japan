@@ -262,6 +262,18 @@ export default function SoypoyNumbersPage() {
               上記は協力団体 SOY-POY における開催実績です。オープンマイクジャパンは、この場でオープンマイクを継続的に開催してきました。
             </p>
             <p>
+              ※ SOY-POY は 2022年2月21日〜4月20日に実施した{" "}
+              <a
+                href="https://motion-gallery.net/projects/soy-poy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-omj-primary underline"
+              >
+                クラウドファンディング（MOTION GALLERY）
+              </a>
+              で 202 人から計 1,661,565 円（目標 150 万円・達成率 111%）のご支援を受け、同年5月にオープンしました。
+            </p>
+            <p>
               ※ SOY-POY 自身の歴史については{" "}
               <a
                 href={SOYPOY_URL}

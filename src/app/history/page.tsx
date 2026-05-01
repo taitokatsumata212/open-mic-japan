@@ -70,7 +70,16 @@ const eras: Era[] = [
     body: (
       <>
         <p>
-          2022年2月のクラウドファンディングでは、202人から合計160万円のご支援をいただきました。
+          2022年2月21日〜4月20日に実施した
+          <a
+            href="https://motion-gallery.net/projects/soy-poy"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-omj-primary underline"
+          >
+            クラウドファンディング（MOTION GALLERY）
+          </a>
+          では、202人から計 1,661,565 円のご支援をいただきました（目標150万円・達成率111%）。
         </p>
         <p>
           同年4月末、下北沢にバー兼イベントスペース「SOY-POY」がオープン。コワーキングスペース「ロバート下北沢」を間借りする形で、活動の場が誕生しました。
