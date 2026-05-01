@@ -6,33 +6,68 @@ export const metadata = {
   title: "支援する",
 };
 
+type MemberPlan = {
+  label: string;
+  price: string;
+  unit: string;
+  body: string;
+  meta?: string;
+};
+
+// 会員制度（年会費・定款 第6条／附則第6項に準拠）
+const membershipPlans: MemberPlan[] = [
+  {
+    label: "正会員（個人・団体）",
+    price: "10,000円",
+    unit: "/ 年",
+    body: "法人の目的に賛同し、社員総会の議決権を持って意思決定に参加する会員です。",
+    meta: "議決権あり",
+  },
+  {
+    label: "賛助会員（個人）",
+    price: "5,000円",
+    unit: "/ 口・年（1口以上）",
+    body: "法人の目的に賛同し、賛助のかたちで支えてくださる会員です。複数口での加入も可能です。",
+    meta: "議決権なし",
+  },
+  {
+    label: "賛助会員（団体・法人）",
+    price: "5,000円",
+    unit: "/ 口・年（1口以上）",
+    body: "団体・法人として賛助会員になっていただけます。一定口数以上の場合は、特典付きの法人パートナーシップとしてご相談ください（後述）。",
+    meta: "議決権なし",
+  },
+];
+
+// 月額サポーター（マンスリー寄付・会員制度とは別建て）
 const monthlyTiers = [
   {
+    label: "見守るサポーター",
     price: "1,000円",
-    label: "見守る会員",
     body: "「直接参加はできないけれど、こういう場が社会にあってほしい」——そんな気持ちで、まず応援したい方向けのプランです。",
   },
   {
+    label: "支えるサポーター",
     price: "3,000円",
-    label: "支える会員",
     body: "定期的なオープンマイクの継続、地域での開催、日常的な場づくり——それらを支える土台になりたい方向けのプランです。",
   },
   {
+    label: "ひらくサポーター",
     price: "5,000円",
-    label: "ひらく会員",
     body: "教育・ワークショップの充実、地域への展開、社会への広がり——オープンマイクジャパンの実践が、より多くの場や人に届くことを後押ししたい方向けのプランです。",
     accent: true,
   },
   {
+    label: "つくるサポーター",
     price: "10,000円",
-    label: "つくる会員",
     body: "NPO としての長期的な基盤づくり、活動の継続と発展——深いところで関わり、ともに実践をつくっていきたい方向けのプランです。",
   },
 ];
 
+// 法人パートナーシップ（賛助会員・団体の特典付き運用）
 const corporateTiers = [
   {
-    price: "年12万円〜",
+    price: "年12万円〜（賛助会員 24口〜）",
     label: "ベーシック・パートナー",
     items: [
       "サイト・SNSへのロゴ掲載",
@@ -42,22 +77,22 @@ const corporateTiers = [
     ],
   },
   {
-    price: "年36万円〜",
+    price: "年36万円〜（賛助会員 72口〜）",
     label: "スタンダード・パートナー",
     items: [
       "ベーシックの内容すべて",
       "共同企画権 年1回（オープンマイク冠回 / ワークショップ等）",
-      "法人主催イベントへの オープンマイクジャパン 出張優先枠",
+      "法人主催イベントへのオープンマイクジャパン出張優先枠",
     ],
   },
   {
-    price: "年100万円〜",
+    price: "年100万円〜（賛助会員 200口〜）",
     label: "プレミアム・パートナー",
     items: [
       "スタンダードの内容すべて",
       "共同企画権 複数回",
       "教育プログラム共催権",
-      "5月「宴」または1周年での冠スポンサー権",
+      "5月「宴」または周年での冠スポンサー権",
       "個別の連携設計（地域・教育・国際など）",
     ],
   },
@@ -85,12 +120,13 @@ export default function SupportPage() {
               声を出す場を増やすこと、表現の入口を社会にひらくこと——その実践を続けていくために、一緒に場をつくってくれる仲間を募集しています。
             </p>
             <p>
-              「観に行く」「自分も出てみる」「会員として支える」「協賛として関わる」——どれも、同じくらい大切な参加のかたちです。あなたに合う関わり方を選んでください。
+              「観に行く」「自分も出てみる」「会員として参加する」「月額で支える」「単発で寄付する」「協賛として関わる」——どれも、同じくらい大切な参加のかたちです。あなたに合う関わり方を選んでください。
             </p>
           </div>
         </Container>
       </section>
 
+      {/* 0. LINE で繋がる */}
       <section className="bg-white border-y border-omj-border py-14">
         <Container>
           <div className="rounded-lg border border-omj-border p-7 md:p-9 bg-omj-base">
@@ -109,21 +145,83 @@ export default function SupportPage() {
         </Container>
       </section>
 
+      {/* 1. 会員制度（年会費・定款どおり） */}
       <section className="py-16">
         <Container>
           <p className="text-xs tracking-widest text-omj-primary font-medium mb-2">
-            1. 個人として関わる・支える
+            1. 会員になる（年会費）
           </p>
-          <h2 className="text-2xl md:text-3xl font-bold mb-2">月額会員</h2>
-          <p className="text-omj-sub mb-8">
-            気持ちにあわせて、4つのプランから選べます。
+          <h2 className="text-2xl md:text-3xl font-bold mb-2">会員制度</h2>
+          <p className="text-omj-sub mb-8 max-w-3xl leading-relaxed">
+            定款で定められた会員区分です。正会員は社員総会の議決権を持ち、団体運営の意思決定に参加します。賛助会員は議決権を持たず、賛助のかたちで支えていただく会員です。
+          </p>
+
+          <div className="grid md:grid-cols-3 gap-4">
+            {membershipPlans.map((p) => (
+              <div
+                key={p.label}
+                className="rounded-lg border border-omj-border p-6 bg-white flex flex-col"
+              >
+                <p className="text-sm font-medium text-omj-text">{p.label}</p>
+                <p className="text-2xl font-bold mt-2 text-omj-text">
+                  {p.price}
+                  <span className="text-sm font-normal text-omj-sub ml-1">
+                    {p.unit}
+                  </span>
+                </p>
+                {p.meta && (
+                  <p className="mt-1 text-xs text-omj-sub">{p.meta}</p>
+                )}
+                <p className="mt-4 text-sm text-omj-text leading-relaxed flex-1">
+                  {p.body}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-6 rounded-md bg-omj-base border border-omj-border p-5 text-sm text-omj-text">
+            <p className="font-medium mb-1">入会方法（準備中）</p>
+            <p className="text-omj-sub leading-relaxed">
+              入会金は無料、年会費はクレジットカード／銀行振込でお支払いいただきます。オンライン入会フォームは現在準備中です。先行してお申込みを希望される方は、
+              <Link href="/contact" className="text-omj-primary underline">
+                お問い合わせ
+              </Link>{" "}
+              または LINE 公式アカウントよりご連絡ください。
+            </p>
+          </div>
+
+          <p className="mt-3 text-xs text-omj-sub leading-relaxed">
+            ※
+            会員区分・会費は定款（第6条・附則第6項）に基づきます。詳細は
+            <Link
+              href="/about/disclosure"
+              className="text-omj-primary underline"
+            >
+              情報公開ページ
+            </Link>
+            の定款をご覧ください。
+          </p>
+        </Container>
+      </section>
+
+      {/* 2. 月額サポーター（寄付） */}
+      <section className="bg-white border-y border-omj-border py-16">
+        <Container>
+          <p className="text-xs tracking-widest text-omj-primary font-medium mb-2">
+            2. 月額で支援する
+          </p>
+          <h2 className="text-2xl md:text-3xl font-bold mb-2">
+            マンスリーサポーター
+          </h2>
+          <p className="text-omj-sub mb-8 max-w-3xl leading-relaxed">
+            月額の継続的な寄付で活動を支えてくださる方々です。会員制度とは別の枠組みで、議決権はありませんが、定期的な応援が場づくりの大きな土台になります。気持ちにあわせて、4 つのプランから選べます。
           </p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
             {monthlyTiers.map((t) => (
               <div
                 key={t.label}
-                className={`rounded-lg border p-6 bg-white flex flex-col ${
+                className={`rounded-lg border p-6 bg-omj-base flex flex-col ${
                   t.accent
                     ? "border-omj-primary ring-2 ring-omj-primary/20"
                     : "border-omj-border"
@@ -144,21 +242,30 @@ export default function SupportPage() {
           </div>
 
           <div className="mt-8 rounded-md bg-omj-base border border-omj-border p-5 text-sm text-omj-text">
-            <p className="font-medium mb-1">入会方法（準備中）</p>
+            <p className="font-medium mb-1">お申し込み方法（準備中）</p>
             <p className="text-omj-sub leading-relaxed">
-              月額会員のオンライン申込は現在準備中です。先行してお申込みを希望される方は、
+              月額サポーターのオンライン申込（Stripe）は現在準備中です。先行してお申込みを希望される方は、
               <Link href="/contact" className="text-omj-primary underline">
                 お問い合わせ
-              </Link>
+              </Link>{" "}
               または LINE 公式アカウントよりご連絡ください。
             </p>
           </div>
+        </Container>
+      </section>
 
-          <h3 className="text-xl md:text-2xl font-bold mt-14 mb-3">
-            単発寄付
-          </h3>
-          <p className="text-omj-sub leading-relaxed max-w-2xl">
-            月額の継続が難しい場合、金額自由の単発寄付も受け付けます。決済導線は現在準備中のため、当面は{" "}
+      {/* 3. 単発寄付 */}
+      <section className="py-16">
+        <Container>
+          <p className="text-xs tracking-widest text-omj-primary font-medium mb-2">
+            3. 単発で寄付する
+          </p>
+          <h2 className="text-2xl md:text-3xl font-bold mb-2">単発寄付</h2>
+          <p className="text-omj-sub mb-6 max-w-3xl leading-relaxed">
+            月額の継続が難しい方のために、金額自由の単発寄付も受け付けます。1,000 円から、ご無理のない範囲で。
+          </p>
+          <p className="text-omj-text leading-relaxed max-w-3xl">
+            決済導線（Stripe）は現在準備中のため、当面は{" "}
             <Link href="/contact" className="text-omj-primary underline">
               お問い合わせ
             </Link>{" "}
@@ -167,14 +274,20 @@ export default function SupportPage() {
         </Container>
       </section>
 
+      {/* 4. 法人パートナーシップ */}
       <section className="bg-white border-y border-omj-border py-16">
         <Container>
           <p className="text-xs tracking-widest text-omj-primary font-medium mb-2">
-            2. 法人として関わる・支える
+            4. 法人として関わる・支える
           </p>
-          <h2 className="text-2xl md:text-3xl font-bold mb-2">法人協賛</h2>
-          <p className="text-omj-sub mb-8 max-w-2xl">
-            企業・団体さまの規模やご関心にあわせ、3つのコースをご用意しています。
+          <h2 className="text-2xl md:text-3xl font-bold mb-2">
+            法人パートナーシップ
+          </h2>
+          <p className="text-omj-sub mb-2 max-w-3xl leading-relaxed">
+            企業・団体さまの規模やご関心にあわせ、3 つのコースをご用意しています。基本枠組みは「賛助会員（団体）」（1 口 5,000 円・年）の口数で構成され、各コースには特典がつきます。
+          </p>
+          <p className="text-xs text-omj-sub mb-8">
+            ※ 例：年 12 万円 = 賛助会員 24 口 / 年 36 万円 = 72 口 / 年 100 万円 = 200 口
           </p>
 
           <div className="grid md:grid-cols-3 gap-4">
@@ -184,7 +297,7 @@ export default function SupportPage() {
                 className="rounded-lg border border-omj-border p-6 bg-omj-base flex flex-col"
               >
                 <p className="text-sm text-omj-sub">{t.label}</p>
-                <p className="text-xl font-bold mt-1 text-omj-text">
+                <p className="text-base md:text-lg font-bold mt-1 text-omj-text leading-snug">
                   {t.price}
                 </p>
                 <ul className="mt-4 text-sm text-omj-text space-y-1.5 flex-1">
@@ -196,20 +309,21 @@ export default function SupportPage() {
             ))}
           </div>
 
-          <p className="mt-8 text-sm text-omj-sub leading-relaxed max-w-2xl">
-            それ以外の関わり方（単発協賛、現物協賛＝場所・機材・飲食・印刷物、業務委託としての関係など）も相談可能です。
+          <p className="mt-8 text-sm text-omj-sub leading-relaxed max-w-3xl">
+            上記コース以外にも、単発協賛、現物協賛（場所・機材・飲食・印刷物）、業務委託としての関係など、ご関心に合わせた連携が可能です。
             <Link href="/contact" className="text-omj-primary underline ml-1">
               お問い合わせ
             </Link>
-            からご連絡ください。
+            からご相談ください。
           </p>
         </Container>
       </section>
 
+      {/* 5. 助成・パートナー一覧 */}
       <section className="py-16">
         <Container>
           <p className="text-xs tracking-widest text-omj-primary font-medium mb-2">
-            3. ご支援いただいている方々
+            5. ご支援いただいている方々
           </p>
           <h2 className="text-2xl md:text-3xl font-bold mb-8">
             助成元・パートナー
