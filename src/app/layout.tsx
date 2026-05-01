@@ -12,16 +12,13 @@ const notoSansJp = Noto_Sans_JP({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://openmicjapan.com"),
   title: {
     default: "オープンマイクジャパン｜声を、ひらく場をつくる。",
     template: "%s｜オープンマイクジャパン",
   },
   description:
     "NPO法人オープンマイクジャパン。オープンマイクという実践を通じて、人と人、表現と創作、都市と地方をつないでいく団体です。",
-  robots: {
-    index: false,
-    follow: false,
-  },
 };
 
 export default function RootLayout({

@@ -18,7 +18,7 @@ export function getStripe(): Stripe | null {
     apiVersion: "2026-04-22.dahlia",
     appInfo: {
       name: "open-mic-japan",
-      url: "https://open-mic-japan.vercel.app",
+      url: "https://openmicjapan.com",
     },
   });
   return cached;
@@ -81,7 +81,7 @@ export function isQuantityAdjustable(plan: CheckoutPlanKey): boolean {
 }
 
 export function siteUrl(): string {
-  return (
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://open-mic-japan.vercel.app"
-  );
+  if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL;
+  if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+  return "http://localhost:3000";
 }
