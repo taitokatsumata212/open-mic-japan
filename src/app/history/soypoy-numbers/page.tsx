@@ -5,11 +5,32 @@ import { NumberStat } from "@/components/NumberStat";
 import { SectionHeading } from "@/components/SectionHeading";
 import { SOYPOY_URL } from "@/lib/constants";
 
+// 月次で再生成（活動期間の自動更新のため。Vercel が ISR として尊重する）。
+export const revalidate = 86400;
+
 export const metadata = {
   title: "協力団体 SOY-POY が育ててきた場",
   description:
-    "オープンマイクジャパンの活動の中心は協力団体 SOY-POY の場で行われています。約190回・4年5ヶ月の場の規模を、ジャンル別・年別の数字で示します。",
+    "オープンマイクジャパンの活動の中心は協力団体 SOY-POY の場で行われています。約190回の場の規模を、ジャンル別・年別の数字で示します。",
 };
+
+// SOY-POY オープン日：2022年5月3日（/about ページの記述と整合）
+const SOYPOY_OPEN = new Date("2022-05-03T00:00:00+09:00");
+
+function activityPeriodText(): string {
+  const now = new Date();
+  let years = now.getUTCFullYear() - SOYPOY_OPEN.getUTCFullYear();
+  let months = now.getUTCMonth() - SOYPOY_OPEN.getUTCMonth();
+  if (now.getUTCDate() < SOYPOY_OPEN.getUTCDate()) months -= 1;
+  if (months < 0) {
+    years -= 1;
+    months += 12;
+  }
+  if (years <= 0 && months <= 0) return "1ヶ月未満";
+  if (years === 0) return `${months}ヶ月`;
+  if (months === 0) return `${years}年`;
+  return `${years}年${months}ヶ月`;
+}
 
 type GenreItem = {
   label: string;
@@ -123,99 +144,113 @@ export default function SoypoyNumbersPage() {
         </Container>
       </section>
 
-      <section className="bg-white border-y border-omj-border py-12 md:py-16">
+      <section className="bg-white border-y border-omj-border py-14 md:py-20">
         <Container>
           <SectionHeading eyebrow="Key Metrics" title="場の規模（要約）" />
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-10">
-            <NumberStat number="4年5ヶ月" label="活動期間" size="lg" />
-            <NumberStat number="約190回" label="総開催イベント数" size="lg" />
-            <NumberStat number="月3〜4回" label="平均開催ペース" size="lg" />
+          <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-omj-border">
+            <div className="px-2 sm:px-6 py-8 sm:py-4">
+              <NumberStat
+                number={activityPeriodText()}
+                label="活動期間"
+                size="lg"
+              />
+            </div>
+            <div className="px-2 sm:px-6 py-8 sm:py-4">
+              <NumberStat number="約190回" label="総開催イベント数" size="lg" />
+            </div>
+            <div className="px-2 sm:px-6 py-8 sm:py-4">
+              <NumberStat number="月3〜4回" label="平均開催ペース" size="lg" />
+            </div>
           </div>
         </Container>
       </section>
 
-      <section className="py-12 md:py-16">
+      <section className="py-14 md:py-20">
         <Container>
           <SectionHeading
             eyebrow="By Genre"
             title="ジャンル別内訳"
             description="ジャンルごとの開催実績。内訳は SOY-POY が把握している範囲での集計です。"
           />
-          <ul className="space-y-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-omj-border border border-omj-border rounded-lg overflow-hidden">
             {genres.map((g) => (
-              <li
+              <div
                 key={g.label}
-                className="rounded-lg border border-omj-border bg-white overflow-hidden"
+                className="bg-white p-6 md:p-7 flex flex-col"
               >
-                <div className="flex items-center justify-between gap-4 px-5 py-4">
-                  <p className="text-base font-bold text-omj-text">{g.label}</p>
-                  <p className="shrink-0 text-omj-primary font-bold tabular-nums">
+                <p className="text-xs tracking-widest uppercase text-omj-sub mb-3">
+                  {g.label}
+                </p>
+                <p className="font-bold text-omj-text tabular-nums leading-none">
+                  <span className="text-4xl md:text-5xl">
                     {g.count.toLocaleString()}
-                    <span className="text-omj-sub text-xs font-medium ml-1">
-                      回
-                    </span>
-                  </p>
-                </div>
+                  </span>
+                  <span className="text-sm font-medium text-omj-sub ml-1.5">
+                    回
+                  </span>
+                </p>
                 {g.sub && g.sub.length > 0 && (
-                  <ul className="border-t border-omj-border bg-omj-base divide-y divide-omj-border">
+                  <ul className="mt-5 pt-4 border-t border-omj-border space-y-1.5 text-xs text-omj-sub">
                     {g.sub.map((s) => (
                       <li
                         key={s.label}
-                        className="flex items-center justify-between gap-4 px-5 py-2.5"
+                        className="flex items-baseline justify-between gap-3"
                       >
-                        <p className="text-sm text-omj-sub leading-relaxed">
-                          {s.label}
-                        </p>
-                        <p className="shrink-0 text-sm text-omj-text tabular-nums">
-                          {s.count.toLocaleString()}
-                          <span className="text-omj-sub text-xs ml-1">回</span>
-                        </p>
+                        <span className="leading-relaxed">{s.label}</span>
+                        <span className="shrink-0 tabular-nums text-omj-text font-medium">
+                          {s.count}
+                          <span className="text-omj-sub ml-0.5">回</span>
+                        </span>
                       </li>
                     ))}
                   </ul>
                 )}
-              </li>
+              </div>
             ))}
-          </ul>
+          </div>
         </Container>
       </section>
 
-      <section className="bg-white border-y border-omj-border py-12 md:py-16">
+      <section className="bg-white border-y border-omj-border py-14 md:py-20">
         <Container>
           <SectionHeading
             eyebrow="By Year"
             title="年別推移"
-            description="開催イベント数の年別の推移。バーの長さは最大値（2024年）を基準とした相対値。"
+            description="開催イベント数の年別の推移。バーの高さは最大値（2024年）を基準とした相対値。"
           />
-          <ul className="space-y-3 max-w-2xl">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-px bg-omj-border border border-omj-border rounded-lg overflow-hidden">
             {yearly.map((y) => {
               const pct = (y.count / yearlyMax) * 100;
               return (
-                <li
+                <div
                   key={y.year}
-                  className="grid grid-cols-[64px_1fr_72px] items-center gap-3 md:gap-4"
+                  className="bg-white p-5 md:p-6 flex flex-col"
                 >
-                  <span className="text-sm text-omj-sub font-medium tabular-nums">
+                  <p className="text-xs tracking-widest text-omj-sub mb-3 tabular-nums">
                     {y.year}
-                  </span>
-                  <span
-                    className="h-3 md:h-3.5 rounded-sm bg-omj-primary/80"
-                    style={{ width: `${pct}%`, minWidth: "4px" }}
+                  </p>
+                  <p className="font-bold text-omj-text tabular-nums leading-none">
+                    <span className="text-3xl md:text-4xl">
+                      {y.count.toLocaleString()}
+                    </span>
+                    <span className="text-sm font-medium text-omj-sub ml-1">
+                      回
+                    </span>
+                  </p>
+                  <div
+                    className="mt-4 h-1 bg-omj-primary/80 rounded-sm"
+                    style={{ width: `${pct}%`, minWidth: "8px" }}
                     aria-hidden="true"
                   />
-                  <span className="text-sm text-omj-text tabular-nums">
-                    {y.count.toLocaleString()}
-                    <span className="text-omj-sub text-xs ml-1">回</span>
-                    {y.note && (
-                      <span className="block text-[11px] text-omj-sub tracking-tight leading-tight mt-0.5">
-                        {y.note}
-                      </span>
-                    )}
-                  </span>
-                </li>
+                  {y.note && (
+                    <p className="mt-2 text-[11px] text-omj-sub leading-tight">
+                      {y.note}
+                    </p>
+                  )}
+                </div>
               );
             })}
-          </ul>
+          </div>
         </Container>
       </section>
 
