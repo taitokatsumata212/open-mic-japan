@@ -19,14 +19,16 @@ type Note = {
   rotate?: number;
 };
 
+// 「声を、ひらく場をつくる。」h1 と本文に被らないよう、上端 0〜6% と
+// 下端 85〜97% のみに音符を配置（中央〜中盤縦は完全に空ける）
 const notes: Note[] = [
-  { glyph: "♪", top: "8%", left: "5%", size: "text-6xl md:text-7xl", color: "primary", opacity: 0.18 },
-  { glyph: "♫", top: "16%", right: "12%", size: "text-4xl md:text-5xl", color: "accent", opacity: 0.22 },
-  { glyph: "♬", top: "38%", left: "3%", size: "text-5xl md:text-6xl", color: "accent", opacity: 0.16, rotate: -8 },
-  { glyph: "♪", top: "55%", right: "6%", size: "text-5xl md:text-6xl", color: "primary", opacity: 0.18, rotate: 6 },
-  { glyph: "♫", top: "78%", left: "10%", size: "text-3xl md:text-4xl", color: "primary", opacity: 0.2 },
-  { glyph: "♬", top: "70%", right: "22%", size: "text-4xl md:text-5xl", color: "accent", opacity: 0.16 },
-  { glyph: "♪", top: "30%", left: "42%", size: "text-3xl md:text-4xl", color: "accent", opacity: 0.12, rotate: 10 },
+  // 上端（タイトルより十分上の余白部分）
+  { glyph: "♪", top: "2%", left: "5%", size: "text-4xl md:text-5xl", color: "primary", opacity: 0.18 },
+  { glyph: "♫", top: "4%", right: "8%", size: "text-3xl md:text-4xl", color: "accent", opacity: 0.22 },
+  // 下端（ボタンより下）
+  { glyph: "♬", top: "88%", left: "10%", size: "text-3xl md:text-4xl", color: "primary", opacity: 0.2 },
+  { glyph: "♪", top: "92%", left: "38%", size: "text-3xl md:text-4xl", color: "accent", opacity: 0.18, rotate: 8 },
+  { glyph: "♫", top: "86%", right: "32%", size: "text-3xl md:text-4xl", color: "primary", opacity: 0.18, rotate: -6 },
 ];
 
 type Dot = {
@@ -38,15 +40,13 @@ type Dot = {
   opacity: number;
 };
 
+// ドットも同様に上下のみ
 const dots: Dot[] = [
-  { top: "12%", left: "30%", size: 6, color: "primary", opacity: 0.4 },
-  { top: "22%", right: "28%", size: 4, color: "accent", opacity: 0.4 },
-  { top: "45%", left: "18%", size: 5, color: "primary", opacity: 0.35 },
-  { top: "62%", right: "40%", size: 7, color: "accent", opacity: 0.3 },
-  { top: "82%", right: "10%", size: 5, color: "primary", opacity: 0.4 },
-  { top: "92%", left: "40%", size: 4, color: "accent", opacity: 0.35 },
-  { top: "5%", right: "40%", size: 4, color: "primary", opacity: 0.3 },
-  { top: "50%", left: "50%", size: 3, color: "primary", opacity: 0.3 },
+  { top: "5%", left: "30%", size: 5, color: "primary", opacity: 0.35 },
+  { top: "3%", right: "32%", size: 4, color: "accent", opacity: 0.3 },
+  { top: "94%", left: "22%", size: 5, color: "primary", opacity: 0.35 },
+  { top: "96%", left: "58%", size: 4, color: "accent", opacity: 0.35 },
+  { top: "90%", right: "12%", size: 5, color: "primary", opacity: 0.4 },
 ];
 
 export function HeroDecorations() {
@@ -55,20 +55,20 @@ export function HeroDecorations() {
       aria-hidden="true"
       className="absolute inset-0 overflow-hidden pointer-events-none select-none"
     >
-      {/* 右下のマイク：声の波紋＋本体を一体に配置 */}
-      <div className="absolute -right-16 -bottom-24 md:-right-20 md:-bottom-32 lg:-right-24 lg:-bottom-40 w-[360px] md:w-[560px] lg:w-[720px] pointer-events-none">
-        {/* 声の波紋：マイクヘッド付近を中心に左上方向へ広がる */}
+      {/* 右下のマイク：マイク本体が声の波紋の中心になるよう配置 */}
+      <div className="absolute right-0 bottom-0 md:-right-4 md:-bottom-4 lg:-right-6 lg:-bottom-6 w-[420px] md:w-[600px] lg:w-[760px] aspect-square pointer-events-none">
+        {/* 声の波紋：中央（マイクの位置）から同心円に広がる */}
         <svg
           viewBox="0 0 600 600"
           className="absolute inset-0 w-full h-full"
           aria-hidden="true"
         >
-          {/* 主要な5本の波紋 */}
-          {[100, 165, 235, 310, 390].map((r, i) => (
+          {/* 主要な5本の波紋（中心 = 600/2, 600/2 = 300, 300） */}
+          {[110, 175, 245, 320, 400].map((r, i) => (
             <circle
               key={r}
-              cx="420"
-              cy="190"
+              cx="300"
+              cy="300"
               r={r}
               fill="none"
               stroke={PRIMARY}
@@ -78,11 +78,11 @@ export function HeroDecorations() {
             />
           ))}
           {/* さらに遠くへ広がる薄い波紋 */}
-          {[470, 555].map((r, i) => (
+          {[480, 565].map((r, i) => (
             <circle
               key={`outer-${r}`}
-              cx="420"
-              cy="190"
+              cx="300"
+              cy="300"
               r={r}
               fill="none"
               stroke={PRIMARY}
@@ -93,12 +93,12 @@ export function HeroDecorations() {
           ))}
         </svg>
 
-        {/* マイク本体（大きく、濃いめ） */}
+        {/* マイク本体：波紋の中心に配置（コンテナ内中央寄せ・少し小さめ） */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/images/mic-icon.png"
           alt=""
-          className="relative w-full opacity-95 rotate-[8deg] drop-shadow-md"
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[44%] opacity-95 rotate-[8deg] drop-shadow-md"
         />
       </div>
 
