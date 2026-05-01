@@ -136,7 +136,7 @@ export const galleryImages: GalleryImage[] = [
   },
 
   // === 協力拠点での企画イベント ===
-  // OMJ ではなく協力団体 SOY-POY 拠点で開かれた企画イベントの様子。
+  // オープンマイクジャパン ではなく協力団体 SOY-POY 拠点で開かれた企画イベントの様子。
   // 場の広がりを示す素材として掲載。
   {
     id: "event-enso-01",

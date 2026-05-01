@@ -1,6 +1,6 @@
 # Open Mic Japan ウェブサイト
 
-NPO法人オープンマイクジャパン（OMJ）の公式サイト。Next.js (App Router, TypeScript) + Tailwind CSS で構築。
+NPO法人オープンマイクジャパンの公式サイト。Next.js (App Router, TypeScript) + Tailwind CSS で構築。
 
 ## 仮ドメイン公開について
 

@@ -161,7 +161,7 @@ export default function AboutPage() {
           <SectionHeading
             eyebrow="Spaciousness"
             title="私たちが大事にする器の広さ"
-            description="ジャンル／人／その場で起きること／時間。OMJ の場の特徴を、4つの軸で整理しました。"
+            description="ジャンル／人／その場で起きること／時間。オープンマイクジャパン の場の特徴を、4つの軸で整理しました。"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">

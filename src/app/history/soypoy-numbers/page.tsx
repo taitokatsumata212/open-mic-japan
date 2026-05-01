@@ -41,7 +41,7 @@ type GenreItem = {
 
 const genres: GenreItem[] = [
   {
-    label: "オープンマイク（OMJ含む）",
+    label: "オープンマイク（オープンマイクジャパン含む）",
     count: 53,
   },
   {

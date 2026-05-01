@@ -18,7 +18,7 @@ export default function VoicesPage() {
             応援者の声
           </h1>
           <p className="mt-6 text-omj-sub leading-loose max-w-2xl">
-            SOY-POY の長期メンバー、地域パートナー、協賛パートナーなど——OMJ の活動を支えてくださっている方々からのメッセージを順次掲載していきます。
+            SOY-POY の長期メンバー、地域パートナー、協賛パートナーなど——オープンマイクジャパン の活動を支えてくださっている方々からのメッセージを順次掲載していきます。
           </p>
         </Container>
       </section>
