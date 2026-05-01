@@ -76,8 +76,8 @@ export function HeroDecorations() {
               <circle
                 key={r}
                 className="wave-anim"
-                cx="300"
-                cy="300"
+                cx="328"
+                cy="262"
                 r={r}
                 fill="none"
                 stroke={PRIMARY}
@@ -100,8 +100,8 @@ export function HeroDecorations() {
               <circle
                 key={`outer-${r}`}
                 className="wave-anim"
-                cx="300"
-                cy="300"
+                cx="328"
+                cy="262"
                 r={r}
                 fill="none"
                 stroke={PRIMARY}
