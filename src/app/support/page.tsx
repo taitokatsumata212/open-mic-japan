@@ -11,23 +11,29 @@ export const metadata = {
 };
 
 type MemberPlan = {
-  plan: CheckoutPlanKey;
+  /** Stripe で受け付けない場合は null（お問い合わせ経由） */
+  plan: CheckoutPlanKey | null;
   label: string;
   price: string;
   unit: string;
   body: string;
   meta?: string;
+  /** お問い合わせ経由の場合の補足 */
+  contactNote?: string;
 };
 
 // 会員制度（年会費・定款 第6条／附則第6項に準拠）
 const membershipPlans: MemberPlan[] = [
   {
-    plan: "member_full",
+    // 正会員は議決権を持つ社員。理事会承認・定款手続きを経るため、
+    // Stripe Checkout からの直接申込は行わずお問い合わせ経由とする。
+    plan: null,
     label: "正会員（個人・団体）",
     price: "10,000円",
     unit: "/ 年",
-    body: "法人の目的に賛同し、社員総会の議決権を持って意思決定に参加する会員です。",
+    body: "法人の目的に賛同し、社員総会の議決権を持って意思決定に参加する会員です。理事会の承認手続きを経て入会いただくため、まずはお問い合わせください。",
     meta: "議決権あり",
+    contactNote: "理事会承認のうえ入会",
   },
   {
     plan: "member_assoc_indiv",
@@ -195,22 +201,38 @@ export default function SupportPage() {
                   {p.body}
                 </p>
                 <div className="mt-5">
-                  <CheckoutButton
-                    plan={p.plan}
-                    label="この会員になる"
-                    variant="primary"
-                  />
+                  {p.plan ? (
+                    <CheckoutButton
+                      plan={p.plan}
+                      label="この会員になる"
+                      variant="primary"
+                    />
+                  ) : (
+                    <Link
+                      href="/contact"
+                      className="inline-flex items-center justify-center px-5 py-2.5 min-h-[44px] rounded-md border border-omj-border hover:border-omj-primary text-omj-text font-medium text-sm transition-colors"
+                    >
+                      お問い合わせフォームから申込
+                    </Link>
+                  )}
+                  {p.contactNote && (
+                    <p className="mt-2 text-xs text-omj-sub leading-relaxed">
+                      ※ {p.contactNote}
+                    </p>
+                  )}
                 </div>
               </div>
             ))}
           </div>
 
           <p className="mt-5 text-xs text-omj-sub leading-relaxed">
-            ※ クレジットカード決済（Stripe）でお支払いいただきます。賛助会員は Checkout 画面で口数を調整できます。銀行振込をご希望の方は{" "}
-            <Link href="/contact" className="text-omj-primary underline">
+            ※ 賛助会員はクレジットカード決済（Stripe）でお支払いいただきます。Checkout 画面で口数を調整できます。
+            <br />
+            ※ 正会員は社員総会の議決権を持つ会員のため、理事会の承認手続きを経て入会いただきます。
+            <Link href="/contact" className="text-omj-primary underline ml-1">
               お問い合わせ
             </Link>
-            よりご連絡ください。
+            よりご連絡ください（銀行振込のご希望もこちらから）。
           </p>
 
           <p className="mt-3 text-xs text-omj-sub leading-relaxed">
