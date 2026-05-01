@@ -12,7 +12,7 @@ export const revalidate = 86400;
 export const metadata = {
   title: "協力団体 SOY-POY が育ててきた場",
   description:
-    "オープンマイクジャパンの活動の中心は協力団体 SOY-POY の場で行われています。約190回の場の規模を、ジャンル別・年別の数字で示します。",
+    "オープンマイクジャパンの活動の中心は協力団体 SOY-POY の場で行われています。200回を越える開催実績の場の規模を、ジャンル別・年別の数字で示します。",
 };
 
 // SOY-POY オープン日：2022年5月3日（/about ページの記述と整合）
@@ -86,10 +86,11 @@ const genres: GenreItem[] = [
   },
   {
     label: "野外・大型企画",
-    count: 7,
+    count: 10,
     sub: [
       { label: "宴", count: 4 },
       { label: "周年", count: 3 },
+      { label: "出張イベント", count: 3 },
     ],
   },
 ];
@@ -157,7 +158,7 @@ export default function SoypoyNumbersPage() {
               />
             </div>
             <div className="px-2 sm:px-6 py-8 sm:py-4">
-              <NumberStat number="約190回" label="総開催イベント数" size="lg" />
+              <NumberStat number="200+回" label="総開催イベント数" size="lg" />
             </div>
             <div className="px-2 sm:px-6 py-8 sm:py-4">
               <NumberStat number="月3〜4回" label="平均開催ペース" size="lg" />

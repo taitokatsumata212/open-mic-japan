@@ -281,7 +281,7 @@ export default function HistoryPage() {
                   協力団体 SOY-POY が育ててきた場の規模
                 </h3>
                 <p className="text-sm text-omj-sub leading-relaxed">
-                  オープンマイクジャパンの活動の中心は、協力団体 SOY-POY の場で行われています。4年5ヶ月、約190回のイベントが重ねられた場の規模を、数字で見ていきます。
+                  オープンマイクジャパンの活動の中心は、協力団体 SOY-POY の場で行われています。200回を越えるイベントが重ねられた場の規模を、数字で見ていきます。
                 </p>
               </div>
               <span className="shrink-0 inline-flex items-center gap-1 text-sm font-medium text-omj-primary md:ml-4">
