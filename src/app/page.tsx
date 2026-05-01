@@ -26,27 +26,27 @@ export default function HomePage() {
         }}
       >
         <HeroDecorations />
-        <Container className="relative py-16 sm:py-24 md:py-36">
+        <Container className="relative py-12 sm:py-24 md:py-36">
           <div className="max-w-3xl">
-            <p className="text-sm tracking-widest text-omj-primary mb-4">
+            <p className="text-xs sm:text-sm tracking-widest text-omj-primary mb-3 sm:mb-4">
               NPO法人オープンマイクジャパン
             </p>
-            <h1 className="text-4xl md:text-6xl font-bold leading-tight tracking-tight text-omj-text">
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold leading-tight tracking-tight text-omj-text">
               {SITE_TAGLINE}
             </h1>
-            <p className="mt-7 text-omj-text leading-loose md:text-lg">
+            <p className="mt-5 sm:mt-7 text-base text-omj-text leading-loose md:text-lg">
               オープンマイクジャパンは、オープンマイクという実践を通じて、人と人、表現と創作、都市と地方をつないでいく
               NPO 法人です。
             </p>
-            <p className="mt-4 text-omj-sub leading-loose">
+            <p className="mt-3 sm:mt-4 text-base text-omj-sub leading-loose">
               音楽、詩、朗読、トーク、漫才、落語、ダンス、実験的な表現が同じ場に混在し、ZINE・本・アパレル・コーヒー・食べ物が並ぶ——表現と創作にまつわるすべてを受け入れる器としてのオープンマイクを、社会にひらかれた仕組みへと育てていきます。
             </p>
 
-            <div className="mt-10 flex flex-col sm:flex-row gap-3">
-              <LineButton size="lg" />
+            <div className="mt-8 sm:mt-10 flex flex-row flex-wrap items-start gap-2 sm:gap-3">
+              <LineButton size="md" className="text-sm sm:text-base px-3 py-2 sm:px-6 sm:py-3.5 min-h-[44px]" />
               <Link
                 href="/about"
-                className="inline-flex items-center justify-center px-6 py-3.5 rounded-md border border-omj-border hover:border-omj-primary text-omj-text font-medium transition-colors bg-omj-base/80 backdrop-blur-sm"
+                className="inline-flex items-center justify-center px-3 py-2 sm:px-6 sm:py-3.5 min-h-[44px] text-sm sm:text-base rounded-md border border-omj-border hover:border-omj-primary text-omj-text font-medium transition-colors bg-omj-base/80 backdrop-blur-sm"
               >
                 わたしたちについて
               </Link>

@@ -64,8 +64,9 @@ export function HeroDecorations() {
       aria-hidden="true"
       className="absolute inset-0 overflow-hidden pointer-events-none select-none"
     >
-      {/* 右下：マイク本体が声の波紋の中心。土台は隠す */}
-      <div className="absolute -right-2 -bottom-3 sm:-right-4 sm:-bottom-6 md:-right-6 md:-bottom-8 lg:-right-8 lg:-bottom-10 w-[280px] sm:w-[440px] md:w-[640px] lg:w-[820px] aspect-square pointer-events-none">
+      {/* 右下：マイク本体が声の波紋の中心。土台は隠す。
+          モバイルではテキスト・ボタンと被るので完全に非表示。 */}
+      <div className="hidden sm:block absolute sm:-right-4 sm:-bottom-6 md:-right-6 md:-bottom-8 lg:-right-8 lg:-bottom-10 sm:w-[440px] md:w-[640px] lg:w-[820px] aspect-square pointer-events-none">
         {/* 声の波紋：コンテナ中央（=マイクヘッド）を中心に同心円で広がる */}
         <svg
           viewBox="0 0 600 600"
@@ -121,9 +122,9 @@ export function HeroDecorations() {
         />
       </div>
 
-      {/* スポットライトの薄い円 */}
-      <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full bg-omj-primary opacity-[0.05] blur-2xl" />
-      <div className="absolute top-1/3 -right-20 w-72 h-72 rounded-full bg-omj-accent opacity-[0.06] blur-3xl" />
+      {/* スポットライトの薄い円（モバイルでは省略） */}
+      <div className="hidden sm:block absolute -top-20 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full bg-omj-primary opacity-[0.05] blur-2xl" />
+      <div className="hidden sm:block absolute top-1/3 -right-20 w-72 h-72 rounded-full bg-omj-accent opacity-[0.06] blur-3xl" />
 
       {/* 音符（ゆったり浮遊） */}
       {notes.map((n, i) => {

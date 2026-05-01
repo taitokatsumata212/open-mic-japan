@@ -442,7 +442,7 @@ export default function AboutPage() {
         <Container>
           <SectionHeading eyebrow="Organization" title="団体概要" />
           <div className="overflow-hidden rounded-lg border border-omj-border">
-            <table className="w-full text-sm">
+            <table className="stack-table-mobile w-full text-sm">
               <tbody>
                 {[
                   ["名称", "特定非営利活動法人オープンマイクジャパン"],
@@ -465,7 +465,7 @@ export default function AboutPage() {
                     <th className="text-left bg-omj-base font-medium px-4 py-3 w-40 text-omj-text align-top">
                       {k}
                     </th>
-                    <td className="px-4 py-3 text-omj-text">{v}</td>
+                    <td className="px-4 py-3 text-omj-text leading-relaxed">{v}</td>
                   </tr>
                 ))}
               </tbody>
@@ -474,7 +474,7 @@ export default function AboutPage() {
 
           <h3 className="text-lg font-bold mt-12 mb-4">役員</h3>
           <div className="overflow-hidden rounded-lg border border-omj-border">
-            <table className="w-full text-sm">
+            <table className="stack-table-mobile w-full text-sm">
               <tbody>
                 {officers.map((o) => (
                   <tr

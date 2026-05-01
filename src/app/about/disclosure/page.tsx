@@ -197,7 +197,7 @@ export default function DisclosurePage() {
             法人基本情報
           </h2>
           <div className="overflow-hidden rounded-lg border border-omj-border">
-            <table className="w-full text-sm">
+            <table className="stack-table-mobile w-full text-sm">
               <tbody>
                 {[
                   ["正式名称", "特定非営利活動法人オープンマイクジャパン"],
@@ -220,7 +220,7 @@ export default function DisclosurePage() {
                     <th className="text-left bg-omj-base font-medium px-4 py-3 w-44 text-omj-text align-top">
                       {k}
                     </th>
-                    <td className="px-4 py-3 text-omj-text align-top">{v}</td>
+                    <td className="px-4 py-3 text-omj-text align-top leading-relaxed">{v}</td>
                   </tr>
                 ))}
               </tbody>

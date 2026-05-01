@@ -3,9 +3,11 @@ import { LINE_FRIEND_URL } from "@/lib/constants";
 export function LineButton({
   label = "LINE で友だち追加",
   size = "md",
+  className,
 }: {
   label?: string;
   size?: "sm" | "md" | "lg";
+  className?: string;
 }) {
   const sizeClasses = {
     sm: "px-4 py-2 text-sm",
@@ -18,7 +20,7 @@ export function LineButton({
       href={LINE_FRIEND_URL}
       target="_blank"
       rel="noopener noreferrer"
-      className={`inline-flex items-center gap-2 bg-omj-line hover:bg-omj-line-dark text-white font-medium rounded-md transition-colors ${sizeClasses}`}
+      className={`inline-flex items-center gap-2 bg-omj-line hover:bg-omj-line-dark text-white font-medium rounded-md transition-colors ${className ?? sizeClasses}`}
     >
       <svg
         viewBox="0 0 24 24"
