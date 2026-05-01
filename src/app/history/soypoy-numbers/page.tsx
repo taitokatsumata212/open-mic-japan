@@ -3,6 +3,7 @@ import { Container } from "@/components/Container";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { NumberStat } from "@/components/NumberStat";
 import { SectionHeading } from "@/components/SectionHeading";
+import { AnimatedDigits } from "@/components/AnimatedDigits";
 import { SOYPOY_URL } from "@/lib/constants";
 
 // 月次で再生成（活動期間の自動更新のため。Vercel が ISR として尊重する）。
@@ -181,10 +182,12 @@ export default function SoypoyNumbersPage() {
                 <p className="text-xs tracking-widest uppercase text-omj-sub mb-3">
                   {g.label}
                 </p>
-                <p className="font-bold text-omj-text tabular-nums leading-none">
-                  <span className="text-4xl md:text-5xl">
-                    {g.count.toLocaleString()}
-                  </span>
+                <p className="font-bold text-omj-primary leading-none">
+                  <AnimatedDigits
+                    target={g.count.toString()}
+                    duration={900 + g.count * 4}
+                    className="text-4xl md:text-5xl"
+                  />
                   <span className="text-sm font-medium text-omj-sub ml-1.5">
                     回
                   </span>
@@ -229,10 +232,12 @@ export default function SoypoyNumbersPage() {
                   <p className="text-xs tracking-widest text-omj-sub mb-3 tabular-nums">
                     {y.year}
                   </p>
-                  <p className="font-bold text-omj-text tabular-nums leading-none">
-                    <span className="text-3xl md:text-4xl">
-                      {y.count.toLocaleString()}
-                    </span>
+                  <p className="font-bold text-omj-primary leading-none">
+                    <AnimatedDigits
+                      target={y.count.toString()}
+                      duration={900 + y.count * 5}
+                      className="text-3xl md:text-4xl"
+                    />
                     <span className="text-sm font-medium text-omj-sub ml-1">
                       回
                     </span>
