@@ -178,18 +178,18 @@ a {
 }
 .dot-anim { animation: dot-float 6s ease-in-out infinite; }
 
-/* 波紋：内側から外側へ「色が濃くなる」が伝播するループ
-   各円は動かず、stroke の不透明度のみが順次上下する */
+/* 波紋：内側から外側へ「色が濃くなる」がゆっくり伝播するループ
+   各円は動かず、stroke の不透明度がグラデーションのように緩やかに上下する */
 @keyframes wave-ripple {
   0%, 100% {
     opacity: var(--wave-op-min, 0.15);
   }
-  50% {
+  35%, 65% {
     opacity: var(--wave-op-max, 0.6);
   }
 }
 .wave-anim {
-  animation: wave-ripple 4s ease-in-out infinite;
+  animation: wave-ripple 9s cubic-bezier(0.45, 0, 0.55, 1) infinite;
   will-change: opacity;
 }
 

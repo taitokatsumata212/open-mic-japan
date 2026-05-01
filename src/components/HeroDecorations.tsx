@@ -87,7 +87,7 @@ export function HeroDecorations() {
                   {
                     "--wave-op-max": opMax,
                     "--wave-op-min": opMin,
-                    animationDelay: `${i * 0.4}s`,
+                    animationDelay: `${i * 0.9}s`,
                   } as React.CSSProperties
                 }
               />
@@ -110,7 +110,7 @@ export function HeroDecorations() {
                   {
                     "--wave-op-max": opMax,
                     "--wave-op-min": opMin,
-                    animationDelay: `${2.0 + i * 0.4}s`,
+                    animationDelay: `${4.5 + i * 0.9}s`,
                   } as React.CSSProperties
                 }
               />
