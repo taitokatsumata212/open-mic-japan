@@ -26,8 +26,8 @@ export default function HomePage() {
         }}
       >
         <HeroDecorations />
-        <Container className="relative py-12 sm:py-24 md:py-20">
-          <div className="max-w-3xl md:max-w-xl xl:max-w-2xl">
+        <div className="relative max-w-container mx-auto px-5 sm:px-8 lg:max-w-[1400px] lg:px-12 py-12 sm:py-24 md:py-20">
+          <div className="max-w-3xl lg:max-w-md xl:max-w-2xl">
             <p className="text-xs sm:text-sm tracking-widest text-omj-primary mb-3 sm:mb-4">
               NPO法人オープンマイクジャパン
             </p>
@@ -52,7 +52,7 @@ export default function HomePage() {
               </Link>
             </div>
           </div>
-        </Container>
+        </div>
       </section>
 
       <section className="bg-white border-y border-omj-border">
