@@ -228,7 +228,7 @@ export default function HistoryPage() {
             <NumberStat number="53回" label="オープンマイク" size="lg" />
             <NumberStat number="4年" label="SOY-POY 協力" size="lg" />
             <NumberStat number="4" label="開催地域（東京・神奈川・山梨・京都）" size="lg" />
-            <NumberStat number="複数回" label="大学・WS" size="lg" />
+            <NumberStat number="24回" label="ワークショップ" size="lg" />
             <NumberStat number="毎年5月" label="野外「宴」" size="lg" />
           </div>
         </Container>
