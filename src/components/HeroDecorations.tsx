@@ -68,54 +68,69 @@ export function HeroDecorations() {
           className="absolute inset-0 w-full h-full"
           aria-hidden="true"
         >
-          {/* 水面の波紋らしく：実線のリング、細めで、内側ほど濃く */}
-          {[110, 175, 245, 320, 400].map((r, i) => {
-            const opMax = 0.55 - i * 0.07;
-            const opMin = opMax * 0.18;
-            return (
-              <circle
-                key={r}
-                className="wave-anim"
-                cx="328"
-                cy="262"
-                r={r}
-                fill="none"
-                stroke={PRIMARY}
-                strokeWidth={1.6 - i * 0.15}
-                strokeLinecap="round"
-                style={
-                  {
-                    "--wave-op-max": opMax,
-                    "--wave-op-min": opMin,
-                    animationDelay: `${i * 0.9}s`,
-                  } as React.CSSProperties
-                }
-              />
-            );
-          })}
-          {[480, 565].map((r, i) => {
-            const opMax = 0.22 - i * 0.05;
-            const opMin = opMax * 0.2;
-            return (
-              <circle
-                key={`outer-${r}`}
-                className="wave-anim"
-                cx="328"
-                cy="262"
-                r={r}
-                fill="none"
-                stroke={PRIMARY}
-                strokeWidth="0.8"
-                style={
-                  {
-                    "--wave-op-max": opMax,
-                    "--wave-op-min": opMin,
-                    animationDelay: `${4.5 + i * 0.9}s`,
-                  } as React.CSSProperties
-                }
-              />
-            );
-          })}
+          {/* 水面の波紋らしく：長めで不揃いの点線リング。内側ほど濃く */}
+          {(() => {
+            const innerDashes = [
+              "60 22 35 18",
+              "48 30 22 26",
+              "70 24 38 32",
+              "44 36 60 22",
+              "55 26 28 40",
+            ];
+            return [110, 175, 245, 320, 400].map((r, i) => {
+              const opMax = 0.55 - i * 0.07;
+              const opMin = opMax * 0.18;
+              return (
+                <circle
+                  key={r}
+                  className="wave-anim"
+                  cx="328"
+                  cy="262"
+                  r={r}
+                  fill="none"
+                  stroke={PRIMARY}
+                  strokeWidth={1.8 - i * 0.15}
+                  strokeLinecap="round"
+                  strokeDasharray={innerDashes[i]}
+                  style={
+                    {
+                      "--wave-op-max": opMax,
+                      "--wave-op-min": opMin,
+                      animationDelay: `${i * 0.9}s`,
+                    } as React.CSSProperties
+                  }
+                />
+              );
+            });
+          })()}
+          {(() => {
+            const outerDashes = ["80 36 50 28", "65 42 30 24"];
+            return [480, 565].map((r, i) => {
+              const opMax = 0.22 - i * 0.05;
+              const opMin = opMax * 0.2;
+              return (
+                <circle
+                  key={`outer-${r}`}
+                  className="wave-anim"
+                  cx="328"
+                  cy="262"
+                  r={r}
+                  fill="none"
+                  stroke={PRIMARY}
+                  strokeWidth="1"
+                  strokeLinecap="round"
+                  strokeDasharray={outerDashes[i]}
+                  style={
+                    {
+                      "--wave-op-max": opMax,
+                      "--wave-op-min": opMin,
+                      animationDelay: `${4.5 + i * 0.9}s`,
+                    } as React.CSSProperties
+                  }
+                />
+              );
+            });
+          })()}
         </svg>
 
         {/* マイク：ヘッド中心が波紋中心 (コンテナ50%) に来るよう -translate-y で調整。
