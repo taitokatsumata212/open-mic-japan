@@ -98,6 +98,14 @@ export function Footer() {
                 お問い合わせ
               </Link>
             </li>
+            <li>
+              <Link
+                href="/library"
+                className="hover:text-omj-primary transition-colors"
+              >
+                読みもの
+              </Link>
+            </li>
           </ul>
         </div>
 
