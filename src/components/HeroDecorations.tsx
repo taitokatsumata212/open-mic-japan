@@ -68,63 +68,36 @@ export function HeroDecorations() {
           className="absolute inset-0 w-full h-full"
           aria-hidden="true"
         >
-          {/* 水面の波紋らしく：長めで不揃いの点線リング。内側ほど濃く */}
+          {/* 水面の波紋：4本のリング、間隔を広めに、線は長短不揃い */}
           {(() => {
-            const innerDashes = [
-              "60 22 35 18",
-              "48 30 22 26",
-              "70 24 38 32",
-              "44 36 60 22",
-              "55 26 28 40",
+            // 半径と各リングの dasharray（長線・短線・長余白・短余白の組合せで
+            // 点線感を消し、3〜5本程度の弧として見える）
+            const rings: Array<{ r: number; dash: string; w: number }> = [
+              { r: 140, dash: "300 80 90 50", w: 1.8 },
+              { r: 260, dash: "440 120 180 70 280 80", w: 1.5 },
+              { r: 400, dash: "560 150 220 90 380 100 120 70", w: 1.2 },
+              { r: 560, dash: "700 180 280 110 480 130 180 90 320 70", w: 0.9 },
             ];
-            return [110, 175, 245, 320, 400].map((r, i) => {
-              const opMax = 0.3 - i * 0.04; // ピークでも控えめ
+            return rings.map((ring, i) => {
+              const opMax = 0.3 - i * 0.06; // 0.30 / 0.24 / 0.18 / 0.12
               const opMin = opMax * 0.25;
               return (
                 <circle
-                  key={r}
+                  key={ring.r}
                   className="wave-anim"
                   cx="328"
                   cy="262"
-                  r={r}
+                  r={ring.r}
                   fill="none"
                   stroke={PRIMARY}
-                  strokeWidth={1.8 - i * 0.15}
+                  strokeWidth={ring.w}
                   strokeLinecap="round"
-                  strokeDasharray={innerDashes[i]}
+                  strokeDasharray={ring.dash}
                   style={
                     {
                       "--wave-op-max": opMax,
                       "--wave-op-min": opMin,
-                      animationDelay: `${i * 0.9}s`,
-                    } as React.CSSProperties
-                  }
-                />
-              );
-            });
-          })()}
-          {(() => {
-            const outerDashes = ["80 36 50 28", "65 42 30 24"];
-            return [480, 565].map((r, i) => {
-              const opMax = 0.15 - i * 0.04;
-              const opMin = opMax * 0.25;
-              return (
-                <circle
-                  key={`outer-${r}`}
-                  className="wave-anim"
-                  cx="328"
-                  cy="262"
-                  r={r}
-                  fill="none"
-                  stroke={PRIMARY}
-                  strokeWidth="1"
-                  strokeLinecap="round"
-                  strokeDasharray={outerDashes[i]}
-                  style={
-                    {
-                      "--wave-op-max": opMax,
-                      "--wave-op-min": opMin,
-                      animationDelay: `${4.5 + i * 0.9}s`,
+                      animationDelay: `${i * 1.5}s`,
                     } as React.CSSProperties
                   }
                 />
