@@ -68,32 +68,52 @@ export function HeroDecorations() {
           className="absolute inset-0 w-full h-full"
           aria-hidden="true"
         >
-          {[110, 175, 245, 320, 400].map((r, i) => (
-            <circle
-              key={r}
-              cx="300"
-              cy="300"
-              r={r}
-              fill="none"
-              stroke={PRIMARY}
-              strokeWidth={2.4 - i * 0.25}
-              opacity={0.58 - i * 0.08}
-              strokeDasharray="6 9"
-            />
-          ))}
-          {[480, 565].map((r, i) => (
-            <circle
-              key={`outer-${r}`}
-              cx="300"
-              cy="300"
-              r={r}
-              fill="none"
-              stroke={PRIMARY}
-              strokeWidth="1"
-              opacity={0.22 - i * 0.06}
-              strokeDasharray="3 7"
-            />
-          ))}
+          {[110, 175, 245, 320, 400].map((r, i) => {
+            const baseOp = 0.58 - i * 0.08;
+            return (
+              <circle
+                key={r}
+                className="wave-anim"
+                cx="300"
+                cy="300"
+                r={r}
+                fill="none"
+                stroke={PRIMARY}
+                strokeWidth={2.4 - i * 0.25}
+                strokeDasharray="6 9"
+                style={
+                  {
+                    "--wave-op": baseOp,
+                    opacity: baseOp,
+                    animationDelay: `${i * 0.45}s`,
+                  } as React.CSSProperties
+                }
+              />
+            );
+          })}
+          {[480, 565].map((r, i) => {
+            const baseOp = 0.22 - i * 0.06;
+            return (
+              <circle
+                key={`outer-${r}`}
+                className="wave-anim"
+                cx="300"
+                cy="300"
+                r={r}
+                fill="none"
+                stroke={PRIMARY}
+                strokeWidth="1"
+                strokeDasharray="3 7"
+                style={
+                  {
+                    "--wave-op": baseOp,
+                    opacity: baseOp,
+                    animationDelay: `${2.25 + i * 0.45}s`,
+                  } as React.CSSProperties
+                }
+              />
+            );
+          })}
         </svg>
 
         {/* マイク：ヘッド中心が波紋中心 (コンテナ50%) に来るよう -translate-y で調整。
@@ -114,29 +134,40 @@ export function HeroDecorations() {
       <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full bg-omj-primary opacity-[0.05] blur-2xl" />
       <div className="absolute top-1/3 -right-20 w-72 h-72 rounded-full bg-omj-accent opacity-[0.06] blur-3xl" />
 
-      {/* 音符 */}
-      {notes.map((n, i) => (
-        <span
-          key={`n-${i}`}
-          className={`absolute ${n.size} font-serif`}
-          style={{
-            top: n.top,
-            left: n.left,
-            right: n.right,
-            color: n.color === "primary" ? PRIMARY : ACCENT,
-            opacity: n.opacity,
-            transform: n.rotate ? `rotate(${n.rotate}deg)` : undefined,
-          }}
-        >
-          {n.glyph}
-        </span>
-      ))}
+      {/* 音符（ゆったり浮遊） */}
+      {notes.map((n, i) => {
+        const animClass = ["note-anim-a", "note-anim-b", "note-anim-c", "note-anim-d"][i % 4];
+        const delay = `${(i % 5) * 0.6}s`;
+        return (
+          <span
+            key={`n-${i}`}
+            className={`absolute ${animClass}`}
+            style={{
+              top: n.top,
+              left: n.left,
+              right: n.right,
+              opacity: n.opacity,
+              animationDelay: delay,
+            }}
+          >
+            <span
+              className={`block font-serif ${n.size}`}
+              style={{
+                color: n.color === "primary" ? PRIMARY : ACCENT,
+                transform: n.rotate ? `rotate(${n.rotate}deg)` : undefined,
+              }}
+            >
+              {n.glyph}
+            </span>
+          </span>
+        );
+      })}
 
       {/* ドット */}
       {dots.map((d, i) => (
         <span
           key={`d-${i}`}
-          className="absolute rounded-full"
+          className="absolute rounded-full dot-anim"
           style={{
             top: d.top,
             left: d.left,
@@ -145,6 +176,7 @@ export function HeroDecorations() {
             height: d.size,
             backgroundColor: d.color === "primary" ? PRIMARY : ACCENT,
             opacity: d.opacity,
+            animationDelay: `${(i % 4) * 0.7}s`,
           }}
         />
       ))}

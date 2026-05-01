@@ -147,3 +147,62 @@ a {
   font-weight: 600;
   width: 32%;
 }
+
+/* ヒーロー音符のゆったり浮遊アニメーション */
+@keyframes note-float-a {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(0, -14px); }
+}
+@keyframes note-float-b {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(6px, -10px); }
+}
+@keyframes note-float-c {
+  0%, 100% { transform: translate(0, 0); }
+  33% { transform: translate(-5px, -8px); }
+  66% { transform: translate(5px, -12px); }
+}
+@keyframes note-float-d {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-7px, 6px); }
+}
+.note-anim-a { animation: note-float-a 7s ease-in-out infinite; }
+.note-anim-b { animation: note-float-b 9s ease-in-out infinite; }
+.note-anim-c { animation: note-float-c 11s ease-in-out infinite; }
+.note-anim-d { animation: note-float-d 8s ease-in-out infinite; }
+
+/* ドット用、控えめに */
+@keyframes dot-float {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(0, -6px); }
+}
+.dot-anim { animation: dot-float 6s ease-in-out infinite; }
+
+/* 波紋：中心から外側へ広がる軽いパルス */
+@keyframes wave-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: var(--wave-op, 0.5);
+  }
+  50% {
+    transform: scale(1.04);
+    opacity: calc(var(--wave-op, 0.5) * 0.55);
+  }
+}
+.wave-anim {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: wave-pulse 4.5s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .note-anim-a,
+  .note-anim-b,
+  .note-anim-c,
+  .note-anim-d,
+  .dot-anim,
+  .wave-anim {
+    animation: none;
+  }
+}
