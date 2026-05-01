@@ -148,58 +148,34 @@ a {
   width: 32%;
 }
 
-/* ヒーロー音符のゆったり浮遊アニメーション */
+/* ヒーロー音符のゆったり浮遊アニメーション（音符だけが動く） */
 @keyframes note-float-a {
   0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(0, -14px); }
+  50% { transform: translate(0, -10px); }
 }
 @keyframes note-float-b {
   0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(6px, -10px); }
+  50% { transform: translate(5px, -8px); }
 }
 @keyframes note-float-c {
   0%, 100% { transform: translate(0, 0); }
-  33% { transform: translate(-5px, -8px); }
-  66% { transform: translate(5px, -12px); }
+  33% { transform: translate(-4px, -6px); }
+  66% { transform: translate(4px, -10px); }
 }
 @keyframes note-float-d {
   0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(-7px, 6px); }
+  50% { transform: translate(-6px, 5px); }
 }
-.note-anim-a { animation: note-float-a 7s ease-in-out infinite; }
-.note-anim-b { animation: note-float-b 9s ease-in-out infinite; }
-.note-anim-c { animation: note-float-c 11s ease-in-out infinite; }
-.note-anim-d { animation: note-float-d 8s ease-in-out infinite; }
-
-/* ドット用、控えめに */
-@keyframes dot-float {
-  0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(0, -6px); }
-}
-.dot-anim { animation: dot-float 6s ease-in-out infinite; }
-
-/* 波紋：内側から外側へ「色が濃くなる」がゆっくり伝播するループ
-   各円は動かず、stroke の不透明度がグラデーションのように緩やかに上下する */
-@keyframes wave-ripple {
-  0%, 100% {
-    opacity: var(--wave-op-min, 0.15);
-  }
-  35%, 65% {
-    opacity: var(--wave-op-max, 0.6);
-  }
-}
-.wave-anim {
-  animation: wave-ripple 9s cubic-bezier(0.45, 0, 0.55, 1) infinite;
-  will-change: opacity;
-}
+.note-anim-a { animation: note-float-a 11s ease-in-out infinite; }
+.note-anim-b { animation: note-float-b 13s ease-in-out infinite; }
+.note-anim-c { animation: note-float-c 15s ease-in-out infinite; }
+.note-anim-d { animation: note-float-d 12s ease-in-out infinite; }
 
 @media (prefers-reduced-motion: reduce) {
   .note-anim-a,
   .note-anim-b,
   .note-anim-c,
-  .note-anim-d,
-  .dot-anim,
-  .wave-anim {
+  .note-anim-d {
     animation: none;
   }
 }

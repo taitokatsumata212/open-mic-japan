@@ -68,41 +68,38 @@ export function HeroDecorations() {
           className="absolute inset-0 w-full h-full"
           aria-hidden="true"
         >
-          {/* 水面の波紋：4本のリング、間隔を広めに、線は長短不揃い */}
+          {/* 水面の波紋：4本の静的なリング。色は薄く、アニメ無し */}
           {(() => {
-            // 半径と各リングの dasharray（長線・短線・長余白・短余白の組合せで
-            // 点線感を消し、3〜5本程度の弧として見える）
-            const rings: Array<{ r: number; dash: string; w: number }> = [
-              { r: 140, dash: "300 80 90 50", w: 1.8 },
-              { r: 260, dash: "440 120 180 70 280 80", w: 1.5 },
-              { r: 400, dash: "560 150 220 90 380 100 120 70", w: 1.2 },
-              { r: 560, dash: "700 180 280 110 480 130 180 90 320 70", w: 0.9 },
+            const rings: Array<{
+              r: number;
+              dash: string;
+              w: number;
+              op: number;
+            }> = [
+              { r: 140, dash: "300 80 90 50", w: 1.6, op: 0.16 },
+              { r: 260, dash: "440 120 180 70 280 80", w: 1.3, op: 0.12 },
+              { r: 400, dash: "560 150 220 90 380 100 120 70", w: 1, op: 0.09 },
+              {
+                r: 560,
+                dash: "700 180 280 110 480 130 180 90 320 70",
+                w: 0.8,
+                op: 0.06,
+              },
             ];
-            return rings.map((ring, i) => {
-              const opMax = 0.3 - i * 0.06; // 0.30 / 0.24 / 0.18 / 0.12
-              const opMin = opMax * 0.25;
-              return (
-                <circle
-                  key={ring.r}
-                  className="wave-anim"
-                  cx="328"
-                  cy="262"
-                  r={ring.r}
-                  fill="none"
-                  stroke={PRIMARY}
-                  strokeWidth={ring.w}
-                  strokeLinecap="round"
-                  strokeDasharray={ring.dash}
-                  style={
-                    {
-                      "--wave-op-max": opMax,
-                      "--wave-op-min": opMin,
-                      animationDelay: `${i * 1.5}s`,
-                    } as React.CSSProperties
-                  }
-                />
-              );
-            });
+            return rings.map((ring) => (
+              <circle
+                key={ring.r}
+                cx="328"
+                cy="262"
+                r={ring.r}
+                fill="none"
+                stroke={PRIMARY}
+                strokeWidth={ring.w}
+                strokeLinecap="round"
+                strokeDasharray={ring.dash}
+                opacity={ring.op}
+              />
+            ));
           })()}
         </svg>
 
@@ -153,11 +150,11 @@ export function HeroDecorations() {
         );
       })}
 
-      {/* ドット */}
+      {/* ドット（静的） */}
       {dots.map((d, i) => (
         <span
           key={`d-${i}`}
-          className="absolute rounded-full dot-anim"
+          className="absolute rounded-full"
           style={{
             top: d.top,
             left: d.left,
@@ -166,7 +163,6 @@ export function HeroDecorations() {
             height: d.size,
             backgroundColor: d.color === "primary" ? PRIMARY : ACCENT,
             opacity: d.opacity,
-            animationDelay: `${(i % 4) * 0.7}s`,
           }}
         />
       ))}
