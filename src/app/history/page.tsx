@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Container } from "@/components/Container";
 import { NumberStat } from "@/components/NumberStat";
 import { SupportCTA } from "@/components/SupportCTA";
@@ -253,6 +254,33 @@ export default function HistoryPage() {
               ))}
             </ol>
           </div>
+        </Container>
+      </section>
+
+      <section className="py-12 md:py-14">
+        <Container>
+          <Link
+            href="/history/soypoy-numbers"
+            className="group block rounded-lg border border-omj-border bg-white hover:border-omj-primary hover:shadow-sm transition-all p-6 md:p-8 max-w-3xl mx-auto"
+          >
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              <div className="flex-1">
+                <p className="text-xs tracking-widest uppercase text-omj-primary mb-2">
+                  SOY-POY Numbers
+                </p>
+                <h3 className="text-lg md:text-xl font-bold text-omj-text group-hover:text-omj-primary transition-colors mb-3">
+                  協力団体 SOY-POY が育ててきた場の規模
+                </h3>
+                <p className="text-sm text-omj-sub leading-relaxed">
+                  オープンマイクジャパンの活動の中心は、協力団体 SOY-POY の場で行われています。4年5ヶ月、約190回のイベントが重ねられた場の規模を、数字で見ていきます。
+                </p>
+              </div>
+              <span className="shrink-0 inline-flex items-center gap-1 text-sm font-medium text-omj-primary md:ml-4">
+                数字で見る
+                <span aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">→</span>
+              </span>
+            </div>
+          </Link>
         </Container>
       </section>
 
