@@ -17,23 +17,26 @@ type Note = {
   color: "primary" | "accent";
   opacity: number;
   rotate?: number;
+  /** モバイルではテキストと被るので非表示にする */
+  hideOnMobile?: boolean;
 };
 
 // 「声を、ひらく場をつくる。」h1 と本文に被らないよう、上端 0〜7% と
 // 下端 82〜98% のみに音符を配置（中盤縦は完全に空ける）
+// モバイルはセクション縦が縮むため、内側寄りの音符を非表示にして整理
 const notes: Note[] = [
   // 上端（タイトルより十分上の余白部分）
-  { glyph: "♪", top: "2%", left: "5%", size: "text-4xl md:text-5xl", color: "primary", opacity: 0.2 },
-  { glyph: "♬", top: "1%", left: "22%", size: "text-3xl md:text-4xl", color: "accent", opacity: 0.18, rotate: -8 },
-  { glyph: "♪", top: "5%", left: "42%", size: "text-2xl md:text-3xl", color: "primary", opacity: 0.16 },
-  { glyph: "♫", top: "6%", right: "24%", size: "text-3xl md:text-4xl", color: "primary", opacity: 0.2, rotate: 6 },
-  { glyph: "♬", top: "3%", right: "8%", size: "text-4xl md:text-5xl", color: "accent", opacity: 0.22 },
+  { glyph: "♪", top: "2%", left: "5%", size: "text-3xl md:text-5xl", color: "primary", opacity: 0.2 },
+  { glyph: "♬", top: "1%", left: "22%", size: "text-2xl md:text-4xl", color: "accent", opacity: 0.18, rotate: -8 },
+  { glyph: "♪", top: "5%", left: "42%", size: "text-xl md:text-3xl", color: "primary", opacity: 0.16, hideOnMobile: true },
+  { glyph: "♫", top: "6%", right: "24%", size: "text-2xl md:text-4xl", color: "primary", opacity: 0.2, rotate: 6, hideOnMobile: true },
+  { glyph: "♬", top: "3%", right: "8%", size: "text-3xl md:text-5xl", color: "accent", opacity: 0.22 },
   // 下端（ボタンより下）
-  { glyph: "♫", top: "86%", left: "8%", size: "text-3xl md:text-4xl", color: "primary", opacity: 0.2 },
-  { glyph: "♪", top: "94%", left: "26%", size: "text-2xl md:text-3xl", color: "accent", opacity: 0.18 },
-  { glyph: "♬", top: "90%", left: "48%", size: "text-3xl md:text-4xl", color: "accent", opacity: 0.2, rotate: 8 },
-  { glyph: "♪", top: "84%", right: "30%", size: "text-3xl md:text-4xl", color: "primary", opacity: 0.18, rotate: -6 },
-  { glyph: "♫", top: "96%", right: "10%", size: "text-2xl md:text-3xl", color: "primary", opacity: 0.2 },
+  { glyph: "♫", top: "86%", left: "8%", size: "text-2xl md:text-4xl", color: "primary", opacity: 0.2, hideOnMobile: true },
+  { glyph: "♪", top: "94%", left: "26%", size: "text-xl md:text-3xl", color: "accent", opacity: 0.18 },
+  { glyph: "♬", top: "90%", left: "48%", size: "text-2xl md:text-4xl", color: "accent", opacity: 0.2, rotate: 8, hideOnMobile: true },
+  { glyph: "♪", top: "84%", right: "30%", size: "text-2xl md:text-4xl", color: "primary", opacity: 0.18, rotate: -6, hideOnMobile: true },
+  { glyph: "♫", top: "96%", right: "10%", size: "text-xl md:text-3xl", color: "primary", opacity: 0.2 },
 ];
 
 type Dot = {
@@ -43,15 +46,16 @@ type Dot = {
   size: number;
   color: "primary" | "accent";
   opacity: number;
+  hideOnMobile?: boolean;
 };
 
 // ドットも同様に上下のみ
 const dots: Dot[] = [
   { top: "5%", left: "30%", size: 5, color: "primary", opacity: 0.35 },
-  { top: "3%", right: "32%", size: 4, color: "accent", opacity: 0.3 },
-  { top: "94%", left: "22%", size: 5, color: "primary", opacity: 0.35 },
+  { top: "3%", right: "32%", size: 4, color: "accent", opacity: 0.3, hideOnMobile: true },
+  { top: "94%", left: "22%", size: 5, color: "primary", opacity: 0.35, hideOnMobile: true },
   { top: "96%", left: "58%", size: 4, color: "accent", opacity: 0.35 },
-  { top: "90%", right: "12%", size: 5, color: "primary", opacity: 0.4 },
+  { top: "90%", right: "12%", size: 5, color: "primary", opacity: 0.4, hideOnMobile: true },
 ];
 
 export function HeroDecorations() {
@@ -61,7 +65,7 @@ export function HeroDecorations() {
       className="absolute inset-0 overflow-hidden pointer-events-none select-none"
     >
       {/* 右下：マイク本体が声の波紋の中心。土台は隠す */}
-      <div className="absolute -right-4 -bottom-6 md:-right-6 md:-bottom-8 lg:-right-8 lg:-bottom-10 w-[440px] md:w-[640px] lg:w-[820px] aspect-square pointer-events-none">
+      <div className="absolute -right-2 -bottom-3 sm:-right-4 sm:-bottom-6 md:-right-6 md:-bottom-8 lg:-right-8 lg:-bottom-10 w-[280px] sm:w-[440px] md:w-[640px] lg:w-[820px] aspect-square pointer-events-none">
         {/* 声の波紋：コンテナ中央（=マイクヘッド）を中心に同心円で広がる */}
         <svg
           viewBox="0 0 600 600"
@@ -125,10 +129,11 @@ export function HeroDecorations() {
       {notes.map((n, i) => {
         const animClass = ["note-anim-a", "note-anim-b", "note-anim-c", "note-anim-d"][i % 4];
         const delay = `${(i % 5) * 0.6}s`;
+        const visibility = n.hideOnMobile ? "hidden sm:block" : "";
         return (
           <span
             key={`n-${i}`}
-            className={`absolute ${animClass}`}
+            className={`absolute ${animClass} ${visibility}`}
             style={{
               top: n.top,
               left: n.left,
@@ -151,21 +156,24 @@ export function HeroDecorations() {
       })}
 
       {/* ドット（静的） */}
-      {dots.map((d, i) => (
-        <span
-          key={`d-${i}`}
-          className="absolute rounded-full"
-          style={{
-            top: d.top,
-            left: d.left,
-            right: d.right,
-            width: d.size,
-            height: d.size,
-            backgroundColor: d.color === "primary" ? PRIMARY : ACCENT,
-            opacity: d.opacity,
-          }}
-        />
-      ))}
+      {dots.map((d, i) => {
+        const visibility = d.hideOnMobile ? "hidden sm:block" : "";
+        return (
+          <span
+            key={`d-${i}`}
+            className={`absolute rounded-full ${visibility}`}
+            style={{
+              top: d.top,
+              left: d.left,
+              right: d.right,
+              width: d.size,
+              height: d.size,
+              backgroundColor: d.color === "primary" ? PRIMARY : ACCENT,
+              opacity: d.opacity,
+            }}
+          />
+        );
+      })}
     </div>
   );
 }

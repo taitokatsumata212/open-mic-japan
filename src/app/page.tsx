@@ -26,7 +26,7 @@ export default function HomePage() {
         }}
       >
         <HeroDecorations />
-        <Container className="relative py-24 md:py-36">
+        <Container className="relative py-16 sm:py-24 md:py-36">
           <div className="max-w-3xl">
             <p className="text-sm tracking-widest text-omj-primary mb-4">
               NPO法人オープンマイクジャパン
