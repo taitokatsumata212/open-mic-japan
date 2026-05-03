@@ -9,7 +9,7 @@ export default function PrivacyPage() {
     <LegalPageShell
       title="プライバシーポリシー"
       enactedAt="2025年8月22日"
-      revisedAt="2026年5月1日"
+      revisedAt="2026年5月4日"
       currentHref="/legal/privacy"
     >
       <p>
@@ -78,10 +78,48 @@ export default function PrivacyPage() {
 
       <h2>8. Cookie 等の利用</h2>
       <p>
-        本サービスでは、利用状況の把握およびサービス改善のために、Cookie および同等の技術（以下「Cookie 等」）を利用することがあります。Cookie 等によって取得される情報には、個人を特定できないアクセスログ・利用情報が含まれます。
+        当サイトでは、サイトの利用状況の把握とサービス向上を目的として、以下のアクセス解析ツールおよび Cookie・アクセスログを利用しています。これらにより収集される情報には、IP アドレス、ブラウザの種類、閲覧ページ、滞在時間などが含まれますが、個人を特定する情報は含まれません。
       </p>
+      <p>【利用しているアクセス解析ツール】</p>
+      <ul>
+        <li>
+          Google Analytics 4（提供：Google LLC）：Cookie を使用してサイト利用状況のデータを収集します。詳細は{" "}
+          <a
+            href="https://policies.google.com/privacy"
+            className="text-omj-primary underline"
+          >
+            Google のプライバシーポリシー
+          </a>
+          {" "}および{" "}
+          <a
+            href="https://marketingplatform.google.com/about/analytics/terms/jp/"
+            className="text-omj-primary underline"
+          >
+            Google Analytics の利用規約
+          </a>
+          をご確認ください。
+        </li>
+        <li>
+          Vercel Web Analytics（提供：Vercel Inc.）：Cookie を使用せず、個人を特定しない形でアクセス情報を収集します。詳細は{" "}
+          <a
+            href="https://vercel.com/legal/privacy-policy"
+            className="text-omj-primary underline"
+          >
+            Vercel のプライバシーポリシー
+          </a>
+          をご確認ください。
+        </li>
+      </ul>
+      <p>【収集の停止について】</p>
       <p>
-        ブラウザの設定で Cookie の受け取りを拒否することができますが、その場合、本サービスの一部機能をご利用いただけないことがあります。
+        ブラウザの設定で Cookie を無効にすることで、Google Analytics によるデータ収集を拒否できます。また、Google が提供する{" "}
+        <a
+          href="https://tools.google.com/dlpage/gaoptout"
+          className="text-omj-primary underline"
+        >
+          Google アナリティクス オプトアウト アドオン
+        </a>
+        をインストールすることでも収集を停止できます。
       </p>
 
       <h2>9. 開示・訂正・利用停止等の請求</h2>
