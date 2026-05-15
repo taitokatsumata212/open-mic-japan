@@ -28,6 +28,15 @@ export default function HomePage() {
         <HeroDecorations />
         <div className="relative max-w-container mx-auto px-5 sm:px-8 lg:max-w-[1400px] lg:px-12 py-12 sm:py-24 md:py-20">
           <div className="max-w-3xl lg:max-w-md xl:max-w-2xl">
+            <Link
+              href="/news/2026-05-15-soypoy-openmic-vol54"
+              className="group inline-flex items-center gap-2 mb-4 sm:mb-5 px-3 py-1.5 rounded-full bg-white/80 backdrop-blur-sm border border-omj-primary/30 hover:border-omj-primary hover:bg-white transition-colors text-xs sm:text-sm"
+            >
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-omj-primary animate-pulse" />
+              <span className="font-medium text-omj-primary">次回 6/20（土）</span>
+              <span className="text-omj-text">19:30〜 SOY-POY オープンマイク</span>
+              <span className="text-omj-primary group-hover:translate-x-0.5 transition-transform">→</span>
+            </Link>
             <p className="text-xs sm:text-sm tracking-widest text-omj-primary mb-3 sm:mb-4">
               NPO法人オープンマイクジャパン
             </p>
