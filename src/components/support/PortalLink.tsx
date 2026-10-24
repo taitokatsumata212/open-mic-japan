@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 /**
- * 既存会員/サポーター向け：メールアドレスで Stripe Customer Portal に飛ぶ。
+ * 既存会員向け：メールアドレスで Stripe Customer Portal に飛ぶ。
  */
 export function PortalLink() {
   const [email, setEmail] = useState("");
@@ -35,7 +35,7 @@ export function PortalLink() {
   return (
     <div className="rounded-lg border border-omj-border bg-omj-base p-5 md:p-6">
       <p className="text-sm font-medium text-omj-text mb-1">
-        すでに会員 / サポーターの方
+        すでに会員の方
       </p>
       <p className="text-xs text-omj-sub leading-relaxed mb-3">
         登録時のメールアドレスを入力すると、解約・カード変更・領収書ダウンロードができるポータルが開きます。

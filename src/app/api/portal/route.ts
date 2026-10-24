@@ -4,7 +4,7 @@ import { getStripe, siteUrl } from "@/lib/stripe";
 export const runtime = "nodejs";
 
 /**
- * 既存会員/サポーター向け：Stripe Customer Portal へのリダイレクト用 Session を作る。
+ * 既存会員向け：Stripe Customer Portal へのリダイレクト用 Session を作る。
  * メールアドレスから Customer を引いてポータル URL を返す。
  *
  * v1 では「ログイン UI を作らずに」既存契約者がメールアドレス入力 → ポータルへ、

@@ -40,42 +40,6 @@ const membershipPlans: MemberPlan[] = [
   },
 ];
 
-// 月額サポーター（マンスリー寄付・会員制度とは別建て）
-type MonthlyTier = {
-  plan: CheckoutPlanKey;
-  label: string;
-  price: string;
-  body: string;
-  accent?: boolean;
-};
-const monthlyTiers: MonthlyTier[] = [
-  {
-    plan: "monthly_1k",
-    label: "見守るサポーター",
-    price: "1,000円",
-    body: "「直接参加はできないけれど、こういう場が社会にあってほしい」——そんな気持ちで、まず応援したい方向けのプランです。",
-  },
-  {
-    plan: "monthly_3k",
-    label: "支えるサポーター",
-    price: "3,000円",
-    body: "定期的なオープンマイクの継続、地域での開催、日常的な場づくり——それらを支える土台になりたい方向けのプランです。",
-  },
-  {
-    plan: "monthly_5k",
-    label: "ひらくサポーター",
-    price: "5,000円",
-    body: "教育・ワークショップの充実、地域への展開、社会への広がり——オープンマイクジャパンの実践が、より多くの場や人に届くことを後押ししたい方向けのプランです。",
-    accent: true,
-  },
-  {
-    plan: "monthly_10k",
-    label: "つくるサポーター",
-    price: "10,000円",
-    body: "NPO としての長期的な基盤づくり、活動の継続と発展——深いところで関わり、ともに実践をつくっていきたい方向けのプランです。",
-  },
-];
-
 // 法人パートナーシップ（賛助会員・団体の特典付き運用）
 const corporateTiers = [
   {
@@ -132,7 +96,7 @@ export default function SupportPage() {
               声を出す場を増やすこと、表現の入口を社会にひらくこと——その実践を続けていくために、一緒に場をつくってくれる仲間を募集しています。
             </p>
             <p>
-              「観に行く」「自分も出てみる」「会員として参加する」「月額で支える」「単発で寄付する」「協賛として関わる」——どれも、同じくらい大切な参加のかたちです。あなたに合う関わり方を選んでください。
+              「観に行く」「自分も出てみる」「会員として参加する」「寄付する」「協賛として関わる」——どれも、同じくらい大切な参加のかたちです。あなたに合う関わり方を選んでください。
             </p>
           </div>
         </Container>
@@ -220,61 +184,15 @@ export default function SupportPage() {
         </Container>
       </section>
 
-      {/* 2. 月額サポーター（寄付） */}
-      <section className="bg-white border-y border-omj-border py-16">
-        <Container>
-          <p className="text-xs tracking-widest text-omj-primary font-medium mb-2">
-            2. 月額で支援する
-          </p>
-          <h2 className="text-2xl md:text-3xl font-bold mb-2">
-            マンスリーサポーター
-          </h2>
-          <p className="text-omj-sub mb-8 max-w-3xl leading-relaxed">
-            月額の継続的な寄付で活動を支えてくださる方々です。会員制度とは別の枠組みで、議決権はありませんが、定期的な応援が場づくりの大きな土台になります。気持ちにあわせて、4 つのプランから選べます。
-          </p>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-            {monthlyTiers.map((t) => (
-              <div
-                key={t.plan}
-                className={`rounded-lg border p-6 bg-omj-base flex flex-col ${
-                  t.accent
-                    ? "border-omj-primary ring-2 ring-omj-primary/20"
-                    : "border-omj-border"
-                }`}
-              >
-                <p className="text-sm text-omj-sub">{t.label}</p>
-                <p className="text-2xl font-bold mt-1 text-omj-text">
-                  {t.price}
-                  <span className="text-sm font-normal text-omj-sub ml-1">
-                    / 月
-                  </span>
-                </p>
-                <p className="mt-4 text-sm text-omj-text leading-relaxed flex-1">
-                  {t.body}
-                </p>
-                <div className="mt-5">
-                  <CheckoutButton
-                    plan={t.plan}
-                    label="このサポーターになる"
-                    variant={t.accent ? "primary" : "secondary"}
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* 3. 単発寄付 */}
+      {/* 2. 単発寄付 */}
       <section className="py-16">
         <Container>
           <p className="text-xs tracking-widest text-omj-primary font-medium mb-2">
-            3. 単発で寄付する
+            2. 寄付する
           </p>
           <h2 className="text-2xl md:text-3xl font-bold mb-2">単発寄付</h2>
           <p className="text-omj-sub mb-6 max-w-3xl leading-relaxed">
-            月額の継続が難しい方のために、金額自由の単発寄付も受け付けます。500 円から 100,000 円まで、ご無理のない範囲で。
+            金額自由の単発寄付を受け付けています。500 円から 100,000 円まで、ご無理のない範囲で。
           </p>
           <div className="max-w-2xl">
             <DonationForm />
@@ -282,11 +200,11 @@ export default function SupportPage() {
         </Container>
       </section>
 
-      {/* 4. 法人パートナーシップ */}
+      {/* 3. 法人パートナーシップ */}
       <section className="bg-white border-y border-omj-border py-16">
         <Container>
           <p className="text-xs tracking-widest text-omj-primary font-medium mb-2">
-            4. 法人として関わる・支える
+            3. 法人として関わる・支える
           </p>
           <h2 className="text-2xl md:text-3xl font-bold mb-2">
             法人パートナーシップ
@@ -327,11 +245,11 @@ export default function SupportPage() {
         </Container>
       </section>
 
-      {/* 5. 助成・パートナー一覧 */}
+      {/* 4. 助成・パートナー一覧 */}
       <section className="py-16">
         <Container>
           <p className="text-xs tracking-widest text-omj-primary font-medium mb-2">
-            5. ご支援いただいている方々
+            4. ご支援いただいている方々
           </p>
           <h2 className="text-2xl md:text-3xl font-bold mb-8">
             助成元・パートナー
@@ -359,7 +277,7 @@ export default function SupportPage() {
         </Container>
       </section>
 
-      {/* 既存会員/サポーター向け Customer Portal */}
+      {/* 既存会員向け Customer Portal */}
       <section className="bg-white border-t border-omj-border py-12 md:py-14">
         <Container>
           <div className="max-w-2xl">

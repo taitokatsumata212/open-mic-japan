@@ -14,10 +14,6 @@ const VALID_PLANS: CheckoutPlanKey[] = [
   "member_full",
   "member_assoc_indiv",
   "member_assoc_org",
-  "monthly_1k",
-  "monthly_3k",
-  "monthly_5k",
-  "monthly_10k",
   "donation_onetime",
 ];
 
@@ -95,7 +91,7 @@ export async function POST(req: NextRequest) {
         },
       });
     } else {
-      // 会員・サポーター（subscription）
+      // 会員（subscription）
       const envName = PLAN_PRICE_ENV[plan];
       const priceId = process.env[envName];
       if (!priceId) {

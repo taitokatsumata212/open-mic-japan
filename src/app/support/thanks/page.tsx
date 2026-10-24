@@ -87,7 +87,7 @@ export default async function ThanksPage({
               <Link href="/support" className="text-omj-primary underline">
                 支援ページ
               </Link>
-              の末尾にある「すでに会員 / サポーターの方」からポータルにアクセスできます。
+              の末尾にある「すでに会員の方」からポータルにアクセスできます。
             </p>
           </div>
 
