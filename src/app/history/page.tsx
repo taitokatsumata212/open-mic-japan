@@ -4,6 +4,14 @@ import { NumberStat } from "@/components/NumberStat";
 import { SupportCTA } from "@/components/SupportCTA";
 import { PersonIcon } from "@/components/illustrations/PersonIcons";
 import { SOYPOY_URL } from "@/lib/constants";
+import { utagePhrase } from "@/data/next-event";
+import {
+  openMicHeldText,
+  regionCountText,
+  regionLabel,
+  soypoyYearsText,
+  workshopHeldText,
+} from "@/data/stats";
 
 type VoiceCategory = {
   icon: "wave" | "step" | "talk" | "group";
@@ -14,6 +22,9 @@ type VoiceCategory = {
 export const metadata = {
   title: "これまでのあゆみ",
 };
+
+// 「宴」の日程表記が開催前/開催後で変わるため、日次で再生成する。
+export const revalidate = 86400;
 
 type Era = {
   year: string;
@@ -108,7 +119,7 @@ const eras: Era[] = [
     body: (
       <>
         <p>
-          毎年5月には、山梨県・平林で野外イベント「宴」を開催。次回は 2026年5月23日〜24日です。
+          毎年5月には、山梨県・平林で野外イベント「宴」を開催。{utagePhrase()}です。
         </p>
         <p>
           茅ヶ崎・青野原・神奈川県内、そして山梨県——下北沢の外にも、実践は広がっていきました。
@@ -225,10 +236,10 @@ export default function HistoryPage() {
       <section className="bg-white border-y border-omj-border py-12 md:py-16">
         <Container>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
-            <NumberStat number="53回" label="オープンマイク" size="lg" />
-            <NumberStat number="4年" label="SOY-POY 協力" size="lg" />
-            <NumberStat number="4" label="開催地域（東京・神奈川・山梨・京都）" size="lg" />
-            <NumberStat number="24回" label="ワークショップ" size="lg" />
+            <NumberStat number={openMicHeldText()} label="オープンマイク" size="lg" />
+            <NumberStat number={soypoyYearsText()} label="SOY-POY 協力" size="lg" />
+            <NumberStat number={regionCountText()} label={regionLabel()} size="lg" />
+            <NumberStat number={workshopHeldText()} label="ワークショップ" size="lg" />
             <NumberStat number="毎年5月" label="野外「宴」" size="lg" />
           </div>
         </Container>

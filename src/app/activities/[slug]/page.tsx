@@ -8,6 +8,9 @@ import { ActivityIllustration } from "@/components/activities/Illustrations";
 import { OtherActivities } from "@/components/activities/OtherActivities";
 import { activities, getActivity, type Activity } from "@/data/activities";
 
+// 「宴」の日程表記が開催前/開催後で変わるため、日次で再生成する。
+export const revalidate = 86400;
+
 type Params = { slug: Activity["slug"] };
 
 export function generateStaticParams() {

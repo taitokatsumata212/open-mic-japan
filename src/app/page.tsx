@@ -9,9 +9,21 @@ import { activities } from "@/data/activities";
 import { getAllNews } from "@/lib/news";
 import { newsCategoryLabels } from "@/lib/news";
 import { SITE_TAGLINE } from "@/lib/constants";
+import { getNextOpenMic } from "@/data/next-event";
+import {
+  openMicHeldText,
+  regionCountText,
+  regionLabel,
+  soypoyYearsText,
+} from "@/data/stats";
+
+// ヒーローの開催バッジは「開催日を過ぎたら消える」判定を含むため、
+// 静的生成のまま固定せず日次で再生成する。
+export const revalidate = 86400;
 
 export default function HomePage() {
   const latestNews = getAllNews().slice(0, 3);
+  const nextOpenMic = getNextOpenMic();
 
   return (
     <>
@@ -29,12 +41,24 @@ export default function HomePage() {
         <div className="relative max-w-container mx-auto px-5 sm:px-8 lg:max-w-[1400px] lg:px-12 py-12 sm:py-24 md:py-20">
           <div className="max-w-3xl lg:max-w-md xl:max-w-2xl">
             <Link
-              href="/news/2026-05-15-soypoy-openmic-vol54"
+              href={nextOpenMic ? nextOpenMic.href : "/news"}
               className="group inline-flex items-center gap-2 mb-4 sm:mb-5 px-3 py-1.5 rounded-full bg-white/80 backdrop-blur-sm border border-omj-primary/30 hover:border-omj-primary hover:bg-white transition-colors text-xs sm:text-sm"
             >
-              <span className="inline-block w-1.5 h-1.5 rounded-full bg-omj-primary animate-pulse" />
-              <span className="font-medium text-omj-primary">次回 6/20（土）</span>
-              <span className="text-omj-text">19:30〜 SOY-POY オープンマイク</span>
+              {nextOpenMic ? (
+                <>
+                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-omj-primary animate-pulse" />
+                  <span className="font-medium text-omj-primary">
+                    次回 {nextOpenMic.shortLabel}
+                  </span>
+                  <span className="text-omj-text">{nextOpenMic.summary}</span>
+                </>
+              ) : (
+                <>
+                  <span className="inline-block w-1.5 h-1.5 rounded-full bg-omj-primary/60" />
+                  <span className="font-medium text-omj-primary">開催情報</span>
+                  <span className="text-omj-text">次回の日程はお知らせ・LINEでご案内します</span>
+                </>
+              )}
               <span className="text-omj-primary group-hover:translate-x-0.5 transition-transform">→</span>
             </Link>
             <p className="text-xs sm:text-sm tracking-widest text-omj-primary mb-3 sm:mb-4">
@@ -67,9 +91,9 @@ export default function HomePage() {
       <section className="bg-white border-y border-omj-border">
         <Container className="py-12 md:py-16">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-            <NumberStat number="53回" label="オープンマイク開催" />
-            <NumberStat number="4年" label="協力団体 SOY-POY" />
-            <NumberStat number="4" label="開催地域（東京・神奈川・山梨・京都）" />
+            <NumberStat number={openMicHeldText()} label="オープンマイク開催" />
+            <NumberStat number={soypoyYearsText()} label="協力団体 SOY-POY" />
+            <NumberStat number={regionCountText()} label={regionLabel()} />
             <NumberStat number="毎年5月" label="野外イベント「宴」" />
           </div>
         </Container>

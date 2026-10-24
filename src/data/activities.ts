@@ -1,3 +1,11 @@
+import { utagePhrase } from "@/data/next-event";
+import {
+  openMicHeldText,
+  regionCountText,
+  regionLabel,
+  soypoyYearsText,
+} from "@/data/stats";
+
 export type ActivityStat = {
   number: string;
   label: string;
@@ -65,7 +73,7 @@ export const activities: Activity[] = [
     examples: [
       {
         title: "毎月のオープンマイク",
-        body: "協力団体 SOY-POY（下北沢）にて、毎月オープンマイクを開催。出演者・聴衆ともジャンル・年代・経験を問わず参加可能。",
+        body: "協力団体 SOY-POY（下北沢）にて、毎月第4土曜にオープンマイクを開催。出演者・聴衆ともジャンル・年代・経験を問わず参加可能。",
       },
       {
         title: "表現ジャンルの混在",
@@ -77,8 +85,8 @@ export const activities: Activity[] = [
       },
     ],
     stats: [
-      { number: "53回", label: "オープンマイク開催" },
-      { number: "4年", label: "協力団体 SOY-POY との関係" },
+      { number: openMicHeldText(), label: "オープンマイク開催" },
+      { number: soypoyYearsText(), label: "協力団体 SOY-POY との関係" },
     ],
     illustration: "community",
     relatedLinks: [
@@ -107,7 +115,7 @@ export const activities: Activity[] = [
     examples: [
       {
         title: "野外イベント「宴」",
-        body: "毎年5月、山梨県・平林で開催する野外イベント。出演と出店が同時に立ち上がる、小さなフェスのような場。次回は 2026年5月23日〜24日。茅ヶ崎・青野原などでの開催も継続。",
+        body: `毎年5月、山梨県・平林で開催する野外イベント。出演と出店が同時に立ち上がる、小さなフェスのような場。${utagePhrase()}。茅ヶ崎・青野原などでの開催も継続。`,
       },
       {
         title: "協力拠点での企画イベント",
@@ -193,14 +201,14 @@ export const activities: Activity[] = [
       },
       {
         title: "山梨・平林（野外イベント「宴」）",
-        body: "毎年5月、山梨・平林で開催する野外イベント。表現と小商いが同時に立ち上がる、地域実践の中心。次回は 2026年5月23日〜24日。",
+        body: `毎年5月、山梨・平林で開催する野外イベント。表現と小商いが同時に立ち上がる、地域実践の中心。${utagePhrase()}。`,
       },
       {
         title: "京都",
         body: "京都での開催・連携も継続。関西方面の文化実践とつながる入口として、これから関係を広げていきます。",
       },
     ],
-    stats: [{ number: "4", label: "開催地域（東京・神奈川・山梨・京都）" }],
+    stats: [{ number: regionCountText(), label: regionLabel() }],
     illustration: "regional",
     relatedLinks: [
       { href: "/gallery#regional", label: "地域開催の写真を見る" },

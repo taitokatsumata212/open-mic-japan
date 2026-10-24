@@ -8,6 +8,9 @@ export const metadata = {
   title: "活動",
 };
 
+// 「宴」の日程表記が開催前/開催後で変わるため、日次で再生成する。
+export const revalidate = 86400;
+
 export default function ActivitiesIndexPage() {
   return (
     <>
